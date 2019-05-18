@@ -7,11 +7,14 @@
         app:showAsAction="always"
           android:id="@+id/action_setting"/>
 
-    <item android:title="item2"
+    <item android:title="Sound!"
         android:icon="@mipmap/ic_launcher"
         android:id="@+id/action_menu2"/>
 
-    <item android:title="item3"
+    <item android:title="타이머 Start!"
         android:icon="@mipmap/ic_launcher"
         android:id="@+id/action_menu3"/>
+    <item android:title="타이머 Stop!"
+        android:icon="@mipmap/ic_launcher"
+        android:id="@+id/action_menu4"/>
 </menu>
