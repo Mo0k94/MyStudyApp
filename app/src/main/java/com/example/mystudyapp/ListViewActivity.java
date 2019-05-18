@@ -29,8 +29,8 @@ public class ListViewActivity extends AppCompatActivity {
         mDataList = new ArrayList<>();
 
 
-        addItem("test","test2",MainActivity.class);
-        addItem("test22","test33",MainActivity.class);
+        addItem("1) 사운드 & 스탑워치","05-18",MainActivity.class);
+        addItem("2) WebView","05-18",WebBrowserActivity.class);
 
         MyAdapter adapter = new MyAdapter(mDataList);
 
