@@ -1,4 +1,4 @@
-package com.example.mystudyapp;
+package com.example.mystudyapp.models;
 
 import java.io.Serializable;
 

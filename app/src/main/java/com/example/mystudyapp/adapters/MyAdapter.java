@@ -1,4 +1,4 @@
-package com.example.mystudyapp;
+package com.example.mystudyapp.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,9 +6,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.mystudyapp.R;
+import com.example.mystudyapp.models.ListItem;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class MyAdapter extends BaseAdapter {
     private List<ListItem> mData;

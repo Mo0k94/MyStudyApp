@@ -8,9 +8,10 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.mystudyapp.adapters.MyAdapter;
+import com.example.mystudyapp.models.ListItem;
+
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ListViewActivity extends AppCompatActivity {
 
@@ -31,6 +32,7 @@ public class ListViewActivity extends AppCompatActivity {
 
         addItem("1) 사운드 & 스탑워치","05-18",MainActivity.class);
         addItem("2) WebView","05-18",WebBrowserActivity.class);
+        addItem("3) 날씨앱(05-19)","모델클래스를 활용하여 BaseAdapter 연습",WeatherActivity.class);
 
         MyAdapter adapter = new MyAdapter(mDataList);
 
