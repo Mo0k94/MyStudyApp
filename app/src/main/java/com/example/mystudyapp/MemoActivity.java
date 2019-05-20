@@ -11,10 +11,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.ContextMenu;
+import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -131,13 +133,38 @@ public class MemoActivity extends AppCompatActivity implements AdapterView.OnIte
                 builder.setNegativeButton("취소",null);
                 builder.show();
                 return true;
-//            case R.id.delete:
-//                deleteNote(info.id);
-//                return true;
+            case R.id.action_custom_dialog:
+                showCustomDialog();
+                return true;
             default:
                 return super.onContextItemSelected(item);
         }
 
+    }
+
+    private void showCustomDialog() {
+
+        View view = LayoutInflater.from(this).inflate(R.layout.dialog_login,null,false);
+        final EditText id_edit = view.findViewById(R.id.id_edit);
+        final EditText pw_edit = view.findViewById(R.id.pw_edit);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("확인"); //상단 제목
+        builder.setMessage("정말 삭제하시겠습니까?"); //내용
+        builder.setIcon(R.mipmap.ic_launcher); //아이콘
+        //긍정버튼
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String id = id_edit.getText().toString();
+                String pw = pw_edit.getText().toString();
+                Toast.makeText(MemoActivity.this, "id : " + id + " /  pw : " +pw, Toast.LENGTH_SHORT).show();
+            }
+        });
+        //부정 버튼
+        builder.setNegativeButton("취소",null);
+        //내가 만든 레이아웃을 붙일 수 있음
+        builder.setView(view);
+        builder.show();
     }
 
     private void DeleteMemo(long id) {
