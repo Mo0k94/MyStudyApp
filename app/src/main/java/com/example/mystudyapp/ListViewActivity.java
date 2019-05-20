@@ -33,6 +33,7 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("1) 사운드 & 스탑워치","05-18",MainActivity.class);
         addItem("2) WebView","05-18",WebBrowserActivity.class);
         addItem("3) 날씨앱(05-19)","모델클래스를 활용하여 BaseAdapter 연습",WeatherActivity.class);
+        addItem("4) 메모앱(05-20)","BaseAdapter를 활용한 메모장 App",MemoActivity.class);
 
         MyAdapter adapter = new MyAdapter(mDataList);
 
