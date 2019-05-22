@@ -34,7 +34,7 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("2) WebView","05-18",WebBrowserActivity.class);
         addItem("3) 날씨앱(05-19)","모델클래스를 활용하여 BaseAdapter 연습",WeatherActivity.class);
         addItem("4) 메모앱(05-20)","BaseAdapter를 활용한 메모장 App",MemoActivity.class);
-
+        addItem("4) 은행앱(05-22)","BaseAdapter를 활용한 은행 App",MemoActivity.class);
         MyAdapter adapter = new MyAdapter(mDataList);
 
         mListView.setAdapter(adapter);
