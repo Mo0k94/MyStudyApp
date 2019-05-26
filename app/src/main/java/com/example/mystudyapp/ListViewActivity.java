@@ -41,6 +41,7 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("4) 메모앱(05-20)","BaseAdapter를 활용한 메모장 App", MemoActivity.class);
         addItem("4) 은행앱(05-22)","BaseAdapter를 활용한 은행 App",MemoActivity.class);
         addItem("4) LifeCycle(05-26)","Activity LifeCycle", LifeCycleActivity.class);
+        addItem("4) 농구앱(05-26)","SharedPreferences이용해 데이터 저장", BasketBallActivity.class);
         MyAdapter adapter = new MyAdapter(mDataList);
 
         mListView.setAdapter(adapter);
