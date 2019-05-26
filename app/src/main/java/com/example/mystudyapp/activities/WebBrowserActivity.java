@@ -1,4 +1,4 @@
-package com.example.mystudyapp;
+package com.example.mystudyapp.activities;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.mystudyapp.R;
 
 public class WebBrowserActivity extends AppCompatActivity {
     private WebView myMwebView;

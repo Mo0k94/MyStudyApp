@@ -1,4 +1,4 @@
-package com.example.mystudyapp;
+package com.example.mystudyapp.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,7 +9,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -20,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.mystudyapp.R;
 import com.example.mystudyapp.adapters.MemoAdapter;
 import com.example.mystudyapp.models.MemoItem;
 

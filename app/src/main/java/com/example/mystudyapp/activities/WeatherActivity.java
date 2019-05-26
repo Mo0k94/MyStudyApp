@@ -1,4 +1,4 @@
-package com.example.mystudyapp;
+package com.example.mystudyapp.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import com.example.mystudyapp.R;
 import com.example.mystudyapp.adapters.WeatherAdapter;
 import com.example.mystudyapp.models.Weather;
 

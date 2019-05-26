@@ -1,4 +1,4 @@
-package com.example.mystudyapp;
+package com.example.mystudyapp.activities;
 
 import android.media.MediaPlayer;
 import android.os.SystemClock;
@@ -9,6 +9,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Chronometer;
 import android.widget.Toast;
+
+import com.example.mystudyapp.R;
 
 public class MainActivity extends AppCompatActivity {
 

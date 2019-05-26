@@ -8,6 +8,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.mystudyapp.activities.LifeCycleActivity;
+import com.example.mystudyapp.activities.MainActivity;
+import com.example.mystudyapp.activities.MemoActivity;
+import com.example.mystudyapp.activities.WeatherActivity;
+import com.example.mystudyapp.activities.WebBrowserActivity;
 import com.example.mystudyapp.adapters.MyAdapter;
 import com.example.mystudyapp.models.ListItem;
 
@@ -30,11 +35,12 @@ public class ListViewActivity extends AppCompatActivity {
         mDataList = new ArrayList<>();
 
 
-        addItem("1) 사운드 & 스탑워치","05-18",MainActivity.class);
-        addItem("2) WebView","05-18",WebBrowserActivity.class);
-        addItem("3) 날씨앱(05-19)","모델클래스를 활용하여 BaseAdapter 연습",WeatherActivity.class);
-        addItem("4) 메모앱(05-20)","BaseAdapter를 활용한 메모장 App",MemoActivity.class);
+        addItem("1) 사운드 & 스탑워치","05-18", MainActivity.class);
+        addItem("2) WebView","05-18", WebBrowserActivity.class);
+        addItem("3) 날씨앱(05-19)","모델클래스를 활용하여 BaseAdapter 연습", WeatherActivity.class);
+        addItem("4) 메모앱(05-20)","BaseAdapter를 활용한 메모장 App", MemoActivity.class);
         addItem("4) 은행앱(05-22)","BaseAdapter를 활용한 은행 App",MemoActivity.class);
+        addItem("4) LifeCycle(05-26)","Activity LifeCycle", LifeCycleActivity.class);
         MyAdapter adapter = new MyAdapter(mDataList);
 
         mListView.setAdapter(adapter);
