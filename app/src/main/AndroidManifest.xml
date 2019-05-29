@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.ColorFragmentActivity"></activity>
+        <activity android:name=".activities.ListViewExamActivity"></activity>
+        <activity android:name=".activities.ColorFragmentActivity" />
         <activity android:name=".BasketBallActivity" />
         <activity android:name=".activities.LifeCycleActivity" />
         <activity android:name=".activities.Memo2Activity" />
