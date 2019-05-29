@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.ColorFragmentActivity">
+
+    <fragment
+        android:id="@+id/color_frag"
+        android:name="com.example.mystudyapp.fragments.ColorFragment"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
+    <FrameLayout
+        android:id="@+id/container_frame"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
+
+    <Button
+        android:onClick="onClick"
+        android:text="변경"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

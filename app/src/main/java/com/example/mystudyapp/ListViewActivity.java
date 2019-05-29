@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.mystudyapp.activities.ColorFragmentActivity;
 import com.example.mystudyapp.activities.LifeCycleActivity;
 import com.example.mystudyapp.activities.MainActivity;
 import com.example.mystudyapp.activities.MemoActivity;
@@ -38,10 +39,11 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("1) 사운드 & 스탑워치","05-18", MainActivity.class);
         addItem("2) WebView","05-18", WebBrowserActivity.class);
         addItem("3) 날씨앱(05-19)","모델클래스를 활용하여 BaseAdapter 연습", WeatherActivity.class);
-        addItem("4) 메모앱(05-20)","BaseAdapter를 활용한 메모장 App", MemoActivity.class);
-        addItem("4) 은행앱(05-22)","BaseAdapter를 활용한 은행 App",MemoActivity.class);
-        addItem("4) LifeCycle(05-26)","Activity LifeCycle", LifeCycleActivity.class);
-        addItem("4) 농구앱(05-26)","SharedPreferences이용해 데이터 저장", BasketBallActivity.class);
+        addItem("5) 메모앱(05-20)","BaseAdapter를 활용한 메모장 App", MemoActivity.class);
+        addItem("6) 은행앱(05-22)","BaseAdapter를 활용한 은행 App",MemoActivity.class);
+        addItem("7) LifeCycle(05-26)","Activity LifeCycle", LifeCycleActivity.class);
+        addItem("8) 농구앱(05-26)","SharedPreferences이용해 데이터 저장", BasketBallActivity.class);
+        addItem("9) Fragment(05-29)","Fragment연습", ColorFragmentActivity.class);
         MyAdapter adapter = new MyAdapter(mDataList);
 
         mListView.setAdapter(adapter);
