@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.mystudyapp.activities.ColorFragmentActivity;
+import com.example.mystudyapp.activities.FragmentExamActivity;
 import com.example.mystudyapp.activities.LifeCycleActivity;
 import com.example.mystudyapp.activities.ListViewExamActivity;
 import com.example.mystudyapp.activities.MainActivity;
@@ -46,6 +47,7 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("8) 농구앱(05-26)","SharedPreferences이용해 데이터 저장", BasketBallActivity.class);
         addItem("9) Fragment(05-29)","Fragment연습", ColorFragmentActivity.class);
         addItem("10) 리스트뷰 연습","리스트뷰연습", ListViewExamActivity.class);
+        addItem("11) 프래그먼트 연습","프래그먼트연습", FragmentExamActivity.class);
         MyAdapter adapter = new MyAdapter(mDataList);
 
         mListView.setAdapter(adapter);
