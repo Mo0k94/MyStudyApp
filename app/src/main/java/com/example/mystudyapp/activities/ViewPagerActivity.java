@@ -33,6 +33,7 @@ public class ViewPagerActivity extends AppCompatActivity {
 
         // 뷰페이저와 연결
         mTabLayout.setupWithViewPager(mViewPager);
+
     }
 
     private static class MyPagerAdapter extends FragmentPagerAdapter {
@@ -45,6 +46,7 @@ public class ViewPagerActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position){
                 case 0:
+
                     return ColorFragment.newInstance(Color.RED);
                 case 1:
                     return ColorFragment.newInstance(Color.YELLOW);
