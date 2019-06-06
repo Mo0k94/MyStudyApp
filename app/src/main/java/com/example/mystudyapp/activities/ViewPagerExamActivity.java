@@ -30,10 +30,10 @@ public class ViewPagerExamActivity extends AppCompatActivity {
 
         List<Fragment> fragmentList = new ArrayList<>();
 
-        fragmentList.add(ListViewFragment.newInstance(createLowerCaseAlphabetList()));
-        fragmentList.add(ListViewFragment.newInstance(createUpperCaseAlphabetList()));
-        fragmentList.add(ListViewFragment.newInstance(createHangulList()));
-        fragmentList.add(ListViewFragment.newInstance(createNumberList()));
+        fragmentList.add(ListViewFragment.newInstance(createList('a','z')));
+        fragmentList.add(ListViewFragment.newInstance(createList('A','Z')));
+        fragmentList.add(ListViewFragment.newInstance(createList('ㄱ','ㅎ')));
+        fragmentList.add(ListViewFragment.newInstance(createList('1','9')));
 
         MyAdapter adapter = new MyAdapter(getSupportFragmentManager(),
                 fragmentList,
@@ -42,6 +42,16 @@ public class ViewPagerExamActivity extends AppCompatActivity {
         mTabLayout.setupWithViewPager(mViewPager);
     }
 
+    //메소드 정규화
+    private List<String> createList(char start, char end){
+        List<String> list = new ArrayList<>();
+        char ch = start;
+        for (char i= ch; i<=end; i++){
+            list.add(String.valueOf(i));//a부터 z까지 list에 넣음
+        }
+        return list;
+    }
+    /*
     //소문자
     private List<String> createLowerCaseAlphabetList(){
         List<String> list = new ArrayList<>();
@@ -78,7 +88,7 @@ public class ViewPagerExamActivity extends AppCompatActivity {
             list.add(String.valueOf(i));//ㄱ부터 ㅎ까지 list에 넣음
         }
         return list;
-    }
+    }*/
 
 
     private static class MyAdapter extends FragmentPagerAdapter{
