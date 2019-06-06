@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/padding_b"
-    android:paddingTop="@dimen/padding_t"
-    android:paddingLeft="@dimen/padding_le"
-    android:paddingRight="@dimen/padding_r"
-    android:paddingStart="@dimen/padding_le"
-    android:paddingEnd="@dimen/padding_r"
+    android:orientation="vertical"
     tools:context=".activities.ViewPagerActivity">
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:tabIndicator="@android:color/black"
+        app:tabSelectedTextColor="@android:color/holo_red_light"
+        app:tabTextColor="@android:color/white" />
+    <!--현재 페이지 글자색 tabSelectedTextColor
+        평소 탭 글자색 tabTextColor-->
+
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
