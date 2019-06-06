@@ -17,6 +17,7 @@ public class ColorFragment extends Fragment {
     public ColorFragment() {
     }
 
+    //팩토리 패턴
     public static ColorFragment newInstance(int color){
         ColorFragment colorFragment = new ColorFragment();
         Bundle bundle = new Bundle();
