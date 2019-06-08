@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.mystudyapp.activities.ColorFragmentActivity;
 import com.example.mystudyapp.activities.FragmentExamActivity;
+import com.example.mystudyapp.activities.GeoIpActivity;
 import com.example.mystudyapp.activities.ImageFragmentActivity;
 import com.example.mystudyapp.activities.LifeCycleActivity;
 import com.example.mystudyapp.activities.ListViewExamActivity;
@@ -53,7 +54,8 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("11) 프래그먼트 연습","프래그먼트연습", FragmentExamActivity.class);
         addItem("12) 프래그먼트 콜백 연습","콜백연습", ImageFragmentActivity.class);
         addItem("13) ViewPager","FragmentPagerAdapter 연습", ViewPagerActivity.class);
-        addItem("13) ViewPager 연습","TabLayout + ViewPager 연습", ViewPagerExamActivity.class);
+        addItem("14) ViewPager 연습","TabLayout + ViewPager 연습", ViewPagerExamActivity.class);
+        addItem("15) Retrofit 통신 연습","Retrofit2 + gson", GeoIpActivity.class);
         MyAdapter adapter = new MyAdapter(mDataList);
 
         mListView.setAdapter(adapter);

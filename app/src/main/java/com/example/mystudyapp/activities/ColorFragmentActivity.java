@@ -30,7 +30,7 @@ public class ColorFragmentActivity extends AppCompatActivity {
         bundle.putString("text","글자");
         colorFragment2.setArguments(bundle);
 
-        // 팩토리 패턴을 활용한 프래그먼트 생성
+        // 팩토리 패턴을 활용한 프래그먼트 생성 (가장많이 사용)
         ColorFragment colorFragment3 = ColorFragment.newInstance(Color.GREEN);
 
         getSupportFragmentManager().beginTransaction()
