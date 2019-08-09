@@ -12,6 +12,12 @@ import android.widget.Toast;
 
 import com.example.mystudyapp.R;
 import com.example.mystudyapp.models.GeoIp;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,7 +27,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
-public class GeoIpActivity extends AppCompatActivity implements View.OnClickListener {
+public class GeoIpActivity extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback {
 
     private EditText mAddressEdit;
     private TextView mResultText;
@@ -30,17 +36,24 @@ public class GeoIpActivity extends AppCompatActivity implements View.OnClickList
     private FreeGeoIpService mService;
     private ProgressBar mProgressBar;
 
+    private GoogleMap mMap;
 
-    interface FreeGeoIpService{
+
+    interface FreeGeoIpService {
         @GET("{address}?access_key=6a0ae413ac6b79d4ceb9fb01dd102efa")
         Call<GeoIp> getGeoIp(@Path("address") String address);
 
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_geo_ip);
 
+// Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
 
         mRetrofit = new Retrofit.Builder()
                 //.baseUrl("http://freegeoip.net/")
@@ -58,6 +71,16 @@ public class GeoIpActivity extends AppCompatActivity implements View.OnClickList
         mProgressBar = findViewById(R.id.progressBar);
     }
 
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+
+        // Add a marker in Sydney and move the camera
+        LatLng sydney = new LatLng(-34, 151);
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
+
     public void onClick(View view) {
         mProgressBar.setVisibility(View.VISIBLE);
         mService.getGeoIp(mAddressEdit.getText().toString())
@@ -65,11 +88,11 @@ public class GeoIpActivity extends AppCompatActivity implements View.OnClickList
                     @Override //성공
                     public void onResponse(Call<GeoIp> call, Response<GeoIp> response) {
                         GeoIp geoIp = response.body();
-                        Log.d("TAG","on Response : " + geoIp);
-                        if(geoIp !=null){
+                        Log.d("TAG", "on Response : " + geoIp);
+                        if (geoIp != null) {
                             mResultText.setText(geoIp.toString());
                             mProgressBar.setVisibility(View.GONE);
-                        }else{
+                        } else {
                             Toast.makeText(GeoIpActivity.this, "잘못된 입력입니다.", Toast.LENGTH_SHORT).show();
                         }
                     }
