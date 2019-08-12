@@ -20,6 +20,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.mystudyapp.R;
 
 public class GalleryFragment extends Fragment {
@@ -207,7 +208,14 @@ public class GalleryFragment extends Fragment {
             String path = cursor.getString(cursor.getColumnIndexOrThrow(
                     MediaStore.Images.Media.DATA
             ));
-            viewHolder.image_view.setImageURI(Uri.parse(path));
+
+
+            Glide.with(context)
+                    .load(path)
+                    .into(viewHolder.image_view);
+
+            //이 방법으로 하면 memory 부족으로 터짐
+            //viewHolder.image_view.setImageURI(Uri.parse(path));
         }
     }
 
