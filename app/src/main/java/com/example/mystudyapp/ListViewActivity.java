@@ -18,6 +18,7 @@ import com.example.mystudyapp.activities.ListViewExamActivity;
 import com.example.mystudyapp.activities.MainActivity;
 import com.example.mystudyapp.activities.MapsActivity;
 import com.example.mystudyapp.activities.MemoActivity;
+import com.example.mystudyapp.activities.ThreadActivity;
 import com.example.mystudyapp.activities.ViewPagerActivity;
 import com.example.mystudyapp.activities.ViewPagerExamActivity;
 import com.example.mystudyapp.activities.WeatherActivity;
@@ -59,7 +60,8 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("14) ViewPager 연습", "TabLayout + ViewPager 연습", ViewPagerExamActivity.class);
         addItem("15) Retrofit 통신 연습", "Retrofit2 + gson", GeoIpActivity.class);
         addItem("16) Google Map ", "Google Map 베타", MapsActivity.class);
-        addItem("17) Gallery CursorAdapter ", "Gallery CursorAdapter연습", GalleryActivity.class);
+        addItem("17) Gallery CursorAdapter ", "Gallery & Permission 권한 요청", GalleryActivity.class);
+        addItem("18) 쓰레드 ", "Thread연습 ", ThreadActivity.class);
 
 
         MyAdapter adapter = new MyAdapter(mDataList);
