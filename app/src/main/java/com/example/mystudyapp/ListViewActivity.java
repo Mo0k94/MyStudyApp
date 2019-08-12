@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.mystudyapp.activities.AsyncTaskActivity;
 import com.example.mystudyapp.activities.ColorFragmentActivity;
 import com.example.mystudyapp.activities.FragmentExamActivity;
 import com.example.mystudyapp.activities.GalleryActivity;
@@ -27,6 +28,7 @@ import com.example.mystudyapp.adapters.MyAdapter;
 import com.example.mystudyapp.models.ListItem;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class ListViewActivity extends AppCompatActivity {
 
@@ -62,8 +64,9 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("16) Google Map ", "Google Map 베타", MapsActivity.class);
         addItem("17) Gallery CursorAdapter ", "Gallery & Permission 권한 요청", GalleryActivity.class);
         addItem("18) 쓰레드 ", "Thread연습 ", ThreadActivity.class);
+        addItem("18) AsyncTask ", "AsyncTask연습 ", AsyncTaskActivity.class);
 
-
+        Collections.reverse(mDataList);
         MyAdapter adapter = new MyAdapter(mDataList);
 
         mListView.setAdapter(adapter);
