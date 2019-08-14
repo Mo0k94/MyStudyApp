@@ -10,8 +10,30 @@
 
     <TextView
         android:id="@+id/text_view"
-        android:textSize="32dp"
-        android:text="text"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="text"
+        android:textSize="32dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/progress_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="progressClick"
+            android:text="처리중" />
+
+        <Button
+            android:id="@+id/download_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="downloadClick"
+            android:text="다운로드중" />
+
+    </LinearLayout>
 </LinearLayout>

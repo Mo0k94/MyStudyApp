@@ -65,6 +65,7 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("17) Gallery CursorAdapter ", "Gallery & Permission 권한 요청", GalleryActivity.class);
         addItem("18) 쓰레드 ", "Thread연습 ", ThreadActivity.class);
         addItem("18) AsyncTask ", "AsyncTask연습 ", AsyncTaskActivity.class);
+        addItem("19) AsyncTask ", "Progress연습 ", AsyncTaskActivity.class);
 
         Collections.reverse(mDataList);
         MyAdapter adapter = new MyAdapter(mDataList);
