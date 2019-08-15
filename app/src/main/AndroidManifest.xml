@@ -54,7 +54,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.WeatherActivity" />
         <activity android:name=".activities.WebBrowserActivity" />
-        <activity android:name=".ListViewActivity">
+        <activity
+            android:name=".ListViewActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

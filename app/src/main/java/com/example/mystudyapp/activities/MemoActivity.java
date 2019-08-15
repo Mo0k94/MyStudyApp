@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -35,6 +36,10 @@ public class MemoActivity extends AppCompatActivity implements AdapterView.OnIte
     private List<MemoItem> mMemoList;
     private MemoAdapter mAdapter;
     private ListView mList_view;
+
+    private SearchView mSearchView;
+    private Toolbar mToolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +52,7 @@ public class MemoActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Memo2Activity.class);
-                startActivityForResult(intent,REQUEST_CODE_NEW_MEMO);
+                startActivityForResult(intent, REQUEST_CODE_NEW_MEMO);
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -65,8 +70,24 @@ public class MemoActivity extends AppCompatActivity implements AdapterView.OnIte
 
         //  ContextMenu
         registerForContextMenu(mList_view);
-    }
 
+
+        mToolbar = findViewById(R.id.toolbar);
+        mSearchView = findViewById(R.id.search_view);
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) { // 결과
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) { //검색 내용
+                // 새로운 쿼리의 결과 뿌리기
+
+                return true;
+            }
+        });
+    }
 
 
     @Override
@@ -74,11 +95,12 @@ public class MemoActivity extends AppCompatActivity implements AdapterView.OnIte
 
         MemoItem memo = mMemoList.get(position);
         Intent intent = new Intent(this, Memo2Activity.class);
-        intent.putExtra("id",id);
+        intent.putExtra("id", id);
         //intent.putExtra("memo",memo);
 
-        startActivityForResult(intent,REQUEST_CODE_UPDATE_MEMO);
+        startActivityForResult(intent, REQUEST_CODE_UPDATE_MEMO);
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -100,7 +122,7 @@ public class MemoActivity extends AppCompatActivity implements AdapterView.OnIte
             }
             mAdapter.notifyDataSetChanged();
             Toast.makeText(this, "저장되었습니다", Toast.LENGTH_SHORT).show();
-        } else{
+        } else {
             Toast.makeText(this, "취소되었습니다", Toast.LENGTH_SHORT).show();
         }
     }
@@ -109,13 +131,13 @@ public class MemoActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.context_menu_memo,menu);
+        inflater.inflate(R.menu.context_menu_memo, menu);
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         final AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_delete:
                 //삭제를 누르면 확인을 받고 싶을 때! AlertDialog
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -130,7 +152,7 @@ public class MemoActivity extends AppCompatActivity implements AdapterView.OnIte
                     }
                 });
                 //부정 버튼
-                builder.setNegativeButton("취소",null);
+                builder.setNegativeButton("취소", null);
                 builder.show();
                 return true;
             case R.id.action_custom_dialog:
@@ -144,7 +166,7 @@ public class MemoActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private void showCustomDialog() {
 
-        View view = LayoutInflater.from(this).inflate(R.layout.dialog_login,null,false);
+        View view = LayoutInflater.from(this).inflate(R.layout.dialog_login, null, false);
         final EditText id_edit = view.findViewById(R.id.id_edit);
         final EditText pw_edit = view.findViewById(R.id.pw_edit);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -157,11 +179,11 @@ public class MemoActivity extends AppCompatActivity implements AdapterView.OnIte
             public void onClick(DialogInterface dialog, int which) {
                 String id = id_edit.getText().toString();
                 String pw = pw_edit.getText().toString();
-                Toast.makeText(MemoActivity.this, "id : " + id + " /  pw : " +pw, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MemoActivity.this, "id : " + id + " /  pw : " + pw, Toast.LENGTH_SHORT).show();
             }
         });
         //부정 버튼
-        builder.setNegativeButton("취소",null);
+        builder.setNegativeButton("취소", null);
         //내가 만든 레이아웃을 붙일 수 있음
         builder.setView(view);
         builder.show();

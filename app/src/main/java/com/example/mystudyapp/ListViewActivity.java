@@ -3,8 +3,13 @@ package com.example.mystudyapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -35,6 +40,11 @@ public class ListViewActivity extends AppCompatActivity {
 
     private ListView mListView;
     private ArrayList<ListItem> mDataList;
+    private ArrayList<ListItem> mDataList_backup;
+    private MyAdapter mAdapter;
+
+
+    private EditText mSearch_edit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +53,15 @@ public class ListViewActivity extends AppCompatActivity {
 
         mListView = findViewById(R.id.list_view);
 
+
+
+
         //데이터터
         mDataList = new ArrayList<>();
+
+
+
+
 
 
         addItem("1) 사운드 & 스탑워치", "05-18", MainActivity.class);
@@ -68,10 +85,15 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("19) AsyncTask ", "Progress연습 ", AsyncTaskActivity.class);
 
         Collections.reverse(mDataList);
-        MyAdapter adapter = new MyAdapter(mDataList);
+        mAdapter = new MyAdapter(mDataList);
 
-        mListView.setAdapter(adapter);
+        mDataList_backup = new ArrayList<ListItem>();
 
+        mDataList_backup.addAll(mDataList);
+        mListView.setAdapter(mAdapter);
+
+
+        mAdapter.notifyDataSetChanged();
         //이벤트
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -83,11 +105,64 @@ public class ListViewActivity extends AppCompatActivity {
         });
 
 
+
+        mSearch_edit = findViewById(R.id.edit_search);
+        mSearch_edit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                // input 창에 문자를 입력할때마다 호출된다
+                // search메소드를 호출
+                String text = mSearch_edit.getText().toString();
+                search(text);
+            }
+        });
+
+
     }
 
     private void addItem(String title, String title2, Class cls) {
         ListItem item = new ListItem(title, title2, cls);
         mDataList.add(item);
     }
+
+
+    // 검색을 수행하는 메소드
+    public void search(String charText) {
+
+        // 문자 입력시마다 리스트를 지우고 새로 뿌려준다.
+        mDataList.clear();
+
+        // 문자 입력이 없을때는 모든 데이터를 보여준다.
+        if (charText.length() == 0) {
+            mDataList.addAll(mDataList_backup);
+        }
+        // 문자 입력을 할때..
+        else
+        {
+            // 리스트의 모든 데이터를 검색한다.
+            for(int i = 0;i < mDataList_backup.size(); i++)
+            {
+                // arraylist의 모든 데이터에 입력받은 단어(charText)가 포함되어 있으면 true를 반환한다.
+                if (mDataList_backup.get(i).getTitle().toLowerCase().contains(charText) || mDataList_backup.get(i).getTitle().contains(charText))
+                {
+                    // 검색된 데이터를 리스트에 추가한다.
+                    mDataList.add(mDataList_backup.get(i));
+                }
+            }
+        }
+        // 리스트 데이터가 변경되었으므로 아답터를 갱신하여 검색된 데이터를 화면에 보여준다.
+        mAdapter.notifyDataSetChanged();
+    }
+
 
 }
