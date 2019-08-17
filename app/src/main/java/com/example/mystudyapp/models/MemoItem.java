@@ -1,10 +1,13 @@
 package com.example.mystudyapp.models;
 
 public class MemoItem {
+
+    private long id;
     String title;
     String content;
 
-    public MemoItem(String title, String content) {
+    public MemoItem(long id, String title, String content) {
+        this.id = id;
         this.title = title;
         this.content = content;
     }
@@ -25,10 +28,20 @@ public class MemoItem {
         this.content = content;
     }
 
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "MemoItem{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 '}';
     }

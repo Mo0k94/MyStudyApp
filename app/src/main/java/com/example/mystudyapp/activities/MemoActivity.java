@@ -1,7 +1,10 @@
 package com.example.mystudyapp.activities;
 
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -22,6 +25,9 @@ import android.widget.Toast;
 
 import com.example.mystudyapp.R;
 import com.example.mystudyapp.adapters.MemoAdapter;
+import com.example.mystudyapp.db.MemoContract;
+import com.example.mystudyapp.db.MemoDBHelper;
+import com.example.mystudyapp.db.MemoFacade;
 import com.example.mystudyapp.models.MemoItem;
 
 import java.util.ArrayList;
@@ -34,11 +40,17 @@ public class MemoActivity extends AppCompatActivity implements AdapterView.OnIte
     private static final String TAG = MemoActivity.class.getCanonicalName();
 
     private List<MemoItem> mMemoList;
+
     private MemoAdapter mAdapter;
     private ListView mList_view;
 
     private SearchView mSearchView;
     private Toolbar mToolbar;
+
+
+    //private MemoDBHelper mDbHelper;
+
+    private MemoFacade mMemofacade;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +58,13 @@ public class MemoActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_memo);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        //DB Helper
+        //mDbHelper = new MemoDBHelper(this);
+
+        // 메모 Facade
+        mMemofacade = new MemoFacade(this);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +79,7 @@ public class MemoActivity extends AppCompatActivity implements AdapterView.OnIte
 
         mList_view = findViewById(R.id.memo_list);
         // 데이터
-        mMemoList = new ArrayList<>();
+        mMemoList =  mMemofacade.getMemoList();
 
         mAdapter = new MemoAdapter(mMemoList);
         mList_view.setAdapter(mAdapter);
@@ -109,9 +128,19 @@ public class MemoActivity extends AppCompatActivity implements AdapterView.OnIte
             String title = data.getStringExtra("title");
             String content = data.getStringExtra("content");
             if (requestCode == REQUEST_CODE_NEW_MEMO) {
-                mMemoList.add(new MemoItem(title, content));
-                //Log.d(TAG,"onActivityResult : " + title + " , " + content);
-                Toast.makeText(this, "저장되었습니다", Toast.LENGTH_SHORT).show();
+                // 새 메모
+                long newRowId = mMemofacade.insert(title,content);
+
+                if (newRowId == -1) {
+                    // Insert 에러
+                    Toast.makeText(this, "저장실패했습니다", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Insert 성공
+                    mMemoList = mMemofacade.getMemoList();
+
+                    Toast.makeText(this, "저장되었습니다", Toast.LENGTH_SHORT).show();
+                }
+
             } else if (requestCode == REQUEST_CODE_UPDATE_MEMO) {
                 long id = data.getLongExtra("id", -1);
                 //수정
@@ -120,7 +149,12 @@ public class MemoActivity extends AppCompatActivity implements AdapterView.OnIte
                 memo.setContent(content);
 
             }
-            mAdapter.notifyDataSetChanged();
+            //mAdapter.notifyDataSetChanged();
+
+            // TODO  위코드가 안되어 땜빵 코드
+            mAdapter = new MemoAdapter(mMemoList);
+            mList_view.setAdapter(mAdapter);
+
             Toast.makeText(this, "저장되었습니다", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "취소되었습니다", Toast.LENGTH_SHORT).show();
@@ -149,6 +183,7 @@ public class MemoActivity extends AppCompatActivity implements AdapterView.OnIte
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         DeleteMemo(info.id);
+                        Toast.makeText(getApplicationContext(), "삭제되었습니다", Toast.LENGTH_SHORT).show();
                     }
                 });
                 //부정 버튼
@@ -190,8 +225,14 @@ public class MemoActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private void DeleteMemo(long id) {
-        mMemoList.remove((int) id);
-        mAdapter.notifyDataSetChanged();
+        int deleted = mMemofacade.delete(id);
+        if(deleted != 0){
+            mMemoList = mMemofacade.getMemoList();
+            //mAdapter.notifyDataSetChanged();
+            // TODO  위코드가 안되어 땜빵 코드
+            mAdapter = new MemoAdapter(mMemoList);
+            mList_view.setAdapter(mAdapter);
+        }
     }
 
 

@@ -36,7 +36,7 @@ public class MemoAdapter extends BaseAdapter {
     // position번째 id
     @Override
     public long getItemId(int position) {
-        return position;
+        return mData.get(position).getId();
     }
 
     // position번째의 레이아웃
