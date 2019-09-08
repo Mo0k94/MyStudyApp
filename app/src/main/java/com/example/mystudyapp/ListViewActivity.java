@@ -24,6 +24,7 @@ import com.example.mystudyapp.activities.ListViewExamActivity;
 import com.example.mystudyapp.activities.MainActivity;
 import com.example.mystudyapp.activities.MapsActivity;
 import com.example.mystudyapp.activities.MemoActivity;
+import com.example.mystudyapp.activities.RecyclerViewActivity;
 import com.example.mystudyapp.activities.ThreadActivity;
 import com.example.mystudyapp.activities.ViewPagerActivity;
 import com.example.mystudyapp.activities.ViewPagerExamActivity;
@@ -83,6 +84,7 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("18) 쓰레드 ", "Thread연습 ", ThreadActivity.class);
         addItem("18) AsyncTask ", "AsyncTask연습 ", AsyncTaskActivity.class);
         addItem("19) AsyncTask ", "Progress연습 ", AsyncTaskActivity.class);
+        addItem("20) RecyclerView ", "2019-09-08 ", RecyclerViewActivity.class);
 
         Collections.reverse(mDataList);
         mAdapter = new MyAdapter(mDataList);

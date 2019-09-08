@@ -7,10 +7,6 @@
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality.
     -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.AsyncTaskActivity"></activity>
+        <activity android:name=".activities.RecyclerViewActivity"></activity>
+        <activity android:name=".activities.AsyncTaskActivity" />
         <activity android:name=".activities.ThreadActivity" />
         <activity android:name=".activities.GalleryActivity" />
         <!--
@@ -30,13 +27,10 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
-
         <activity
             android:name=".activities.MapsActivity"
             android:label="@string/title_activity_maps" />
+
         <activity android:name=".activities.GeoIpActivity" />
         <activity android:name=".activities.WeatherApiActivity" />
         <activity android:name=".activities.ViewPagerExamActivity" />
@@ -64,6 +58,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.MainActivity" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 </manifest>
