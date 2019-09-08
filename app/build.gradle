@@ -38,4 +38,6 @@ dependencies {
     //  Glide 라이브러리
     implementation 'com.github.bumptech.glide:glide:4.9.0'
 
+    //  EventBus 라이브러리
+    implementation 'org.greenrobot:eventbus:3.1.1'
 }
