@@ -2,11 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.mystudyapp">
-    <!--
-         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
-         Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality.
-    -->
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,8 +17,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.RecyclerViewActivity"></activity>
+        <activity android:name=".activities.Retrofit2Activity"></activity>
+        <activity
+            android:name=".activities.CardViewActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.addViewActivity" />
+        <activity android:name=".activities.RecyclerViewActivity" />
         <activity android:name=".activities.AsyncTaskActivity" />
         <activity android:name=".activities.ThreadActivity" />
         <activity android:name=".activities.GalleryActivity" />
@@ -30,7 +39,6 @@
         <activity
             android:name=".activities.MapsActivity"
             android:label="@string/title_activity_maps" />
-
         <activity android:name=".activities.GeoIpActivity" />
         <activity android:name=".activities.WeatherApiActivity" />
         <activity android:name=".activities.ViewPagerExamActivity" />
@@ -58,13 +66,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.MainActivity" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 </manifest>
