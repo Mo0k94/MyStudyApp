@@ -40,4 +40,9 @@ dependencies {
 
     //  EventBus 라이브러리
     implementation 'org.greenrobot:eventbus:3.1.1'
+
+    // HTML parser위한 jsoup 라이브러리
+    implementation 'org.jsoup:jsoup:1.9.2'
+
+
 }

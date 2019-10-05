@@ -3,13 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.mystudyapp">
 
-
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,7 +12,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activities.Retrofit2Activity"></activity>
+        <activity android:name=".activities.HTMLParserActivity"></activity>
+        <activity android:name=".activities.Retrofit2Activity" />
         <activity
             android:name=".activities.CardViewActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -71,6 +65,9 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
     </application>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

@@ -19,6 +19,7 @@ import com.example.mystudyapp.activities.ColorFragmentActivity;
 import com.example.mystudyapp.activities.FragmentExamActivity;
 import com.example.mystudyapp.activities.GalleryActivity;
 import com.example.mystudyapp.activities.GeoIpActivity;
+import com.example.mystudyapp.activities.HTMLParserActivity;
 import com.example.mystudyapp.activities.ImageFragmentActivity;
 import com.example.mystudyapp.activities.LifeCycleActivity;
 import com.example.mystudyapp.activities.ListViewExamActivity;
@@ -91,6 +92,7 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("21) AddView ", "2019-09-08 ", addViewActivity.class);
         addItem("22) CardViewDesign ", "2019-09-24 ", CardViewActivity.class);
         addItem("23) Retrofit2", "2019-09-28 ", Retrofit2Activity.class);
+        addItem("24) HTMLParser", "2019-10-05 ", HTMLParserActivity.class);
 
         Collections.reverse(mDataList);
         mAdapter = new MyAdapter(mDataList);
