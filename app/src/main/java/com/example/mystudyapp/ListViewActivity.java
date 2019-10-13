@@ -93,6 +93,7 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("22) CardViewDesign ", "2019-09-24 ", CardViewActivity.class);
         addItem("23) Retrofit2", "2019-09-28 ", Retrofit2Activity.class);
         addItem("24) HTMLParser", "2019-10-05 ", HTMLParserActivity.class);
+        addItem("25) CheckListView", "2019-10-09", CheckListViewActivity.class);
 
         Collections.reverse(mDataList);
         mAdapter = new MyAdapter(mDataList);
