@@ -94,6 +94,7 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("23) Retrofit2", "2019-09-28 ", Retrofit2Activity.class);
         addItem("24) HTMLParser", "2019-10-05 ", HTMLParserActivity.class);
         addItem("25) CheckListView", "2019-10-09", CheckListViewActivity.class);
+        addItem("26) Room라이브러리", "2019-10-13", RoomTestActivitiy.class);
 
         Collections.reverse(mDataList);
         mAdapter = new MyAdapter(mDataList);

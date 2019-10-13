@@ -44,5 +44,9 @@ dependencies {
     // HTML parser위한 jsoup 라이브러리
     implementation 'org.jsoup:jsoup:1.9.2'
 
+    // SQLite 대체 ->  Room 라이브러리
+    implementation 'android.arch.persistence.room:runtime:1.1.1'
+    annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
+
 
 }

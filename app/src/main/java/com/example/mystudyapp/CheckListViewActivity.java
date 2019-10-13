@@ -38,7 +38,7 @@ public class CheckListViewActivity extends AppCompatActivity {
 
     private List<Check> checkList;
 
-    private Boolean checkGb = false;
+    private Integer checkGb = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +57,7 @@ public class CheckListViewActivity extends AppCompatActivity {
                 // mCheckBtn.setText("현재 체크 수 = " + mCustomAdapter.getChecked().size()+ " 개");
 
                 material = mEdit_txt.getText().toString();
-                checkGb = false;
+                checkGb = 0;
                 Check dept = new Check(material,checkGb);
 
 
@@ -91,11 +91,11 @@ public class CheckListViewActivity extends AppCompatActivity {
                                         int position, long arg3) {
                     Toast.makeText(getApplicationContext(), "" + (position),
                             Toast.LENGTH_SHORT).show();
-                    if(checkList.get(position).getCheck()){
-                        checkGb = false;
+                    if(checkList.get(position).getCheck() == 1){
+                        checkGb = 0;
                         checkList.get(position).setCheck(checkGb);
                     }else{
-                        checkGb = true;
+                        checkGb = 1;
                         checkList.get(position).setCheck(checkGb);
                     }
 
@@ -194,8 +194,9 @@ public class CheckListViewActivity extends AppCompatActivity {
 
 
 
-                if(checkList.get(position).getCheck()){     // 체크 된 게 있으면
-                    viewHolder.cBox.setChecked(checkList.get(position).getCheck());
+                if(checkList.get(position).getCheck() == 1){     // 체크 된 게 있으면
+                    Boolean checkBool = true;
+                    viewHolder.cBox.setChecked(checkBool);
                 }else{
                     viewHolder.cBox.setChecked(false);
                 }

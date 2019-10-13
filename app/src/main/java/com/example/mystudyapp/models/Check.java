@@ -3,9 +3,9 @@ package com.example.mystudyapp.models;
 public class Check {
 
     private String checkText;
-    private Boolean check;
+    private Integer check;
 
-    public Check(String checkText, Boolean check) {
+    public Check(String checkText, Integer check) {
         this.checkText = checkText;
         this.check = check;
     }
@@ -18,11 +18,11 @@ public class Check {
         this.checkText = checkText;
     }
 
-    public Boolean getCheck() {
+    public Integer getCheck() {
         return check;
     }
 
-    public void setCheck(Boolean check) {
+    public void setCheck(Integer check) {
         this.check = check;
     }
 
