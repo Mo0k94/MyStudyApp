@@ -12,20 +12,24 @@ import java.util.List;
 public interface TodoDao {
 
 
-    @Query("SELECT * FROM Todo2")
-    List<Todo2> getAll();
+    @Query("SELECT * FROM `Plan`")
+    List<Plan> getAll();
 
 
     @Insert
-    void insertTodo(Todo2 todo);
+    void insertTodo(Plan plan);
 
 
-    @Query("UPDATE Todo2 SET title =:check, checkGb=:checkGb WHERE id = :id")
+    @Query("UPDATE `Plan` SET title =:check, checkGb=:checkGb WHERE id = :id")
     void updateTodo2(String check,Integer checkGb,int id);
 
-    @Delete
-    void deleteTodo(Todo2 todo);
+    @Query("DELETE FROM `Plan`")
+    void deleteTodo();
 
     @Update
-    void updateTodo(Todo2 todo2);
+    void updateTodo(Plan plan);
+
+    @Query("SELECT COUNT(id) FROM `Plan`")
+    int getCount();
+
 }

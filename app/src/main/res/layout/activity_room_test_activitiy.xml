@@ -20,19 +20,23 @@
         android:hint="입력하시오" />
 
     <Button
-        android:id="@+id/save_btn"
+        android:id="@+id/add_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="저장" />
-
+        android:text="추가" />
+        <Button
+            android:id="@+id/save_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="저장" />
 
     </LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/check_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:spanCount="2"
+
         android:layout_weight="1
 "
-        app:layoutManager="android.support.v7.widget.StaggeredGridLayoutManager" />
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
 </LinearLayout>

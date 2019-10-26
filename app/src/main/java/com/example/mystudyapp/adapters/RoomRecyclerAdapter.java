@@ -58,14 +58,16 @@ public class RoomRecyclerAdapter extends RecyclerView.Adapter<RoomRecyclerAdapte
     }
 
 
-    public RoomRecyclerAdapter(Context context, List<Check> memoList) {
+    public RoomRecyclerAdapter(Context context, List<Check> checkList) {
 
-        checkList = memoList;
-        mContext = context;
+        this.checkList = checkList;
+        this.mContext = context;
+        this.isCheckedConfrim = new boolean[checkList.size()];
     }
 
 
     public void setChecked(int position) {
+        Log.d("TAG","setChecked!!! =====> " + position);
         isCheckedConfrim[position] = !isCheckedConfrim[position];
     }
 
