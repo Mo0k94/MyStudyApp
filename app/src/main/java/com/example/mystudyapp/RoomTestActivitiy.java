@@ -1,13 +1,11 @@
 package com.example.mystudyapp;
 
 import android.annotation.SuppressLint;
-import android.app.ActivityOptions;
 import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.migration.Migration;
-import android.content.Intent;
-import android.os.Build;
-import android.support.annotation.NonNull;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -15,13 +13,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mystudyapp.Room.AppDataBase;
 import com.example.mystudyapp.Room.Plan;
-import com.example.mystudyapp.Room.Todo;
-import com.example.mystudyapp.Room.Todo2;
 import com.example.mystudyapp.adapters.RoomRecyclerAdapter;
 import com.example.mystudyapp.models.Check;
 
@@ -191,6 +186,42 @@ public class RoomTestActivitiy extends AppCompatActivity {
     }
 
 
+
+
+    @SuppressLint("RestrictedApi")
+    @Subscribe
+    public void onDelclick(final RoomRecyclerAdapter.BtnClickEvent event){
+        Log.d("TAG","Delete 시작 ====>" + db.todoDao().getAll().get(event.position).getId());
+        AlertDialog.Builder dialog = new AlertDialog.Builder(RoomTestActivitiy.this);
+        dialog.setTitle("삭제 알림")
+                .setMessage("정말 삭제하시겠습니까?")
+                .setPositiveButton("예", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        checkList.remove(event.position);
+                        mAdapter.notifyItemRemoved(event.position);
+                        mAdapter.notifyItemRangeChanged(event.position,checkList.size());
+
+                        mAdapter = new RoomRecyclerAdapter(RoomTestActivitiy.this, checkList);
+                        //mAdapter.update(checkList, event.position);
+
+                        db.todoDao().deletePlan(db.todoDao().getAll().get(event.position).getId());
+                        Toast.makeText(RoomTestActivitiy.this, "삭제하였습니다", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton("아니요", new DialogInterface.OnClickListener() {
+
+                    @Override
+
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Toast.makeText(RoomTestActivitiy.this, "삭제하지 않습니다", Toast.LENGTH_SHORT).show();
+                    }
+                }).create().show();
+        
+    }
+
+
     // 보낸이 : MemoRecyclerAdapter
     @SuppressLint("RestrictedApi")
     @Subscribe
@@ -232,6 +263,8 @@ public class RoomTestActivitiy extends AppCompatActivity {
 
         }
     }
+
+
 
     public void chk_update(int chkgb,int position){
         checkGb = chkgb;

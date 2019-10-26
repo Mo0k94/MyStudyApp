@@ -2,12 +2,22 @@ package com.example.mystudyapp.models;
 
 public class Check {
 
+    private int id;
+
     private String checkText;
     private Integer check;
 
     public Check(String checkText, Integer check) {
         this.checkText = checkText;
         this.check = check;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCheckText() {
@@ -29,7 +39,8 @@ public class Check {
     @Override
     public String toString() {
         return "Check{" +
-                "checkText='" + checkText + '\'' +
+                "id=" + id +
+                ", checkText='" + checkText + '\'' +
                 ", check=" + check +
                 '}';
     }

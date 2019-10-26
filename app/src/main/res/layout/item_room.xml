@@ -26,6 +26,16 @@
             android:layout_height="wrap_content"
             android:id="@+id/check_box"/>
 
+
+        <Button
+            android:id="@+id/del_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="삭제"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="150dp"/>
+
     </LinearLayout>
 
 </android.support.v7.widget.CardView>

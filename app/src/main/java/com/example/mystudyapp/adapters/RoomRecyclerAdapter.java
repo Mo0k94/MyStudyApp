@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -57,6 +58,18 @@ public class RoomRecyclerAdapter extends RecyclerView.Adapter<RoomRecyclerAdapte
 
     }
 
+    //Event Bus 클래스
+    public static class BtnClickEvent {
+        public BtnClickEvent(View view, int position, long id) {
+            this.view = view;
+            this.position = position;
+            this.id = id;
+        }
+        public View view;
+        public int position;
+        public long id;
+
+    }
 
     public RoomRecyclerAdapter(Context context, List<Check> checkList) {
 
@@ -127,6 +140,14 @@ public class RoomRecyclerAdapter extends RecyclerView.Adapter<RoomRecyclerAdapte
                 Log.d("TAG","onBindViewHolder memo.getId 값 : " + position);
             }
         });
+        holder.del_btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                EventBus.getDefault().post(new BtnClickEvent(view,position,checkList.get(position).getId()));
+                Log.d("TAG","onBindViewHolder check.getId 값 : " + position);
+
+            }
+        });
 
 
     }
@@ -140,6 +161,7 @@ public class RoomRecyclerAdapter extends RecyclerView.Adapter<RoomRecyclerAdapte
 
         TextView checkTextView;
         CheckBox  checkBox;
+        Button del_btn;
         //ImageButton delBtn;
 
         public ViewHolder(View itemView) {
@@ -147,11 +169,11 @@ public class RoomRecyclerAdapter extends RecyclerView.Adapter<RoomRecyclerAdapte
             // 레이아웃 들고 오기
             TextView checkTextView = itemView.findViewById(R.id.check_txt);
             CheckBox check_box =  itemView.findViewById(R.id.check_box);
-
+            Button del_btn      = itemView.findViewById(R.id.del_btn);
 
             this.checkTextView = checkTextView;
             this.checkBox = check_box;
-
+            this.del_btn = del_btn;
         }
 
     }

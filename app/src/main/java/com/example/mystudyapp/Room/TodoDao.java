@@ -23,7 +23,11 @@ public interface TodoDao {
     @Query("UPDATE `Plan` SET title =:check, checkGb=:checkGb WHERE id = :id")
     void updateTodo2(String check,Integer checkGb,int id);
 
-    @Query("DELETE FROM `Plan`")
+    @Query("DELETE FROM `Plan` WHERE id = :id" )
+    void deletePlan(int id);
+
+
+    @Query("DELETE FROM `Plan`" )
     void deleteTodo();
 
     @Update
