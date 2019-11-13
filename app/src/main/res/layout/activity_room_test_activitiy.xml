@@ -23,6 +23,8 @@
         android:id="@+id/add_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/ripple_custom"
+
         android:text="추가" />
         <Button
             android:id="@+id/save_btn"
@@ -35,8 +37,6 @@
         android:id="@+id/check_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:layout_weight="1
-"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+        android:layout_weight="1"
+        app:layoutManager="android.support.v7.widget.GridLayoutManager" />
 </LinearLayout>

@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -54,6 +55,10 @@ public class RoomTestActivitiy extends AppCompatActivity {
         mRecycler_view = findViewById(R.id.check_recycler);
 
 
+        GridLayoutManager gridLayoutManager
+                = new GridLayoutManager(this,2);
+
+        mRecycler_view.setLayoutManager(gridLayoutManager);
         checkList = new ArrayList<Check>();
 
 
@@ -218,7 +223,7 @@ public class RoomTestActivitiy extends AppCompatActivity {
                         Toast.makeText(RoomTestActivitiy.this, "삭제하지 않습니다", Toast.LENGTH_SHORT).show();
                     }
                 }).create().show();
-        
+
     }
 
 
@@ -273,7 +278,7 @@ public class RoomTestActivitiy extends AppCompatActivity {
         //db.todoDao().updateTodo(new Todo2(checkList.get(event.position).getCheckText(),checkGb));
         Log.d("TAG", "update 확인 -=====> : " + position + " 번째" + checkList.get(position).getCheck() + " / " + db.todoDao().getAll().get(position).getTitle());
 
-        db.todoDao().updateTodo2(checkList.get(position).getCheckText(),checkList.get(position).getCheck(),position+1);
+        db.todoDao().updateTodo2(checkList.get(position).getCheckText(),checkList.get(position).getCheck(),position+6);
 
         Log.d("TAG", "update 확인 -=====> : " + position + " 번째" + db.todoDao().getAll().get(position).getCheckGb() + " / " + db.todoDao().getAll().get(position).getTitle() + " / " + db.todoDao().getAll().get(position).getId());
 

@@ -98,10 +98,10 @@ public class HTMLParserActivity extends AppCompatActivity {
                     //http://www.gwangju.ac.kr/_prog/_board/?mode=V&no=2056473&code=sub6_060307&site_dvs_cd=kr&menu_dvs_cd=060307&skey=&sval=&site_dvs=&stype=&GotoPage= 이렇게 가져옴
                     //titleArray.add(my_link);
                     hrefArray.add(my_link);
-                    //Log.d("TAG","hrefArray 배열값 : " + hrefArray);
+                    //Log.d("TAG","hrefArray 배열값 : " + hrefArray.toString());
                 }
 
-                Document document = Jsoup.connect(hrefArray.get(1)).get();
+                Document document = Jsoup.connect(hrefArray.get(0)).get();
                 Elements elements    = document.select("div.board_viewDetail table tbody tr");
 
                 for (Element element : elements){
@@ -121,6 +121,8 @@ public class HTMLParserActivity extends AppCompatActivity {
 
                 if(menuArray.get(0).contains("구분")){
                     String menu1 = menuArray.get(0).substring(idx+3);                   // 날짜 가져옴
+                    Log.d("TAG","날짜가져오기  =" + menu1);         //5일 단위 날짜 배열에 담음   날짜가져오기  =2019-10-28 2019-10-29 2019-10-30 2019-10-31 2019-11-1
+
                     dateArray = menu1.split(" ");                   // 날짜
 
                 }
@@ -131,6 +133,9 @@ public class HTMLParserActivity extends AppCompatActivity {
                     riceArray = rice.split(" " );                    //밥
 
                 }
+
+                Log.d("TAG","menuArray  =>>" + menuArray.toString());
+
 
                 dayArray = menuArray.get(1).split(" " );            //요일
                 soupArray = menuArray.get(4).split(" " );           //국
@@ -173,7 +178,7 @@ public class HTMLParserActivity extends AppCompatActivity {
                     riceArray[count] = "메뉴없음";
                 }
 
-                foodMenu = new FoodMenu(dateArray[count],"(" +dayArray[count]+")",riceArray[count],soupArray[count],ban1Array[count],ban2Array[count],ban3Array[count],ban4Array[count]);
+                foodMenu = new FoodMenu(dateArray[count].substring(8,10),"(" +dayArray[count]+")",riceArray[count],soupArray[count],ban1Array[count],ban2Array[count],ban3Array[count],ban4Array[count]);
                 foodArray.add(foodMenu);
                 count++;
 
