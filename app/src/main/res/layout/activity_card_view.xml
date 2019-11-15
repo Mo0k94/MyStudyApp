@@ -54,6 +54,7 @@
             android:alignmentMode="alignMargins"
             android:columnCount="2"
             android:columnOrderPreserved="false"
+
             android:rowCount="3">
 
             <android.support.v7.widget.CardView
@@ -63,6 +64,7 @@
                 android:layout_columnWeight="1"
                 android:layout_margin="12dp"
                 app:cardCornerRadius="12dp"
+                android:background="@drawable/ripple_custom"
                 app:cardElevation="6dp">
 
                 <LinearLayout
@@ -72,11 +74,12 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <ImageView
+                    <ImageButton
                         android:layout_width="80dp"
                         android:layout_height="80dp"
+                        android:background="@drawable/ripple_custom"
 
-                        android:src="@drawable/wheather_rain" />
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
