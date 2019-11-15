@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="15dp"
+    android:orientation="vertical">
+
+    <!--selector_image-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:gravity="center_vertical|left"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            android:text="selector image => "/>
+        <Button
+            android:id="@+id/selector_image"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:textColor="#000000"
+            android:text="Hello World!"
+            android:background="@drawable/selector_image">
+        </Button>
+    </LinearLayout>
+
+    <!--selector_pressed-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:gravity="center_vertical|left"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            android:text="selector pressed => "/>
+        <Button
+            android:id="@+id/selector_pressed"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:textColor="#ffffff"
+            android:text="Hello World!"
+            android:background="@drawable/selector_pressed">
+        </Button>
+    </LinearLayout>
+
+    <!--selector_focused-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:gravity="center_vertical|left"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            android:text="selector focused => "/>
+        <EditText
+            android:id="@+id/selector_focused"
+            android:layout_width="140dp"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:layout_height="50dp"
+            android:text="Hello World!"
+            android:background="@drawable/selector_focused">
+
+        </EditText>
+    </LinearLayout>
+
+    <!--selector_selected-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:gravity="center_vertical|left"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            android:text="selector selected => "/>
+        <TextView
+            android:id="@+id/selector_selected"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:text="Hello World!"
+            android:background="@drawable/selector_selected">
+        </TextView>
+    </LinearLayout>
+
+    <!--selector_endabled-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:gravity="center_vertical|left"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            android:text="selector enable => "/>
+        <TextView
+            android:id="@+id/selector_enabled"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:text="Hello World!"
+            android:background="@drawable/selector_enabled">
+        </TextView>
+    </LinearLayout>
+
+    <!--selector_checked-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:gravity="center_vertical|left"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            android:text="selector chcked => "/>
+        <CheckBox
+            android:id="@+id/selector_checked"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:background="@drawable/selector_checked"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:text="Hello World!">
+        </CheckBox>
+    </LinearLayout>
+
+    <!--초기 실행시 포커스를 여기로 초기화 한다.-->
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="50dp" >
+        <requestFocus/>
+    </EditText>
+</LinearLayout>

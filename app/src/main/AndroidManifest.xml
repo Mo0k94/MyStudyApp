@@ -16,7 +16,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".RoomTestActivitiy"></activity>
+        <activity android:name=".activities.Selector_ImageActivity"></activity>
+        <activity android:name=".RoomTestActivitiy" />
         <activity android:name=".CheckListViewActivity" />
         <activity android:name=".activities.HTMLParserActivity" />
         <activity android:name=".activities.Retrofit2Activity" />

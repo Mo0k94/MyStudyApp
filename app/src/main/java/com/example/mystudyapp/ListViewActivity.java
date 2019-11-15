@@ -28,6 +28,7 @@ import com.example.mystudyapp.activities.MapsActivity;
 import com.example.mystudyapp.activities.MemoActivity;
 import com.example.mystudyapp.activities.RecyclerViewActivity;
 import com.example.mystudyapp.activities.Retrofit2Activity;
+import com.example.mystudyapp.activities.Selector_ImageActivity;
 import com.example.mystudyapp.activities.ThreadActivity;
 import com.example.mystudyapp.activities.ViewPagerActivity;
 import com.example.mystudyapp.activities.ViewPagerExamActivity;
@@ -95,6 +96,8 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("24) HTMLParser", "2019-10-05 ", HTMLParserActivity.class);
         addItem("25) CheckListView", "2019-10-09", CheckListViewActivity.class);
         addItem("26) Room라이브러리", "2019-10-13", RoomTestActivitiy.class);
+        addItem("27) XML_Selector(버튼눌림)", "2019-11-16", Selector_ImageActivity.class);
+
 
         Collections.reverse(mDataList);
         mAdapter = new MyAdapter(mDataList);
