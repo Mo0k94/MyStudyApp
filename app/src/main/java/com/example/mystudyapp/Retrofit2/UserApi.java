@@ -16,7 +16,7 @@ import retrofit2.http.Query;
 
 public interface UserApi {
 
-      String BaseUrl = "http://tkdanr2427.cafe24.com/";
+      String BaseUrl = "http://tkdanr2427.cafe24.com/Gwangju_Univ/";
 
 
 //    @Multipart

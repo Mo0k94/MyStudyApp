@@ -97,6 +97,7 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("25) CheckListView", "2019-10-09", CheckListViewActivity.class);
         addItem("26) Room라이브러리", "2019-10-13", RoomTestActivitiy.class);
         addItem("27) XML_Selector(버튼눌림)", "2019-11-16", Selector_ImageActivity.class);
+        addItem("29) Server 이미지 가져오기", "2019-11-20", getServerImageActivity.class);
 
 
         Collections.reverse(mDataList);
