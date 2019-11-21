@@ -12,13 +12,12 @@
         </shape>
     </item>
 
-    <item android:id="@android:id/background"
-        android:drawable="@drawable/wheater_cloud">
+    <item android:id="@android:id/background">
         <shape android:shape="rectangle">
             <gradient
                 android:angle="90"
-                android:endColor="#F2CB61"
-                android:startColor="#F2CB61"
+                android:endColor="#D4F4FA"
+                android:startColor="#D4F4FA"
                 android:type="linear" />
             <corners android:bottomLeftRadius="50dp" android:bottomRightRadius="50dp" android:topLeftRadius="50dp" android:topRightRadius="50dp"/>
         </shape>

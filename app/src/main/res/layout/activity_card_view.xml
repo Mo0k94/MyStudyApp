@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/text_dashboard"
                 android:layout_marginTop="6dp"
-                android:text="12 items"
+                android:text="관리자님 환영합니다."
                 android:textColor="#FF5722"
                 android:textSize="14sp" />
 
@@ -39,7 +39,7 @@
                 android:id="@+id/text_dashboard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="My DashBoard"
+                android:text="광주대학교"
                 android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -64,7 +64,6 @@
                 android:layout_columnWeight="1"
                 android:layout_margin="12dp"
                 app:cardCornerRadius="12dp"
-                android:background="@drawable/ripple_custom"
                 app:cardElevation="6dp">
 
                 <LinearLayout
@@ -77,9 +76,8 @@
                     <ImageButton
                         android:layout_width="80dp"
                         android:layout_height="80dp"
-                        android:background="@drawable/ripple_custom"
 
-                        />
+                        android:background="@drawable/ripple_custom" />
 
                     <TextView
                         android:layout_width="wrap_content"

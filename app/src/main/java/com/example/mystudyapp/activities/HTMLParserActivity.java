@@ -22,7 +22,9 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class HTMLParserActivity extends AppCompatActivity {
@@ -42,9 +44,19 @@ public class HTMLParserActivity extends AppCompatActivity {
     String[] ban3Array;          //반찬3
     String[] ban4Array;          //반찬4
 
+    String[] dateArray2;         //날짜
+    String[] dayArray2;          //요일
+    String[] riceArray2;         //밥
+    String[] soupArray2;         //국
+    String[] ban1Array2;          //반찬1
+    String[] ban2Array2;          //반찬2
+    String[] ban3Array2;          //반찬3
+    String[] ban4Array2;          //반찬4
+
     FoodMenu foodMenu;
 
-    List<FoodMenu> foodArray = new ArrayList<>();
+    List<FoodMenu> foodArray = new ArrayList<>();       // 첫번째 주
+    List<FoodMenu> foodArray2 = new ArrayList<>();       // 두번째 주
     Intent intent;
 
     TextView mMenu_text;
@@ -109,33 +121,26 @@ public class HTMLParserActivity extends AppCompatActivity {
                     String menu = element.select("td").text();
 
                     menuArray.add(menu);
-                    //Elements menutr = element.getElementsByIndexEquals(3);
-                    //Element menutd = menutr.get(2);
-                    //String menu_title = String.valueOf(menutd.select("td"));
-
 
                 }
 
 
-                int idx = menuArray.get(0).indexOf("구분");
+                // 첫번째 주 구분으로 나눔
 
                 if(menuArray.get(0).contains("구분")){
+                    int idx = menuArray.get(0).indexOf("구분");
                     String menu1 = menuArray.get(0).substring(idx+3);                   // 날짜 가져옴
-                    Log.d("TAG","날짜가져오기  =" + menu1);         //5일 단위 날짜 배열에 담음   날짜가져오기  =2019-10-28 2019-10-29 2019-10-30 2019-10-31 2019-11-1
+                                                                                            //5일 단위 날짜 배열에 담음   날짜가져오기  =2019-10-28 2019-10-29 2019-10-30 2019-10-31 2019-11-1
 
                     dateArray = menu1.split(" ");                   // 날짜
 
                 }
-                int idx2 = menuArray.get(3).indexOf("정식");
-                if(menuArray.get(3).contains("정식")){
 
+                if(menuArray.get(3).contains("정식")){
+                    int idx2 = menuArray.get(3).indexOf("정식");
                     String rice = menuArray.get(3).substring(idx2+3);
                     riceArray = rice.split(" " );                    //밥
-
                 }
-
-                Log.d("TAG","menuArray  =>>" + menuArray.toString());
-
 
                 dayArray = menuArray.get(1).split(" " );            //요일
                 soupArray = menuArray.get(4).split(" " );           //국
@@ -145,17 +150,40 @@ public class HTMLParserActivity extends AppCompatActivity {
                 ban4Array = menuArray.get(8).split(" " );           //반찬4
 
 
-
-                for(int i=0; i< dateArray.length; i++){
-                    Log.d("TAG","날짜 자름 : [ " +  i + " ] =" + dateArray[i]);         //5일 단위 날짜 배열에 담음
-                    Log.d("TAG","요일 자름 : [ " + i + " ] = " + dayArray[i]);          // 월~금 배열에 담음
-                    Log.d("TAG","쌀밥 자름 : [ " + i + " ] = " + riceArray[i]);          // 월~금 배열에 담음
-                    Log.d("TAG","국 자름 : [ " + i + " ] = " + soupArray[i]);          // 월~금 배열에 담음
-                    Log.d("TAG","반찬1 자름 : [ " + i + " ] = " + ban1Array[i]);          // 월~금 배열에 담음
-                    Log.d("TAG","반찬2 자름 : [ " + i + " ] = " + ban2Array[i]);          // 월~금 배열에 담음
-                    Log.d("TAG","반찬3 자름 : [ " + i + " ] = " + ban3Array[i]);          // 월~금 배열에 담음
-                    Log.d("TAG","반찬4 자름 : [ " + i + " ] = " + ban4Array[i]);          // 월~금 배열에 담음
+                //두번째 주
+                if(menuArray.get(9).contains("구분")){
+                    int idx3 = menuArray.get(9).indexOf("구분");
+                    String menu2 = menuArray.get(9).substring(idx3+3);
+                    dateArray2 = menu2.split(" ");                   // 날짜
                 }
+                if(menuArray.get(12).contains("정식")){
+                    int idx2 = menuArray.get(12).indexOf("정식");
+                    String rice = menuArray.get(12).substring(idx2+3);
+                    riceArray2 = rice.split(" " );                    //밥
+                }
+
+
+                dayArray2 = menuArray.get(10).split(" " );            //요일
+                soupArray2 = menuArray.get(13).split(" " );           //국
+                ban1Array2 = menuArray.get(14).split(" " );           //반찬1
+                ban2Array2 = menuArray.get(15).split(" " );           //반찬2
+                ban3Array2 = menuArray.get(16).split(" " );           //반찬3
+                ban4Array2 = menuArray.get(17).split(" " );           //반찬4
+
+
+
+
+//                for(int i=0; i< dateArray.length; i++){
+//                    Log.d("TAG","날짜 자름 : [ " +  i + " ] ="  + dateArray2[i]);         //5일 단위 날짜 배열에 담음
+//                    Log.d("TAG","요일 자름 : [ " + i + " ] = "  + dayArray2[i]);          // 월~금 배열에 담음
+//                    Log.d("TAG","쌀밥 자름 : [ " + i + " ] = "  + riceArray2[i]);          // 월~금 배열에 담음
+//                    Log.d("TAG","국 자름 : [ " + i + " ] = "    + soupArray2[i]);          // 월~금 배열에 담음
+//                    Log.d("TAG","반찬1 자름 : [ " + i + " ] = " + ban1Array2[i]);          // 월~금 배열에 담음
+//                    Log.d("TAG","반찬2 자름 : [ " + i + " ] = " + ban2Array2[i]);          // 월~금 배열에 담음
+//                    Log.d("TAG","반찬3 자름 : [ " + i + " ] = " + ban3Array2[i]);          // 월~금 배열에 담음
+//                    Log.d("TAG","반찬4 자름 : [ " + i + " ] = " + ban4Array2[i]);          // 월~금 배열에 담음
+//                }
+
 
 
             } catch (IOException e) {
@@ -167,22 +195,46 @@ public class HTMLParserActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void result) {
 
+            SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");
+
+
+            Date time = new Date();
+
+
+            String now_date = format1.format(time);
 
             int count = 0;
 
-            while(count < 5){
+            if(dateArray[count].contains(now_date)){
+                //Log.d("TAG","현재 날짜 포함 O ======> " + now_date);
+                while(count < 5){
+                    if(riceArray[count].length() == 1){
+                        Log.d("Tag","메뉴없음!!!!");
+                        riceArray[count] = "메뉴없음";
+                    }
 
-                Log.d("Tag","메뉴없는거 찾자!!!!!" + riceArray[count].length());
-                if(riceArray[count].length() == 1){
-                    Log.d("Tag","메뉴없음!!!!");
-                    riceArray[count] = "메뉴없음";
+                    foodMenu = new FoodMenu(dateArray[count].substring(8,10),"(" +dayArray[count]+")",riceArray[count],soupArray[count],ban1Array[count],ban2Array[count],ban3Array[count],ban4Array[count]);
+                    foodArray.add(foodMenu);
+                    count++;
                 }
 
-                foodMenu = new FoodMenu(dateArray[count].substring(8,10),"(" +dayArray[count]+")",riceArray[count],soupArray[count],ban1Array[count],ban2Array[count],ban3Array[count],ban4Array[count]);
-                foodArray.add(foodMenu);
-                count++;
+            }else{
+                while(count < 5){
+
+                    //Log.d("Tag","메뉴없는거 찾자!!!!!" + riceArray2[count].length());
+                    if(riceArray2[count].length() == 1){
+                        Log.d("Tag","메뉴없음!!!!");
+                        riceArray2[count] = "메뉴없음";
+                    }
+
+                    foodMenu = new FoodMenu(dateArray2[count].substring(8,10),"(" +dayArray2[count]+")",riceArray2[count],soupArray2[count],ban1Array2[count],ban2Array2[count],ban3Array2[count],ban4Array2[count]);
+                    foodArray.add(foodMenu);
+                    count++;
+                }
+                //Log.d("TAG","현재 날짜 포함 X ======> " + now_date);
 
             }
+
 
 
 
@@ -195,7 +247,7 @@ public class HTMLParserActivity extends AppCompatActivity {
             Log.d("TAG","foodArray : " + foodArray.toString());
 
 
-            Log.d("TAG","foodArray 0번째 : " + foodArray.get(0).getBan1());
+
             //mMenu_text.setText(ban1Array[4]);
             //intent = new Intent(Intent.ACTION_VIEW, Uri.parse(hrefArray.get(0)));
             //startActivity(intent);
