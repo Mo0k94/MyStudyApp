@@ -3,8 +3,6 @@ package com.example.mystudyapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -21,6 +19,7 @@ import com.example.mystudyapp.activities.GalleryActivity;
 import com.example.mystudyapp.activities.GeoIpActivity;
 import com.example.mystudyapp.activities.HTMLParserActivity;
 import com.example.mystudyapp.activities.ImageFragmentActivity;
+import com.example.mystudyapp.activities.ImageListViewActivity;
 import com.example.mystudyapp.activities.LifeCycleActivity;
 import com.example.mystudyapp.activities.ListViewExamActivity;
 import com.example.mystudyapp.activities.MainActivity;
@@ -98,7 +97,7 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("26) Room라이브러리", "2019-10-13", RoomTestActivitiy.class);
         addItem("27) XML_Selector(버튼눌림)", "2019-11-16", Selector_ImageActivity.class);
         addItem("29) Server 이미지 가져오기", "2019-11-20", getServerImageActivity.class);
-
+        addItem("29) 이미지 리사이클러뷰", "2019-11-23", ImageListViewActivity.class);
 
         Collections.reverse(mDataList);
         mAdapter = new MyAdapter(mDataList);
