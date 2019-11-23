@@ -20,8 +20,9 @@
             android:text="이미지가져오기"/>
         <ImageView
             android:id="@+id/image_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_gravity="center"
+            android:layout_width="250dp"
+            android:layout_height="150dp"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
