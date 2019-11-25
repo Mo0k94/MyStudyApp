@@ -44,6 +44,7 @@ public class ImageListViewActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(), BoardInsertActivity.class);
+                finish();
                 startActivity(intent);
             }
         });
@@ -66,7 +67,7 @@ public class ImageListViewActivity extends AppCompatActivity {
 
     private void getServerData(){
         Log.d("TAG", "getServerData Start!!! " );
-        Call<List<ResultModel>> call = mImageApi.get_Image();
+        Call<List<ResultModel>> call = mImageApi.getBoardList();
         call.enqueue(new Callback<List<ResultModel>>() {
 
             @Override
@@ -79,9 +80,13 @@ public class ImageListViewActivity extends AppCompatActivity {
                 Log.d("TAG", "Login result " + result.size());
                 for(int i=0; i<result.size();i++){
 
+                    String USER = result.get(i).getUser_id();
                     String TITLE = result.get(i).getTitle();
+                    String CONTENT = result.get(i).getContent();
+                    String DATE = result.get(i).getDate();
                     String PATH = result.get(i).getPath();
-                    getServerImage getServerdata = new getServerImage(TITLE,PATH);
+
+                    getServerImage getServerdata = new getServerImage(USER,TITLE,CONTENT,DATE,PATH);
 
                     boardList.add(getServerdata);
                     Log.d("TAG", "getServerData ====>  " + boardList.toString());

@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -70,8 +71,8 @@ public class BoardInsertActivity extends AppCompatActivity {
 
     private ImageApi mImageApi;
 
-    private TextView titleTxt,contentTxt,dateTxt,userTxt;
-
+    private TextView dateTxt;
+    private EditText titleTxt,contentTxt,userTxt;
 
 
     @Override
@@ -80,18 +81,15 @@ public class BoardInsertActivity extends AppCompatActivity {
         setContentView(R.layout.activity_board_insert);
 
 
-        titleTxt = (TextView) findViewById(R.id.titleTxt);
-        contentTxt = (TextView) findViewById(R.id.contentTxt);
-        dateTxt = (TextView) findViewById(R.id.dateTxt);
-        userTxt = (TextView) findViewById(R.id.userTxt);
+        titleTxt = findViewById(R.id.titleTxt);
+        contentTxt =  findViewById(R.id.contentTxt);
+        dateTxt =  findViewById(R.id.dateTxt);
+        userTxt =  findViewById(R.id.userTxt);
 
         mImg = findViewById(R.id.imageView);
 
         dateTxt.setText(formatDate);
-
-        userTxt.setText("user11");
-
-
+        
         mImageApi = new RetrofitImage().getImageApi();
 
         mInsertBtn = findViewById(R.id.insertBtn);

@@ -42,6 +42,8 @@ public class ImageRecyclerAdapter extends RecyclerView.Adapter<ImageRecyclerAdap
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int position) {
+        viewHolder.user_txt.setText(mData.get(position).getUser_id());
+        viewHolder.date_txt.setText(mData.get(position).getDate());
         viewHolder.title_txt.setText(mData.get(position).getTitle());
 
         Glide.with(context)
@@ -60,17 +62,21 @@ public class ImageRecyclerAdapter extends RecyclerView.Adapter<ImageRecyclerAdap
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView img_view;
-        TextView title_txt ;
-
+        TextView title_txt;
+        TextView user_txt;
+        TextView date_txt;
         public ViewHolder(View itemView) {
             super(itemView);
             // 레이아웃 들고 오기
             ImageView img_view = itemView.findViewById(R.id.image_view);
 
             TextView title_txt = itemView.findViewById(R.id.titleTxt);
-
+            TextView user_txt = itemView.findViewById(R.id.userTxt);
+            TextView date_txt = itemView.findViewById(R.id.dateTxt);
             this.img_view = img_view;
             this.title_txt = title_txt;
+            this.user_txt = user_txt;
+            this.date_txt = date_txt;
         }
 
     }

@@ -18,25 +18,51 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/titleTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:gravity="bottom"
+
+                android:text="제 목"
+                android:textColor="#3DB7CC"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/userTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:gravity="bottom"
+                android:text="관리자"
+                android:textColor="#E44CAF50"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/dateTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:gravity="bottom"
+                android:text="2019-11-25"
+                android:textColor="#E8FF5722"
+                android:textSize="18dp" />
+
+        </LinearLayout>
+
         <ImageView
             android:id="@+id/image_view"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:scaleType="fitXY"/>
-
-        <TextView
-            android:id="@+id/titleTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:gravity="bottom"
-            android:text="제 목"
-            android:textColor="#3DB7CC"
-            android:textSize="25dp" />
-
-
-
+            android:scaleType="fitXY" />
 
 
     </LinearLayout>

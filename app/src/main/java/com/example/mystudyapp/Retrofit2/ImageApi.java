@@ -23,6 +23,11 @@ public interface ImageApi {
     Call<List<ResultModel>> get_Image();
 
 
+    //Board List Select
+    //@FormUrlEncoded
+    @POST("getBoardList.php")
+    Call<List<ResultModel>> getBoardList();
+
     @Multipart
     @POST("Gwangju_Board.php")
     Call<ResponseBody>InsertBoard(@Part("USER") RequestBody user,

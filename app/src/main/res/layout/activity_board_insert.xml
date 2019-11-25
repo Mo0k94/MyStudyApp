@@ -36,14 +36,13 @@
                 android:background="#ffffff"
                 android:src="@drawable/ic_attach_file_black_24dp"
                 android:layout_gravity="center"/>
-            <TextView
+            <EditText
+                android:id="@+id/userTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/userTxt"
-                android:text="유저"
-                android:layout_margin="6dp"
-                android:textColor="#DF0174"
-                android:textSize="14dp"
+                android:hint="관리자"
+                android:textSize="15dp"
+                android:layout_margin="8dp"
                 />
 
             <TextView
