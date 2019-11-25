@@ -1,11 +1,15 @@
 package com.example.mystudyapp.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.bumptech.glide.Glide;
+import com.example.mystudyapp.BoardInsertActivity;
 import com.example.mystudyapp.R;
 import com.example.mystudyapp.Retrofit2.ImageApi;
 import com.example.mystudyapp.Retrofit2.ResultModel;
@@ -21,17 +25,28 @@ import retrofit2.Callback;
 
 public class ImageListViewActivity extends AppCompatActivity {
 
-
+    private Button mInsertBtn;
     private RecyclerView mRecycle_view;
     private List<getServerImage> boardList;
 
     private ImageRecyclerAdapter mAdapter;
     private ImageApi mImageApi;
 
+    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_list_view);
+
+
+        mInsertBtn = findViewById(R.id.insertBtn);
+        mInsertBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(getApplicationContext(), BoardInsertActivity.class);
+                startActivity(intent);
+            }
+        });
 
         mRecycle_view = findViewById(R.id.recycle_view);
 

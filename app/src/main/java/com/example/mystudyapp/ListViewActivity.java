@@ -34,6 +34,7 @@ import com.example.mystudyapp.activities.ViewPagerExamActivity;
 import com.example.mystudyapp.activities.WeatherActivity;
 import com.example.mystudyapp.activities.WebBrowserActivity;
 import com.example.mystudyapp.activities.addViewActivity;
+import com.example.mystudyapp.activities.getServerImageActivity;
 import com.example.mystudyapp.adapters.MyAdapter;
 import com.example.mystudyapp.models.ListItem;
 
@@ -96,8 +97,10 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("25) CheckListView", "2019-10-09", CheckListViewActivity.class);
         addItem("26) Room라이브러리", "2019-10-13", RoomTestActivitiy.class);
         addItem("27) XML_Selector(버튼눌림)", "2019-11-16", Selector_ImageActivity.class);
+        addItem("29) 이미지 서버에 Upload", "2019-11-23", ImageListViewActivity.class);
         addItem("29) Server 이미지 가져오기", "2019-11-20", getServerImageActivity.class);
         addItem("29) 이미지 리사이클러뷰", "2019-11-23", ImageListViewActivity.class);
+
 
         Collections.reverse(mDataList);
         mAdapter = new MyAdapter(mDataList);

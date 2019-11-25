@@ -1,4 +1,4 @@
-package com.example.mystudyapp;
+package com.example.mystudyapp.activities;
 
 
 import android.net.Uri;
@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 
 import com.bumptech.glide.Glide;
+import com.example.mystudyapp.R;
 import com.example.mystudyapp.Retrofit2.ImageApi;
 import com.example.mystudyapp.Retrofit2.ResultModel;
 import com.example.mystudyapp.Retrofit2.RetrofitImage;
