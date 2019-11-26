@@ -89,7 +89,7 @@ public class BoardInsertActivity extends AppCompatActivity {
         mImg = findViewById(R.id.imageView);
 
         dateTxt.setText(formatDate);
-        
+
         mImageApi = new RetrofitImage().getImageApi();
 
         mInsertBtn = findViewById(R.id.insertBtn);

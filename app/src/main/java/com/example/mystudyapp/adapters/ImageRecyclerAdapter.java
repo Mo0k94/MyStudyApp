@@ -21,12 +21,14 @@ import java.util.List;
 public class ImageRecyclerAdapter extends RecyclerView.Adapter<ImageRecyclerAdapter.ViewHolder> {
 
     private final List<getServerImage> mData;
-
+    private final List<getServerImage> saveList;
     private Context context;
 
-    public ImageRecyclerAdapter(Context context,List<getServerImage> dataList) {
+    public ImageRecyclerAdapter(Context context,List<getServerImage> dataList,List<getServerImage> saveList) {
         this.context = context;
         mData = dataList;
+        this.saveList = saveList;
+
     }
 
     @NonNull

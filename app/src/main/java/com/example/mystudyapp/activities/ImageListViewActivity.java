@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.bumptech.glide.Glide;
 import com.example.mystudyapp.BoardInsertActivity;
@@ -26,8 +29,11 @@ import retrofit2.Callback;
 public class ImageListViewActivity extends AppCompatActivity {
 
     private Button mInsertBtn;
+    EditText editTextFilter;
+
     private RecyclerView mRecycle_view;
     private List<getServerImage> boardList;
+    private List<getServerImage> saveList;
 
     private ImageRecyclerAdapter mAdapter;
     private ImageApi mImageApi;
@@ -49,10 +55,33 @@ public class ImageListViewActivity extends AppCompatActivity {
             }
         });
 
+        editTextFilter = findViewById(R.id.EditTextFilter);
+        editTextFilter.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                searchUser(charSequence.toString());
+                //Log.d("Test","게시물 검색 값 : " + charSequence.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable edit) {
+
+               /* String filterText = edit.toString();
+
+                ((Dept_Adapter)listview1.getAdapter()).getFilter().filter(filterText);*/
+            }
+        });
+
+
         mRecycle_view = findViewById(R.id.recycle_view);
 
         boardList = new ArrayList<getServerImage>();
-
+        saveList = new ArrayList<getServerImage>();
         mImageApi = new RetrofitImage().getImageApi();
 
         getServerData();
@@ -63,6 +92,19 @@ public class ImageListViewActivity extends AppCompatActivity {
 
 
     }
+
+
+    private void searchUser(String search) {
+        boardList.clear();
+        for(int i=0; i<saveList.size();i++){
+            if(saveList.get(i).getTitle().contains(search)
+                    || saveList.get(i).getUser_id().contains(search)){
+                boardList.add(saveList.get(i));
+            }
+        }
+        mAdapter.notifyDataSetChanged();
+    }
+
 
 
     private void getServerData(){
@@ -89,8 +131,9 @@ public class ImageListViewActivity extends AppCompatActivity {
                     getServerImage getServerdata = new getServerImage(USER,TITLE,CONTENT,DATE,PATH);
 
                     boardList.add(getServerdata);
+                    saveList.add(getServerdata);
                     Log.d("TAG", "getServerData ====>  " + boardList.toString());
-                    mAdapter = new ImageRecyclerAdapter(getApplicationContext(),boardList);
+                    mAdapter = new ImageRecyclerAdapter(getApplicationContext(),boardList,saveList);
 
                     mRecycle_view.setAdapter(mAdapter);
                 }
