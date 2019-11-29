@@ -1,9 +1,11 @@
 package com.example.mystudyapp;
 
 import android.Manifest;
+import android.content.ContentUris;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -23,6 +25,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.mystudyapp.Retrofit2.ImageApi;
 import com.example.mystudyapp.Retrofit2.ResultModel;
 import com.example.mystudyapp.Retrofit2.RetrofitImage;
@@ -54,8 +57,7 @@ public class BoardInsertActivity extends AppCompatActivity {
 
     private Bitmap bitmap;
     private Uri path;
-
-    Intent intent;
+    private Uri updateuri;
     // 현재시간을 msec 으로 구한다.
     long now = System.currentTimeMillis();
     // 현재시간을 date 변수에 저장한다.
@@ -72,8 +74,10 @@ public class BoardInsertActivity extends AppCompatActivity {
     private ImageApi mImageApi;
 
     private TextView dateTxt;
-    private EditText titleTxt,contentTxt,userTxt;
+    private EditText titleTxt, contentTxt, userTxt;
 
+    private Intent intent;
+    private int gbdata = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,11 +86,48 @@ public class BoardInsertActivity extends AppCompatActivity {
 
 
         titleTxt = findViewById(R.id.titleTxt);
-        contentTxt =  findViewById(R.id.contentTxt);
-        dateTxt =  findViewById(R.id.dateTxt);
-        userTxt =  findViewById(R.id.userTxt);
+        contentTxt = findViewById(R.id.contentTxt);
+        dateTxt = findViewById(R.id.dateTxt);
+        userTxt = findViewById(R.id.userTxt);
 
         mImg = findViewById(R.id.imageView);
+
+
+        intent = getIntent();
+        if (intent != null) {
+            if (intent.getStringExtra("TITLE") == null || intent.getIntExtra("Seq", 0) == 0) {
+                Log.d("TAG", "Insert!!!!!!!");
+                gbdata = 0;
+            } else {
+                Log.d("TAG", "Update!!!!!!!");
+                Log.d("TAG", "getIntent ========> " + intent.getStringExtra("TITLE"));
+                Log.d("TAG", "getIntent ========> " + intent.getIntExtra("Seq", 0));
+                Log.d("TAG", "getIntent ========> " + intent.getStringExtra("WRITER"));
+                Log.d("TAG", "getIntent ========> " + intent.getStringExtra("PATH"));
+
+                String image_path = intent.getStringExtra("PATH");
+                //Uri fileUri = Uri.parse(image_path);
+                updateuri = Uri.parse(image_path);
+//                String filePath = fileUri.getPath();
+//                Cursor c = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,null,"_data= '" + filePath + "'",null,null);
+//                c.moveToNext();
+//                int img_id = c.getInt(c.getColumnIndex("_id"));
+//                updateuri = ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,img_id);
+
+                titleTxt.setText(intent.getStringExtra("TITLE"));
+                contentTxt.setText(intent.getStringExtra("CONTENT"));
+                userTxt.setText(intent.getStringExtra("WRITER"));
+                dateTxt.setText(intent.getStringExtra("DATE"));
+                Glide.with(getApplicationContext())
+                        .load(intent.getStringExtra("PATH"))
+                        .fitCenter()
+                        .into(mImg);
+                mImg.setVisibility(View.VISIBLE);
+                gbdata = 1;
+            }
+
+        }
+
 
         dateTxt.setText(formatDate);
 
@@ -96,8 +137,14 @@ public class BoardInsertActivity extends AppCompatActivity {
         mInsertBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("TAG", "mInsertBtn 클릭 =======> " + gbdata);
+                if (gbdata == 0) {
+                    uploadImage(path);
+                }
+                {
+                    updateBoard(path);
+                }
 
-                uploadImage(path);
             }
         });
 
@@ -110,16 +157,13 @@ public class BoardInsertActivity extends AppCompatActivity {
         });
 
 
-
-
-
-        if(ContextCompat.checkSelfPermission(this,
+        if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED){
+                != PackageManager.PERMISSION_GRANTED) {
 
             //설명을 보여줄 것인가
-            if(ActivityCompat.shouldShowRequestPermissionRationale(this
-                    ,Manifest.permission.READ_EXTERNAL_STORAGE)){
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this
+                    , Manifest.permission.READ_EXTERNAL_STORAGE)) {
 
                 // 사용자 응답을 기다리는 설명을 비동기로 보여주기
                 // 권한 체크를 안 하면 이 기능을 사용할 수 없다고 어필하고
@@ -131,27 +175,78 @@ public class BoardInsertActivity extends AppCompatActivity {
                 // 다시 권한 요청
 
                 ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE}
-                        ,1000);
-            }else{
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}
+                        , 1000);
+            } else {
                 //권한을 요청
                 ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
                         1000);
             }
-        }else{
+        } else {
 
             // 이미 권한이 존재할 때
-            selectImage();
+            //selectImage();
         }
 
     }
 
-    private void selectImage(){
+    private void selectImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,IMG_REQUEST);
+        startActivityForResult(intent, IMG_REQUEST);
+
+    }
+
+
+    private void updateBoard(Uri filePath) {
+        String USER = userTxt.getText().toString();
+        String TITLE = titleTxt.getText().toString();
+        String CONTENT = contentTxt.getText().toString();
+        String DATE = dateTxt.getText().toString();
+        String SEQ = String.valueOf(intent.getIntExtra("Seq", 0));
+
+        RequestBody seqPart = RequestBody.create(MultipartBody.FORM, SEQ);
+        RequestBody userPart = RequestBody.create(MultipartBody.FORM, USER);
+        RequestBody titlePart = RequestBody.create(MultipartBody.FORM, TITLE);
+        RequestBody contentPart = RequestBody.create(MultipartBody.FORM, CONTENT);
+        RequestBody datePart = RequestBody.create(MultipartBody.FORM, DATE);
+
+        Log.d("TAG", "imageUpload NoImage filePath ======> " + filePath);
+        Call<ResponseBody> call;
+        if (filePath == null) {
+            call = mImageApi.UpdateBoard_NoImage(seqPart, userPart, titlePart, contentPart, datePart);
+        } else {
+            File originalFile = FileUtils.getFile(this, filePath);
+
+            RequestBody imagePart = RequestBody.create(
+                    //MediaType.parse(getContentResolver().getType(filePath)),
+                    MediaType.parse("multipart/form-data"),
+                    originalFile);
+
+            MultipartBody.Part file = MultipartBody.Part.createFormData("image", originalFile.getName(), imagePart);
+            call = mImageApi.UpdateBoard(seqPart, userPart, titlePart, contentPart, datePart, file);
+        }
+
+        // Call<ResponseBody> call = apiInterface.uploadImage(titlePart,file);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Log.d("TAG", "imageUpload Success.." + response.body());
+                intent = new Intent(getApplicationContext(), ImageListViewActivity.class);
+                finish();
+                startActivity(intent);
+                Toast.makeText(BoardInsertActivity.this, "success", Toast.LENGTH_LONG).show();
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(BoardInsertActivity.this, "faild", Toast.LENGTH_LONG).show();
+                Log.d("TAG", "imageUpload Faild.." + t.getMessage());
+            }
+        });
 
     }
 
@@ -164,60 +259,57 @@ public class BoardInsertActivity extends AppCompatActivity {
         String DATE = dateTxt.getText().toString();
 
 
-
-
         File originalFile = FileUtils.getFile(this, filePath);
-        RequestBody userPart = RequestBody.create(MultipartBody.FORM,USER);
-        RequestBody titlePart = RequestBody.create(MultipartBody.FORM,TITLE);
-        RequestBody contentPart = RequestBody.create(MultipartBody.FORM,CONTENT);
-        RequestBody datePart = RequestBody.create(MultipartBody.FORM,DATE);
+        RequestBody userPart = RequestBody.create(MultipartBody.FORM, USER);
+        RequestBody titlePart = RequestBody.create(MultipartBody.FORM, TITLE);
+        RequestBody contentPart = RequestBody.create(MultipartBody.FORM, CONTENT);
+        RequestBody datePart = RequestBody.create(MultipartBody.FORM, DATE);
 
         RequestBody imagePart = RequestBody.create(
                 //MediaType.parse(getContentResolver().getType(filePath)),
                 MediaType.parse("multipart/form-data"),
                 originalFile);
 
-        MultipartBody.Part file = MultipartBody.Part.createFormData("image",originalFile.getName(),imagePart);
+        MultipartBody.Part file = MultipartBody.Part.createFormData("image", originalFile.getName(), imagePart);
 
-        Call<ResponseBody> call = mImageApi.InsertBoard(userPart,titlePart,contentPart,datePart,file);
-       // Call<ResponseBody> call = apiInterface.uploadImage(titlePart,file);
+        Call<ResponseBody> call = mImageApi.InsertBoard(userPart, titlePart, contentPart, datePart, file);
+        // Call<ResponseBody> call = apiInterface.uploadImage(titlePart,file);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                Log.d("TAG","imageUpload Success.." + response.body());
+                Log.d("TAG", "imageUpload Success.." + response.body());
                 intent = new Intent(getApplicationContext(), ImageListViewActivity.class);
                 finish();
                 startActivity(intent);
-                Toast.makeText(BoardInsertActivity.this,"success",Toast.LENGTH_LONG).show();
+                Toast.makeText(BoardInsertActivity.this, "success", Toast.LENGTH_LONG).show();
 
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(BoardInsertActivity.this,"faild",Toast.LENGTH_LONG).show();
-                Log.d("TAG","imageUpload Faild.." + t.getMessage());
+                Toast.makeText(BoardInsertActivity.this, "faild", Toast.LENGTH_LONG).show();
+                Log.d("TAG", "imageUpload Faild.." + t.getMessage());
             }
         });
     }
 
 
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode){
-            case 1000:{
-                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+        switch (requestCode) {
+            case 1000: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
                     //승인 됨
-                    Toast.makeText(this,"권한 승인됨", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "권한 승인됨", Toast.LENGTH_LONG).show();
                     selectImage();
-                }else{
+                } else {
 
 
                     // 앱을 종료함
                     //승인 거부됨
-                    Toast.makeText(this,"권한 거부됨", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "권한 거부됨", Toast.LENGTH_LONG).show();
                     BoardInsertActivity.this.finish();
                 }
                 return;
@@ -230,13 +322,13 @@ public class BoardInsertActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == IMG_REQUEST && resultCode == RESULT_OK && data != null){
+        if (requestCode == IMG_REQUEST && resultCode == RESULT_OK && data != null) {
 
             path = data.getData();
 
             //uploadImage(path);
             try {
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),path);
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
                 mImg.setImageBitmap(bitmap);
                 mImg.setVisibility(View.VISIBLE);
             } catch (IOException e) {

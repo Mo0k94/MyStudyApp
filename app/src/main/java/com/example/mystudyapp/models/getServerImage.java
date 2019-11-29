@@ -1,18 +1,28 @@
 package com.example.mystudyapp.models;
 
 public class getServerImage {
+    public int seq;
     private String user_id;
     private String Title;
     private String content;
     private String date;
     private String path;
 
-    public getServerImage(String user_id, String title, String content, String date, String path) {
+    public getServerImage(int seq,String user_id, String title, String content, String date, String path) {
+        this.seq = seq;
         this.user_id = user_id;
         this.Title = title;
         this.content = content;
         this.date = date;
         this.path = path;
+    }
+
+    public int getSeq() {
+        return seq;
+    }
+
+    public void setSeq(int seq) {
+        this.seq = seq;
     }
 
     public String getUser_id() {
@@ -58,7 +68,8 @@ public class getServerImage {
     @Override
     public String toString() {
         return "getServerImage{" +
-                "user_id='" + user_id + '\'' +
+                "seq='" + seq + '\'' +
+                ", user_id='" + user_id + '\'' +
                 ", Title='" + Title + '\'' +
                 ", content='" + content + '\'' +
                 ", date='" + date + '\'' +

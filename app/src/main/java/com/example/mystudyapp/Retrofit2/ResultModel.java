@@ -3,6 +3,7 @@ package com.example.mystudyapp.Retrofit2;
 import java.util.ArrayList;
 
 public class ResultModel {
+    int seq;
     String result;
     String user_id;
     String title;
@@ -11,7 +12,13 @@ public class ResultModel {
     String path;
 
 
+    public int getSeq() {
+        return seq;
+    }
 
+    public void setSeq(int seq) {
+        this.seq = seq;
+    }
 
     public String getResult() {
         return result;
@@ -64,7 +71,8 @@ public class ResultModel {
     @Override
     public String toString() {
         return "ResultModel{" +
-                "result='" + result + '\'' +
+                "seq=" + seq +
+                ", result='" + result + '\'' +
                 ", user_id='" + user_id + '\'' +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +

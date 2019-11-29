@@ -31,6 +31,19 @@ public class ImageRecyclerAdapter extends RecyclerView.Adapter<ImageRecyclerAdap
 
     }
 
+    //Event Bus 클래스
+    public static class ItemClickEvent {
+        public ItemClickEvent(int position) {
+            this.position = position;
+            //this.id = id;
+        }
+
+        public int position;
+        //public long id;
+
+    }
+
+
     @NonNull
     @Override
     public ImageRecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
@@ -52,6 +65,14 @@ public class ImageRecyclerAdapter extends RecyclerView.Adapter<ImageRecyclerAdap
                 .load(mData.get(position).getPath())
                 .fitCenter()
                 .into(viewHolder.img_view);
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // MainActivity에 onItemClick이 받음
+                EventBus.getDefault().post(new ItemClickEvent(position));
+            }
+        });
 
 
     }

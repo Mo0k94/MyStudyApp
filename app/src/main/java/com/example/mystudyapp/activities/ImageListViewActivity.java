@@ -1,5 +1,6 @@
 package com.example.mystudyapp.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,9 @@ import com.example.mystudyapp.Retrofit2.ResultModel;
 import com.example.mystudyapp.Retrofit2.RetrofitImage;
 import com.example.mystudyapp.adapters.ImageRecyclerAdapter;
 import com.example.mystudyapp.models.getServerImage;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +69,7 @@ public class ImageListViewActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 searchUser(charSequence.toString());
-                //Log.d("Test","게시물 검색 값 : " + charSequence.toString());
+                Log.d("Test","게시물 검색 값 : " + charSequence.toString());
             }
 
             @Override
@@ -91,6 +95,38 @@ public class ImageListViewActivity extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    // 보낸이 : MemoRecyclerAdapter
+    @SuppressLint("RestrictedApi")
+    @Subscribe
+    public void onItemClick(ImageRecyclerAdapter.ItemClickEvent event) {
+        getServerImage BoardData = boardList.get(event.position);
+
+        //Memo memo2 = newMemoList.get(event.position);
+        Intent intent = new Intent(getApplicationContext(), BoardInsertActivity.class);
+
+        //intent.putExtra("id", event.id);
+        intent.putExtra("Seq", boardList.get(event.position).getSeq());
+        intent.putExtra("TITLE", boardList.get(event.position).getTitle());
+        intent.putExtra("WRITER", boardList.get(event.position).getUser_id());
+        intent.putExtra("CONTENT", boardList.get(event.position).getContent());
+        intent.putExtra("DATE",boardList.get(event.position).getDate());
+        intent.putExtra("PATH",boardList.get(event.position).getPath());
+        startActivity(intent);
+        finish();
     }
 
 
@@ -122,13 +158,14 @@ public class ImageListViewActivity extends AppCompatActivity {
                 Log.d("TAG", "Login result " + result.size());
                 for(int i=0; i<result.size();i++){
 
+                    int SEQ      = result.get(i).getSeq();
                     String USER = result.get(i).getUser_id();
                     String TITLE = result.get(i).getTitle();
                     String CONTENT = result.get(i).getContent();
                     String DATE = result.get(i).getDate();
                     String PATH = result.get(i).getPath();
 
-                    getServerImage getServerdata = new getServerImage(USER,TITLE,CONTENT,DATE,PATH);
+                    getServerImage getServerdata = new getServerImage(SEQ,USER,TITLE,CONTENT,DATE,PATH);
 
                     boardList.add(getServerdata);
                     saveList.add(getServerdata);
