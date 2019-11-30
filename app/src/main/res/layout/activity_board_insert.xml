@@ -63,9 +63,10 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="300dp"
-                android:layout_height="250dp"
+                android:layout_width="400dp"
+                android:layout_height="200dp"
                 android:layout_gravity="center"
+                android:adjustViewBounds="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
                 android:visibility="gone" />
@@ -84,6 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:id="@+id/insertBtn"
+                android:background="@drawable/ripple_custom"
                 android:text="글쓰기"/>
 
         </LinearLayout>

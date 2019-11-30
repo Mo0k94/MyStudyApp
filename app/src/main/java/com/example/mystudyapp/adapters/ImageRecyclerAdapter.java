@@ -3,6 +3,7 @@ package com.example.mystudyapp.adapters;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,8 +64,12 @@ public class ImageRecyclerAdapter extends RecyclerView.Adapter<ImageRecyclerAdap
 
         Glide.with(context)
                 .load(mData.get(position).getPath())
+                .override(600,300)
                 .fitCenter()
                 .into(viewHolder.img_view);
+
+        Log.d("ITPANGPANG","img("+viewHolder.img_view.getWidth()+" x "+viewHolder.img_view.getHeight()+")");
+
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

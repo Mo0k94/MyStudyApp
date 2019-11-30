@@ -19,6 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:weightSum="4"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:orientation="horizontal">
 
 
@@ -37,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
+                android:background="@drawable/ripple_custom"
                 android:text="글쓰기"
                 android:layout_weight="1"
                 android:textSize="15dp" />

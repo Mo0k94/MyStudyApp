@@ -109,6 +109,7 @@ public class BoardInsertActivity extends AppCompatActivity {
                 dateTxt.setText(intent.getStringExtra("DATE"));
                 Glide.with(getApplicationContext())
                         .load(intent.getStringExtra("PATH"))
+                        .override(500,200)
                         .fitCenter()
                         .into(mImg);
                 mImg.setVisibility(View.VISIBLE);
