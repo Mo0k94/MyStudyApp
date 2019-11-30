@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#f0f4c3</color>
+    <color name="colorPrimaryDark">#bdc192</color>
+    <color name="colorAccent">#fffff6</color>
+    <color name="colorGreen">#CEFBC9</color>
+    <color name="colorTransparent">#00000000</color> <!-- 투명하게 ->
+
+    transparent
 
 
-
-    <!-- color high light -->
+    <! color high light -->
     <color name="colorControlHighlight">#fd4381</color>
 </resources>

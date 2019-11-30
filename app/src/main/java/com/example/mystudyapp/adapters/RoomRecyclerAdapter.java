@@ -1,6 +1,8 @@
 package com.example.mystudyapp.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -11,7 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.mystudyapp.CheckListViewActivity;
@@ -159,18 +163,22 @@ public class RoomRecyclerAdapter extends RecyclerView.Adapter<RoomRecyclerAdapte
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
+        LinearLayout linear_1;
         TextView checkTextView;
         CheckBox  checkBox;
-        Button del_btn;
+        ImageButton del_btn;
         //ImageButton delBtn;
 
         public ViewHolder(View itemView) {
             super(itemView);
             // 레이아웃 들고 오기
+            LinearLayout linear_1 = itemView.findViewById(R.id.linear_1);
             TextView checkTextView = itemView.findViewById(R.id.check_txt);
             CheckBox check_box =  itemView.findViewById(R.id.check_box);
-            Button del_btn      = itemView.findViewById(R.id.del_btn);
+            ImageButton del_btn      = itemView.findViewById(R.id.del_btn);
 
+
+            this.linear_1 = linear_1;
             this.checkTextView = checkTextView;
             this.checkBox = check_box;
             this.del_btn = del_btn;

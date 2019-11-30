@@ -74,16 +74,16 @@ public class HTMLParserActivity extends AppCompatActivity {
 
 
         foodBtn = (Button) findViewById(R.id.foodBtn);
-        foodBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new JsoupAsyncTask().execute();
-            }
-        });
-
+//        foodBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
 
         listview1 = (ListView) findViewById(R.id.list_view);
 
+        new JsoupAsyncTask().execute();
 
 
     }

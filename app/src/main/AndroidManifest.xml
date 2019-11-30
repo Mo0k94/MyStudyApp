@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".BoardInsertActivity"></activity>
+        <activity android:name=".activities.BoardInsertActivity"></activity>
         <activity android:name=".activities.ImageListViewActivity" />
         <activity android:name=".activities.getServerImageActivity" />
         <activity android:name=".activities.Selector_ImageActivity" />

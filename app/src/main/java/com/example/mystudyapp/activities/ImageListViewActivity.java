@@ -12,8 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.bumptech.glide.Glide;
-import com.example.mystudyapp.BoardInsertActivity;
 import com.example.mystudyapp.R;
 import com.example.mystudyapp.Retrofit2.ImageApi;
 import com.example.mystudyapp.Retrofit2.ResultModel;
