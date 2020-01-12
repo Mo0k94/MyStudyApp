@@ -31,7 +31,7 @@ public class RoomTestActivitiy extends AppCompatActivity {
 
 
     private EditText mEdit_txt;
-    private Button mAddBtn,mSaveBtn;
+    private Button mAddBtn, mSaveBtn;
 
     private String material = "";
 
@@ -43,6 +43,7 @@ public class RoomTestActivitiy extends AppCompatActivity {
     private RecyclerView mRecycler_view;
 
     private AppDataBase db = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,13 +57,13 @@ public class RoomTestActivitiy extends AppCompatActivity {
 
 
         GridLayoutManager gridLayoutManager
-                = new GridLayoutManager(this,2);
+                = new GridLayoutManager(this, 2);
 
         mRecycler_view.setLayoutManager(gridLayoutManager);
         checkList = new ArrayList<Check>();
 
 
-                 db = Room.databaseBuilder(this, AppDataBase.class, "plan_db")
+        db = Room.databaseBuilder(this, AppDataBase.class, "plan_db")
                 .allowMainThreadQueries()
                 .addMigrations(MIGRATION_2_3)
                 .build();
@@ -71,7 +72,6 @@ public class RoomTestActivitiy extends AppCompatActivity {
         getList();
 
         //db.todoDao().getAll().toString();
-
 
 
 //        for(int i=0; i<db.todoDao().getAll().size();i++) {
@@ -94,17 +94,12 @@ public class RoomTestActivitiy extends AppCompatActivity {
                 checkList.add(dept);
 
 
-
                 mAdapter = new RoomRecyclerAdapter(RoomTestActivitiy.this, checkList);
                 //mCustomAdapter.notifyDataSetChanged();
                 mRecycler_view.setAdapter(mAdapter);
 
 
-                Log.d("TAG","새로 추가했을 떄!! =========>"+ checkList.toString());
-
-
-
-
+                Log.d("TAG", "새로 추가했을 떄!! =========>" + checkList.toString());
 
 
                 //mResult.setText(db.todoDao().getAll().toString());
@@ -117,18 +112,17 @@ public class RoomTestActivitiy extends AppCompatActivity {
             public void onClick(View view) {
 
 
-
                 int getRows = getNumFiles();
-                Log.d("TAG","새로 추가했을 떄!! checkList 갯수=========>"+ checkList.size());        //3     개수는 3개  포지션은 0,1,2
-                Log.d("TAG","새로 추가했을 떄!! DB에 저장된 row갯수=========>"+ getRows);            //0
+                Log.d("TAG", "새로 추가했을 떄!! checkList 갯수=========>" + checkList.size());        //3     개수는 3개  포지션은 0,1,2
+                Log.d("TAG", "새로 추가했을 떄!! DB에 저장된 row갯수=========>" + getRows);            //0
 
 
-                for(int i= getRows;i<checkList.size();i++){
-                    if(checkList.size() > getRows){
-                        db.todoDao().insertTodo(new Plan(checkList.get(i).getCheckText(),checkList.get(i).getCheck()));
-                        Log.d("TAG","Save ===========> " + i + " 번째 " + checkList.get(i).toString());
-                    }else{
-                        Log.d("TAG","Break!!! ===========>");
+                for (int i = getRows; i < checkList.size(); i++) {
+                    if (checkList.size() > getRows) {
+                        db.todoDao().insertTodo(new Plan(checkList.get(i).getCheckText(), checkList.get(i).getCheck()));
+                        Log.d("TAG", "Save ===========> " + i + " 번째 " + checkList.get(i).toString());
+                    } else {
+                        Log.d("TAG", "Break!!! ===========>");
                         break;
 
                     }
@@ -191,12 +185,10 @@ public class RoomTestActivitiy extends AppCompatActivity {
     }
 
 
-
-
     @SuppressLint("RestrictedApi")
     @Subscribe
-    public void onDelclick(final RoomRecyclerAdapter.BtnClickEvent event){
-        Log.d("TAG","Delete 시작 ====>" + db.todoDao().getAll().get(event.position).getId());
+    public void onDelclick(final RoomRecyclerAdapter.BtnClickEvent event) {
+        Log.d("TAG", "Delete 시작 ====>" + db.todoDao().getAll().get(event.position).getId());
         AlertDialog.Builder dialog = new AlertDialog.Builder(RoomTestActivitiy.this);
         dialog.setTitle("삭제 알림")
                 .setMessage("정말 삭제하시겠습니까?")
@@ -205,7 +197,7 @@ public class RoomTestActivitiy extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         checkList.remove(event.position);
                         mAdapter.notifyItemRemoved(event.position);
-                        mAdapter.notifyItemRangeChanged(event.position,checkList.size());
+                        mAdapter.notifyItemRangeChanged(event.position, checkList.size());
 
                         mAdapter = new RoomRecyclerAdapter(RoomTestActivitiy.this, checkList);
                         //mAdapter.update(checkList, event.position);
@@ -231,38 +223,43 @@ public class RoomTestActivitiy extends AppCompatActivity {
     @SuppressLint("RestrictedApi")
     @Subscribe
     public void onItemClick(RoomRecyclerAdapter.ItemClickEvent event) {
-        Toast.makeText(getApplicationContext(), "" + (event.position),
+
+        Toast.makeText(getApplicationContext(), "" + (event.id),
                 Toast.LENGTH_SHORT).show();
         if (checkList.get(event.position).getCheck() == 1) {
             checkGb = 0;
-            chk_update(checkGb,event.position);
+            chk_update(checkGb,event.position, event.id);
 
         } else {
-            Log.d("TAG","checkList checkGb = 0일때 !!");
+            Log.d("TAG", "checkList checkGb = 0일때 !!");
             checkGb = 1;
-            chk_update(checkGb,event.position);
+            chk_update(checkGb,event.position, event.id);
 
-            Log.d("TAG","onItemClick : update!!!!!!" + db.todoDao().getAll().get(event.position).getCheckGb());
+            Log.d("TAG", "onItemClick : update!!!!!!" + db.todoDao().getAll().get(event.position).getCheckGb());
         }
 
         //mCustomAdapter.notifyDataSetChanged();
         mRecycler_view.setAdapter(mAdapter);
 
 
-        Log.d("TAG","onItemClick : " + checkList.get(event.position).getCheck());
+        Log.d("TAG", "onItemClick : " + checkList.get(event.position).getCheck());
         mAdapter.setChecked(event.position);
         // Data 변경시 호출 Adapter에 Data 변경 사실을 알려줘서 Update 함.
         //mAdapter.notifyDataSetChanged();
 
     }
 
-    public void getList(){
+    public void getList() {
         for (int i = 0; i < db.todoDao().getAll().size(); i++) {
-            Log.d("TAG", "todoDao size : " + i + " 번째" + db.todoDao().getAll().get(i).getTitle());
-            Log.d("TAG", "todoDao size : " + i + " 번째" + db.todoDao().getAll().get(i).getCheckGb());
-            Check check = new Check(db.todoDao().getAll().get(i).getTitle(), db.todoDao().getAll().get(i).getCheckGb());
+            Log.d("TAG", "todoDao title : " + i + " 번째" + db.todoDao().getAll().get(i).getTitle());
+            Log.d("TAG", "todoDao checkGb : " + i + " 번째" + db.todoDao().getAll().get(i).getCheckGb());
+            Log.d("TAG", "todoDao Id : " + i + " 번째" + db.todoDao().getAll().get(i).getId());
+            Check check = new Check(db.todoDao().getAll().get(i).getTitle(),
+                                     db.todoDao().getAll().get(i).getCheckGb());
             checkList.add(check);
+            checkList.get(i).setId(db.todoDao().getAll().get(i).getId());
 
+            Log.d("TAG","checkList ====> " + checkList.toString());
             mAdapter = new RoomRecyclerAdapter(RoomTestActivitiy.this, checkList);
             mRecycler_view.setAdapter(mAdapter);
 
@@ -270,22 +267,22 @@ public class RoomTestActivitiy extends AppCompatActivity {
     }
 
 
-
-    public void chk_update(int chkgb,int position){
+    public void chk_update(int chkgb,int position, long id) {
         checkGb = chkgb;
         Check check = new Check(checkList.get(position).getCheckText(), checkGb);
-        checkList.set(position,check);
+        checkList.set(position, check);
         //db.todoDao().updateTodo(new Todo2(checkList.get(event.position).getCheckText(),checkGb));
-        Log.d("TAG", "update 확인 -=====> : " + position + " 번째" + checkList.get(position).getCheck() + " / " + db.todoDao().getAll().get(position).getTitle());
+        Log.d("TAG", "update 확인 -=====> : " + id + " 번째" + checkList.get(position).getCheck() + " / " + db.todoDao().getAll().get(position).getTitle());
 
-        db.todoDao().updateTodo2(checkList.get(position).getCheckText(),checkList.get(position).getCheck(),position+6);
+        db.todoDao().updateTodo2(checkList.get(position).getCheckText(), checkList.get(position).getCheck(), id);
 
-        Log.d("TAG", "update 확인 -=====> : " + position + " 번째" + db.todoDao().getAll().get(position).getCheckGb() + " / " + db.todoDao().getAll().get(position).getTitle() + " / " + db.todoDao().getAll().get(position).getId());
+        Log.d("TAG", "update 확인 -=====> : " + id + " 번째" + db.todoDao().getAll().get(position).getCheckGb() + " / " + db.todoDao().getAll().get(position).getTitle() + " / " + db.todoDao().getAll().get(position).getId());
 
         mAdapter = new RoomRecyclerAdapter(RoomTestActivitiy.this, checkList);
 
         mAdapter.update(checkList, position);
     }
+
     static final Migration MIGRATION_2_3 = new Migration(3, 4) {
 
 

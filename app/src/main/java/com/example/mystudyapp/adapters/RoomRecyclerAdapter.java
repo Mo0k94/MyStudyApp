@@ -54,11 +54,13 @@ public class RoomRecyclerAdapter extends RecyclerView.Adapter<RoomRecyclerAdapte
 
     //Event Bus 클래스
     public static class ItemClickEvent {
-        public ItemClickEvent(int position) {
+        public ItemClickEvent(int position ,long id) {
             this.position = position;
+            this.id = id;
         }
 
         public int position;
+        public long id;
 
     }
 
@@ -113,6 +115,7 @@ public class RoomRecyclerAdapter extends RecyclerView.Adapter<RoomRecyclerAdapte
         final Check check = checkList.get(position);
 
 
+        Log.d("TAG" ,"Id 값 ======> " + check.getId());
         holder.checkBox.setClickable(false);
         holder.checkBox.setFocusable(false);
 
@@ -140,7 +143,7 @@ public class RoomRecyclerAdapter extends RecyclerView.Adapter<RoomRecyclerAdapte
             @Override
             public void onClick(View v) {
                 // MainActivity에 onItemClick이 받음
-                EventBus.getDefault().post(new ItemClickEvent(position));
+                EventBus.getDefault().post(new ItemClickEvent(position,checkList.get(position).getId()));
                 Log.d("TAG","onBindViewHolder memo.getId 값 : " + position);
             }
         });

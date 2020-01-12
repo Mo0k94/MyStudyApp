@@ -1,8 +1,10 @@
 package com.example.mystudyapp.models;
 
-public class Check {
+import java.io.Serializable;
 
-    private int id;
+public class Check implements Serializable {
+
+    private long id;
 
     private String checkText;
     private Integer check;
@@ -12,11 +14,11 @@ public class Check {
         this.check = check;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

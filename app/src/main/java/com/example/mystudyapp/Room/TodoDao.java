@@ -21,7 +21,7 @@ public interface TodoDao {
 
 
     @Query("UPDATE `Plan` SET title =:check, checkGb=:checkGb WHERE id = :id")
-    void updateTodo2(String check,Integer checkGb,int id);
+    void updateTodo2(String check,Integer checkGb,long id);
 
     @Query("DELETE FROM `Plan` WHERE id = :id" )
     void deletePlan(int id);
