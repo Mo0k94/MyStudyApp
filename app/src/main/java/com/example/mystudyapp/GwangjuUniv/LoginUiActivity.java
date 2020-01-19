@@ -1,20 +1,20 @@
-package com.example.mystudyapp;
+package com.example.mystudyapp.GwangjuUniv;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mystudyapp.ListViewActivity;
+import com.example.mystudyapp.R;
 import com.example.mystudyapp.Retrofit2.ResultModel;
 import com.example.mystudyapp.Retrofit2.RetrofitUtil;
 import com.example.mystudyapp.Retrofit2.UserApi;
 import com.example.mystudyapp.activities.Memo2Activity;
-import com.example.mystudyapp.activities.Retrofit2Activity;
 import com.google.gson.Gson;
 
 import retrofit2.Call;
@@ -29,6 +29,7 @@ public class LoginUiActivity extends AppCompatActivity {
     private Gson mgSon;
     private UserApi mUserApi;
 
+    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,11 +55,13 @@ public class LoginUiActivity extends AppCompatActivity {
                 Login();
                 break;
             case R.id.register:
+                Register();
                 break;
             default:
                 break;
         }
     }
+
 
     public void Login(){
         String NickID = mNickName.getText().toString();
@@ -97,5 +100,11 @@ public class LoginUiActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void Register(){
+        intent = new Intent(getApplicationContext(),RegisterActivity.class);
+        finish();
+        startActivity(intent);
     }
 }

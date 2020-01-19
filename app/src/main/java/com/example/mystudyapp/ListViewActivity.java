@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.mystudyapp.GwangjuUniv.LoginUiActivity;
 import com.example.mystudyapp.activities.AsyncTaskActivity;
 import com.example.mystudyapp.activities.CardViewActivity;
 import com.example.mystudyapp.activities.ColorFragmentActivity;

@@ -16,7 +16,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".LoginUiActivity"></activity>
+        <activity android:name=".GwangjuUniv.RegisterActivity"></activity>
+        <activity android:name=".GwangjuUniv.LoginUiActivity" />
         <activity android:name=".activities.BoardInsertActivity" />
         <activity android:name=".activities.ImageListViewActivity" />
         <activity android:name=".activities.getServerImageActivity" />

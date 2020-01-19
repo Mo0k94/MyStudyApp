@@ -20,16 +20,13 @@
         >
 
         <shape android:shape="rectangle">
-<!--            <gradient-->
-<!--                android:angle="180"-->
-<!--                android:endColor="@color/colorControlHighlight"-->
-<!--                android:startColor="@color/colorControlHighlight2"-->
-<!--                android:type="linear" />-->
-            <stroke
-                android:width="2dp"
-                android:color="#002c12"/>
-            <solid android:color="#fff"/>
-            <corners android:radius="50dp"/>
+           <gradient
+               android:angle="-90"
+               android:endColor="@color/colorControlHighlight"
+               android:startColor="@color/colorControlHighlight2"
+                android:type="linear" />
+
+            <corners android:radius="10dp"/>
         </shape>
     </item>
 </ripple>

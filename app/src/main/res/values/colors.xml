@@ -4,15 +4,17 @@
     <color name="colorPrimaryDark">#bdc192</color>
     <color name="colorAccent">#fffff6</color>
     <color name="colorGreen">#CEFBC9</color>
-    <color name="colorTransparent">#00000000</color> <!-- 투명하게 ->
+    <color name="colorTransparent">#00000000</color> <!-- 투명하게 -->
+    <color name="mainColor">#27B06E</color>
 
-    transparent
+    <color name="colorBackground">#fff</color> <!-- 투명하게 -->
 
 
-    <! color high light -->
+
+
     <!--  Login Btn  -->
-    <color name="colorControlHighlight">#c8e6c9</color>
-    <color name="colorControlHighlight2">#F7ECC3</color>
+    <color name="colorControlHighlight">#27B06E</color>
+    <color name="colorControlHighlight2">#27B08D</color>
 
 
 </resources>
