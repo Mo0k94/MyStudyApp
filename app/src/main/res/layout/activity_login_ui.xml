@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mainColor"
+    android:background="@drawable/loginbg"
     tools:context=".GwangjuUniv.LoginUiActivity">
 
 
@@ -66,7 +66,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="30dp"
                 android:drawableLeft="@drawable/ic_person_black_24dp"
-                android:focusable="false"
+                android:focusable="auto"
                 android:hint="닉네임을 입력하세요"
                 android:paddingLeft="10dp"
                 android:textColorHint="#000"
@@ -81,7 +81,7 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="30dp"
                 android:drawableLeft="@drawable/ic_lock_black_24dp"
-                android:focusable="false"
+                android:focusable="auto"
                 android:hint="비밀번호를 입력하세요."
                 android:inputType="textPassword"
                 android:paddingLeft="10dp"

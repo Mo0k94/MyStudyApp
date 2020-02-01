@@ -85,7 +85,7 @@ public class LoginUiActivity extends AppCompatActivity {
                 if(response.body().getResult().equals("success")){
                     //로그인 성공
 
-                    startActivity(new Intent(LoginUiActivity.this, Memo2Activity.class));
+                    startActivity(new Intent(LoginUiActivity.this, GjMainActivity.class));
                     finish();
                     Toast.makeText(LoginUiActivity.this,"로그인 성공",Toast.LENGTH_SHORT).show();
                 }else{
