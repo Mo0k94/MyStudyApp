@@ -47,6 +47,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingBottom="50dp"
             android:orientation="vertical">
 
             <CheckBox
@@ -89,42 +90,50 @@
                 android:textSize="20sp" />
 
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/card_view2"
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="30dp"
-                android:layout_below="@id/card_view1"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                app:cardCornerRadius="5dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/Login_txt"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/ripple_registerbtn"
-                        android:gravity="center"
-                        android:onClick="onClick"
-                        android:text="로그인"
-                        android:textColor="#fff"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
         </LinearLayout>
+
     </android.support.v7.widget.CardView>
 
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/card_view1"
+        android:layout_alignLeft="@+id/card_view1"
+        android:layout_alignRight="@+id/card_view1"
+        android:elevation="10dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginTop="-70dp">
 
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_view2"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            app:cardCornerRadius="5dp">
+
+
+            <TextView
+                android:id="@+id/Login_txt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ripple_registerbtn"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="로그인"
+                android:textColor="#fff"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
     <TextView
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/card_view1"
+        android:layout_below="@+id/rl"
         android:layout_marginStart="150dp"
         android:layout_marginEnd="150dp"
         android:onClick="onClick"
