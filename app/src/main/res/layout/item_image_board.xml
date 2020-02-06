@@ -10,60 +10,102 @@
     android:layout_marginEnd="2dp"
     android:layout_marginRight="2dp"
     android:layout_marginBottom="1dp"
-    app:cardCornerRadius="5dp"
+    app:cardCornerRadius="15dp"
     app:cardElevation="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:layout_weight="0.9">
 
             <TextView
                 android:id="@+id/titleTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_weight="1"
                 android:gravity="bottom"
-
-                android:text="제 목"
-                android:textColor="#3DB7CC"
+                android:text="제목입니다."
+                android:textStyle="bold"
+                android:textColor="#000"
                 android:textSize="25dp" />
 
-            <TextView
-                android:id="@+id/userTxt"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:gravity="bottom"
-                android:text="관리자"
-                android:textColor="#E44CAF50"
-                android:textSize="18dp" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/userTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:drawableLeft="@drawable/ic_person_black_24dp"
+                    android:gravity="bottom"
+                    android:text="관리자"
+                    android:textColor="#E4848684"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:id="@+id/dateTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:drawableLeft="@drawable/ic_person_black_24dp"
+                    android:gravity="bottom"
+                    android:text="2019-11-25"
+                    android:textColor="#E4848684"
+                    android:textSize="13sp" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/dateTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:gravity="bottom"
-                android:text="2019-11-25"
-                android:textColor="#E8FF5722"
-                android:textSize="18dp" />
+                android:text="12"
+                android:textColor="#FF5722"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginLeft="10dp"
+                android:drawableBottom="@drawable/ic_lock_black_24dp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20"
+                android:textColor="#FF5722"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginLeft="20dp"
+                android:drawableBottom="@drawable/ic_lock_black_24dp"/>
 
         </LinearLayout>
 
+
+
+    </LinearLayout>
+
         <ImageView
             android:id="@+id/image_view"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:scaleType="fitXY" />
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="fitXY"
+            android:layout_weight="0.1"
+            android:layout_gravity="center"
 
+            android:layout_margin="10dp"/>
 
     </LinearLayout>
 </android.support.v7.widget.CardView>

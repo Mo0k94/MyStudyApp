@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/loginbg"
+    android:background="@drawable/gwangjubg2"
     tools:context=".GwangjuUniv.LoginUiActivity">
 
 
@@ -15,7 +15,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginRight="120dp"
         android:foregroundGravity="center"
-        android:src="@drawable/wheather_rain" />
+        android:src="@drawable/gwangjulogo" />
 
     <TextView
         android:id="@+id/textView"
@@ -50,21 +50,13 @@
             android:paddingBottom="50dp"
             android:orientation="vertical">
 
-            <CheckBox
-                android:id="@+id/chk_auto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:text="자동로그인" />
             <EditText
                 android:id="@+id/nick_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginRight="30dp"
                 android:drawableLeft="@drawable/ic_person_black_24dp"
                 android:focusable="auto"
@@ -79,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginRight="30dp"
                 android:drawableLeft="@drawable/ic_lock_black_24dp"
                 android:focusable="auto"
@@ -104,13 +96,12 @@
         android:elevation="10dp"
         android:layout_marginLeft="35dp"
         android:layout_marginRight="35dp"
-        android:layout_marginTop="-70dp">
+        android:layout_marginTop="-40dp">
 
         <android.support.v7.widget.CardView
             android:id="@+id/card_view2"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:layout_marginTop="30dp"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             app:cardCornerRadius="5dp">
@@ -129,18 +120,30 @@
                 android:textStyle="bold" />
         </android.support.v7.widget.CardView>
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl"
+        android:gravity="center"
+        android:orientation="horizontal">
+    <CheckBox
+        android:id="@+id/chk_auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl"
+        android:layout_marginRight="15dp"
+        android:text="자동로그인" />
     <TextView
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rl"
-        android:layout_marginStart="150dp"
-        android:layout_marginEnd="150dp"
         android:onClick="onClick"
         android:text="닉네임 생성하기"
-        android:textColor="#000"
-        android:textSize="15sp"
-        android:textStyle="bold" />
+        android:textColor="#F0825F"
+        android:textStyle="bold"
+        android:textSize="15sp"/>
 
-
+    </LinearLayout>
 </RelativeLayout>
