@@ -2,6 +2,8 @@ package com.example.mystudyapp.Retrofit2;
 
 import com.example.mystudyapp.models.Login;
 
+import java.util.List;
+
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -28,4 +30,8 @@ public interface UserApi {
     @GET("retrofit_login.php")
     Call<ResultModel> Nick_login(@Query("Nick_Name") String nick_name,
                                    @Query("PW") String password);
+
+    //@FormUrlEncoded
+    @POST("LastedLogin.php")
+    Call<List<ResultModel>> getLastLoginDate();
 }
