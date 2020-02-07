@@ -10,6 +10,8 @@ public class ResultModel {
     String content;
     String date;
     String path;
+    String Lasted_Date;
+    String Nick_Name;
 
 
     public int getSeq() {
@@ -68,6 +70,22 @@ public class ResultModel {
         this.path = path;
     }
 
+    public String getLasted_Date() {
+        return Lasted_Date;
+    }
+
+    public void setLasted_Date(String lasted_Date) {
+        Lasted_Date = lasted_Date;
+    }
+
+    public String getNick_Name() {
+        return Nick_Name;
+    }
+
+    public void setNick_Name(String nick_Name) {
+        Nick_Name = nick_Name;
+    }
+
     @Override
     public String toString() {
         return "ResultModel{" +
@@ -78,6 +96,8 @@ public class ResultModel {
                 ", content='" + content + '\'' +
                 ", date='" + date + '\'' +
                 ", path='" + path + '\'' +
+                ", Lasted_Date='" + Lasted_Date + '\'' +
+                ", Nick_Name='" + Nick_Name + '\'' +
                 '}';
     }
 }

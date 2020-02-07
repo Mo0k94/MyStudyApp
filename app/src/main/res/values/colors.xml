@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#f0f4c3</color>
     <color name="colorPrimaryDark">#bdc192</color>
-    <color name="colorAccent">#fffff6</color>
+    <color name="colorAccent">#009688</color>
     <color name="colorGreen">#CEFBC9</color>
     <color name="colorTransparent">#00000000</color> <!-- 투명하게 -->
     <color name="mainColor">#27B06E</color>

@@ -18,7 +18,7 @@ import retrofit2.http.Query;
 
 public interface UserApi {
 
-      String BaseUrl = "http://tkdanr2427.cafe24.com/Gwangju_Univ/";
+    String BaseUrl = "http://tkdanr2427.cafe24.com/Gwangju_Univ/";
 
 
 //    @Multipart
@@ -29,9 +29,16 @@ public interface UserApi {
     //@FormUrlEncoded
     @GET("retrofit_login.php")
     Call<ResultModel> Nick_login(@Query("Nick_Name") String nick_name,
-                                   @Query("PW") String password);
+                                 @Query("PW") String password);
+
+
+    @GET("retrofit_login.php")
+    Call<ResultModel> Nick_loginLog(@Query("Nick_Name") String nick_name,
+                                    @Query("PW") String password,
+                                    @Query("LastedDate") String lastdate,
+                                    @Query("UUID") String uuid);
 
     //@FormUrlEncoded
     @POST("LastedLogin.php")
-    Call<List<ResultModel>> getLastLoginDate();
+    Call<List<ResultModel>> getLastLoginDate(@Query("Nick_Name") String nick_name);
 }
