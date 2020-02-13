@@ -91,7 +91,7 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
 
-                        android:src="@drawable/wheather_rain" />
+                        android:src="@drawable/board" />
 
                 </LinearLayout>
 
@@ -126,7 +126,7 @@
                     <ImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/wheather_rain" />
+                        android:src="@drawable/notice" />
 
                 </LinearLayout>
 
@@ -172,7 +172,7 @@
                         android:layout_width="60dp"
                         android:layout_height="60dp"
 
-                        android:src="@drawable/wheather_rain" />
+                        android:src="@drawable/club" />
 
                 </LinearLayout>
 
@@ -207,7 +207,7 @@
                     <ImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/wheather_rain" />
+                        android:src="@drawable/food" />
 
                 </LinearLayout>
 
@@ -253,7 +253,7 @@
                     <ImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/wheather_rain" />
+                        android:src="@drawable/bus" />
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
@@ -289,7 +289,7 @@
                     <ImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/wheather_rain" />
+                        android:src="@drawable/call" />
 
                 </LinearLayout>
 

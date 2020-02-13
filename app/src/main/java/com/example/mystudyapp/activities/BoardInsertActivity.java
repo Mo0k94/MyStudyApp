@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.mystudyapp.GwangjuUniv.GJBoardActivity;
 import com.example.mystudyapp.R;
 import com.example.mystudyapp.Retrofit2.ImageApi;
 import com.example.mystudyapp.Retrofit2.RetrofitImage;
@@ -224,7 +225,7 @@ public class BoardInsertActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 Log.d("TAG", "imageUpload Success.." + response.body());
-                intent = new Intent(getApplicationContext(), ImageListViewActivity.class);
+                intent = new Intent(getApplicationContext(), GJBoardActivity.class);
                 finish();
                 startActivity(intent);
                 Toast.makeText(BoardInsertActivity.this, "success", Toast.LENGTH_LONG).show();
@@ -249,26 +250,38 @@ public class BoardInsertActivity extends AppCompatActivity {
         String DATE = dateTxt.getText().toString();
 
 
-        File originalFile = FileUtils.getFile(this, filePath);
         RequestBody userPart = RequestBody.create(MultipartBody.FORM, USER);
         RequestBody titlePart = RequestBody.create(MultipartBody.FORM, TITLE);
         RequestBody contentPart = RequestBody.create(MultipartBody.FORM, CONTENT);
         RequestBody datePart = RequestBody.create(MultipartBody.FORM, DATE);
 
-        RequestBody imagePart = RequestBody.create(
-                //MediaType.parse(getContentResolver().getType(filePath)),
-                MediaType.parse("multipart/form-data"),
-                originalFile);
+        Call<ResponseBody> call;
 
-        MultipartBody.Part file = MultipartBody.Part.createFormData("image", originalFile.getName(), imagePart);
+        if(filePath != null){
+            File originalFile = FileUtils.getFile(this, filePath);
 
-        Call<ResponseBody> call = mImageApi.InsertBoard(userPart, titlePart, contentPart, datePart, file);
+
+            RequestBody imagePart = RequestBody.create(
+                    //MediaType.parse(getContentResolver().getType(filePath)),
+                    MediaType.parse("multipart/form-data"),
+                    originalFile);
+
+            MultipartBody.Part file = MultipartBody.Part.createFormData("image", originalFile.getName(), imagePart);
+
+             call = mImageApi.InsertBoard(userPart, titlePart, contentPart, datePart, file);
+
+        }else{
+            call = mImageApi.InsertBoard_NoImage(userPart, titlePart, contentPart, datePart);
+
+        }
+
+
         // Call<ResponseBody> call = apiInterface.uploadImage(titlePart,file);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 Log.d("TAG", "imageUpload Success.." + response.body());
-                intent = new Intent(getApplicationContext(), ImageListViewActivity.class);
+                intent = new Intent(getApplicationContext(), GJBoardActivity.class);
                 finish();
                 startActivity(intent);
                 Toast.makeText(BoardInsertActivity.this, "success", Toast.LENGTH_LONG).show();

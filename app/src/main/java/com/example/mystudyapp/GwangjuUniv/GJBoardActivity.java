@@ -56,7 +56,8 @@ public class GJBoardActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(GJBoardActivity.this, "글쓰기 클릭", Toast.LENGTH_SHORT).show();
+                intent = new Intent(getApplicationContext(), BoardInsertActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -69,7 +70,7 @@ public class GJBoardActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                searchUser(charSequence.toString());
+                //searchUser(charSequence.toString());
                 Log.d("Test","게시물 검색 값 : " + charSequence.toString());
             }
 

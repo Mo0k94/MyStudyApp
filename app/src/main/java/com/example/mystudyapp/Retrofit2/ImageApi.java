@@ -37,6 +37,14 @@ public interface ImageApi {
                                   @Part MultipartBody.Part image);
 
 
+
+    @Multipart
+    @POST("Gwangju_Board_Insert_NoImage.php")
+    Call<ResponseBody>InsertBoard_NoImage(@Part("USER") RequestBody user,
+                                  @Part("TITLE") RequestBody title,
+                                  @Part("CONTENT") RequestBody content,
+                                  @Part("DATE") RequestBody date);
+
     @Multipart
     @POST("Gwangju_Board_Update.php")
     Call<ResponseBody>UpdateBoard(@Part("Seq") RequestBody seq,

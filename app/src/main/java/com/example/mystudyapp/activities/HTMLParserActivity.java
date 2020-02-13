@@ -113,7 +113,7 @@ public class HTMLParserActivity extends AppCompatActivity {
                     //Log.d("TAG","hrefArray 배열값 : " + hrefArray.toString());
                 }
 
-                Document document = Jsoup.connect(hrefArray.get(0)).get();
+                Document document = Jsoup.connect(hrefArray.get(1)).get();
                 Elements elements    = document.select("div.board_viewDetail table tbody tr");
 
                 for (Element element : elements){
@@ -123,6 +123,7 @@ public class HTMLParserActivity extends AppCompatActivity {
                     menuArray.add(menu);
 
                 }
+                Log.d("TAG","menuArray ====> " + menuArray.toString());
 
 
                 // 첫번째 주 구분으로 나눔
@@ -131,15 +132,21 @@ public class HTMLParserActivity extends AppCompatActivity {
                     int idx = menuArray.get(0).indexOf("구분");
                     String menu1 = menuArray.get(0).substring(idx+3);                   // 날짜 가져옴
                                                                                             //5일 단위 날짜 배열에 담음   날짜가져오기  =2019-10-28 2019-10-29 2019-10-30 2019-10-31 2019-11-1
-
                     dateArray = menu1.split(" ");                   // 날짜
 
+                }else{
+                    String menu1 = menuArray.get(0);
+                    dateArray = menu1.split(" ");
                 }
 
                 if(menuArray.get(3).contains("정식")){
                     int idx2 = menuArray.get(3).indexOf("정식");
                     String rice = menuArray.get(3).substring(idx2+3);
                     riceArray = rice.split(" " );                    //밥
+                }else{
+                    String rice = menuArray.get(3);
+                    riceArray = rice.split(" " );                    //밥
+
                 }
 
                 dayArray = menuArray.get(1).split(" " );            //요일
@@ -150,28 +157,41 @@ public class HTMLParserActivity extends AppCompatActivity {
                 ban4Array = menuArray.get(8).split(" " );           //반찬4
 
 
-                //두번째 주
-                if(menuArray.get(9).contains("구분")){
-                    int idx3 = menuArray.get(9).indexOf("구분");
-                    String menu2 = menuArray.get(9).substring(idx3+3);
-                    dateArray2 = menu2.split(" ");                   // 날짜
+                if(menuArray.size() > 9){
+
+
+                    //두번째 주
+                    if("구분".contains(menuArray.get(9))){
+                        int idx3 = menuArray.get(9).indexOf("구분");
+                        String menu2 = menuArray.get(9).substring(idx3+3);
+                        dateArray2 = menu2.split(" ");                   // 날짜
+
+
+    
+
+                    }else{
+                        String menu2 = menuArray.get(9);
+                        dateArray2 = menu2.split(" ");
+                    }
+
+                    if(menuArray.get(12).contains("정식")){
+                        int idx2 = menuArray.get(12).indexOf("정식");
+                        String rice = menuArray.get(12).substring(idx2+3);
+                        riceArray2 = rice.split(" " );                    //밥
+                    }else{
+                        String rice = menuArray.get(12);
+                        riceArray2 = rice.split(" ");
+                    }
+
+                    dayArray2 = menuArray.get(10).split(" " );            //요일
+                    soupArray2 = menuArray.get(13).split(" " );           //국
+                    ban1Array2 = menuArray.get(14).split(" " );           //반찬1
+                    ban2Array2 = menuArray.get(15).split(" " );           //반찬2
+                    ban3Array2 = menuArray.get(16).split(" " );           //반찬3
+                    ban4Array2 = menuArray.get(17).split(" " );           //반찬4
+
+
                 }
-                if(menuArray.get(12).contains("정식")){
-                    int idx2 = menuArray.get(12).indexOf("정식");
-                    String rice = menuArray.get(12).substring(idx2+3);
-                    riceArray2 = rice.split(" " );                    //밥
-                }
-
-
-                dayArray2 = menuArray.get(10).split(" " );            //요일
-                soupArray2 = menuArray.get(13).split(" " );           //국
-                ban1Array2 = menuArray.get(14).split(" " );           //반찬1
-                ban2Array2 = menuArray.get(15).split(" " );           //반찬2
-                ban3Array2 = menuArray.get(16).split(" " );           //반찬3
-                ban4Array2 = menuArray.get(17).split(" " );           //반찬4
-
-
-
 
 //                for(int i=0; i< dateArray.length; i++){
 //                    Log.d("TAG","날짜 자름 : [ " +  i + " ] ="  + dateArray2[i]);         //5일 단위 날짜 배열에 담음
@@ -203,37 +223,71 @@ public class HTMLParserActivity extends AppCompatActivity {
 
             String now_date = format1.format(time);
 
-            int count = 0;
 
-            if(dateArray[count].contains(now_date)){
-                //Log.d("TAG","현재 날짜 포함 O ======> " + now_date);
-                while(count < 5){
-                    if(riceArray[count].length() == 1){
-                        Log.d("Tag","메뉴없음!!!!");
-                        riceArray[count] = "메뉴없음";
+
+                for (int count=0; count<dateArray.length;count++){
+                    if(dateArray[count].contains(now_date)){
+                        //Log.d("TAG","현재 날짜 포함 O ======> " + now_date);
+                        for(int count2=0; count2<dateArray.length;count2++){
+                            if(riceArray[count2].length() == 1){
+                                Log.d("Tag","메뉴없음!!!!");
+                                riceArray[count2] = "메뉴없음";
+                            }
+
+                            foodMenu = new FoodMenu(dateArray[count2].substring(8,10),"(" +dayArray[count2]+")",riceArray[count2],soupArray[count2],ban1Array[count2],ban2Array[count2],ban3Array[count2],ban4Array[count2]);
+                            foodArray.add(foodMenu);
+
+                        }
+
+                    }else{
+                        if(dateArray2 != null){
+                            if(dateArray2[count].contains(now_date)){
+                                for(int count2=0;count2<dateArray2.length;count2++){
+                                    //Log.d("Tag","메뉴없는거 찾자!!!!!" + riceArray2[count].length());
+                                    if(riceArray2[count].length() == 1){
+                                        Log.d("Tag","메뉴없음!!!!");
+                                        riceArray2[count] = "메뉴없음";
+                                    }
+
+                                    foodMenu = new FoodMenu(dateArray2[count].substring(8,10),"(" +dayArray2[count]+")",riceArray2[count],soupArray2[count],ban1Array2[count],ban2Array2[count],ban3Array2[count],ban4Array2[count]);
+                                    foodArray.add(foodMenu);
+                                }
+
+                            }
+                        }
                     }
-
-                    foodMenu = new FoodMenu(dateArray[count].substring(8,10),"(" +dayArray[count]+")",riceArray[count],soupArray[count],ban1Array[count],ban2Array[count],ban3Array[count],ban4Array[count]);
-                    foodArray.add(foodMenu);
-                    count++;
                 }
 
-            }else{
-                while(count < 5){
 
-                    //Log.d("Tag","메뉴없는거 찾자!!!!!" + riceArray2[count].length());
-                    if(riceArray2[count].length() == 1){
-                        Log.d("Tag","메뉴없음!!!!");
-                        riceArray2[count] = "메뉴없음";
+
+
+                /*
+                if(dateArray2 == null || dateArray2.length == 0){
+                    return;
+
+                }else{
+                    if(dateArray2[count].equals(now_date)){
+                        while(count < 5){
+
+                            //Log.d("Tag","메뉴없는거 찾자!!!!!" + riceArray2[count].length());
+                            if(riceArray2[count].length() == 1){
+                                Log.d("Tag","메뉴없음!!!!");
+                                riceArray2[count] = "메뉴없음";
+                            }
+
+                            foodMenu = new FoodMenu(dateArray2[count].substring(8,10),"(" +dayArray2[count]+")",riceArray2[count],soupArray2[count],ban1Array2[count],ban2Array2[count],ban3Array2[count],ban4Array2[count]);
+                            foodArray.add(foodMenu);
+                            count++;
+                        }
+                        //Log.d("TAG","현재 날짜 포함 X ======> " + now_date);
+
                     }
 
-                    foodMenu = new FoodMenu(dateArray2[count].substring(8,10),"(" +dayArray2[count]+")",riceArray2[count],soupArray2[count],ban1Array2[count],ban2Array2[count],ban3Array2[count],ban4Array2[count]);
-                    foodArray.add(foodMenu);
-                    count++;
-                }
-                //Log.d("TAG","현재 날짜 포함 X ======> " + now_date);
 
-            }
+
+
+                }
+                */
 
 
 
