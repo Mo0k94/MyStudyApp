@@ -1,7 +1,9 @@
 package com.example.mystudyapp.activities;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -69,17 +71,30 @@ public class BoardInsertActivity extends AppCompatActivity {
     private Intent intent;
     private int gbdata = 0;
 
+    SharedPreferences setting;    //아이디 저장 기능
+    SharedPreferences.Editor editor;
+
+    String id ="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board_insert);
 
 
+        setting = getSharedPreferences("setting", Activity.MODE_PRIVATE);
+        editor = setting.edit();
+
+        id = setting.getString("ID","");
+
+        Log.d("TAG","ID ===========> " + id);
+
         titleTxt = findViewById(R.id.titleTxt);
         contentTxt = findViewById(R.id.contentTxt);
         dateTxt = findViewById(R.id.dateTxt);
         userTxt = findViewById(R.id.userTxt);
 
+
+        userTxt.setText(id);
         mImg = findViewById(R.id.imageView);
 
 

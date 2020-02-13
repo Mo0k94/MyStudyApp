@@ -1,7 +1,9 @@
 package com.example.mystudyapp.GwangjuUniv;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -46,11 +48,23 @@ public class GJBoardActivity extends AppCompatActivity {
     private Intent intent;
 
     private FloatingActionButton fab;
+
+    SharedPreferences setting;    //아이디 저장 기능
+    SharedPreferences.Editor editor;
+
+    String id="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gjboard);
 
+        setting = getSharedPreferences("setting", Activity.MODE_PRIVATE);
+
+        editor = setting.edit();
+
+        id = setting.getString("ID","");
+
+        Log.d("TAG","ID ===========> " + id);
 
         fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +84,7 @@ public class GJBoardActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                //searchUser(charSequence.toString());
+                searchUser(charSequence.toString());
                 Log.d("Test","게시물 검색 값 : " + charSequence.toString());
             }
 

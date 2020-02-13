@@ -30,7 +30,7 @@
 
 
             <TextView
-                android:id="@+id/testLogout"
+                android:id="@+id/main_welcome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="박상묵님 사랑합니다."

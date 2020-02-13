@@ -26,7 +26,7 @@ import retrofit2.Callback;
 
 public class GjMainActivity extends AppCompatActivity {
 
-    private TextView board_txt,  mLast_login_txt, testLogout;
+    private TextView board_txt,  mLast_login_txt, mMain_welcome;
     private Intent intent;
 
     private UserApi mUserApi;
@@ -41,6 +41,7 @@ public class GjMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gj_main);
 
         setting = getSharedPreferences("setting", Activity.MODE_PRIVATE);
+        editor = setting.edit();
 
         share = setting.getString("ID","");
         if("".equals(share)){
@@ -49,9 +50,13 @@ public class GjMainActivity extends AppCompatActivity {
         }else{
             id = share;
         }
+        editor.putString("ID", id);
+        editor.apply();
         init();
 
-        testLogout.setOnClickListener(new View.OnClickListener() {
+
+        mMain_welcome.setText(id+"님 환영합니다.");
+        mMain_welcome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 redirectLoginActivity();
@@ -68,7 +73,7 @@ public class GjMainActivity extends AppCompatActivity {
     public void init() {
         board_txt = findViewById(R.id.board_txt);
         mLast_login_txt = findViewById(R.id.last_login_txt);
-        testLogout = findViewById(R.id.testLogout);
+        mMain_welcome = findViewById(R.id.main_welcome);
     }
     public void onClick(View view) {
         switch (view.getId()) {
