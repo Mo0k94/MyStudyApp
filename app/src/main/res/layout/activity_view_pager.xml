@@ -11,10 +11,12 @@
         android:id="@+id/tab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabBackground="@drawable/tab_background"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
         app:tabIndicator="@android:color/black"
+        app:tabIndicatorHeight="5dp"
         app:tabSelectedTextColor="@android:color/holo_red_light"
-        app:tabTextColor="@android:color/white" />
+        app:tabTextColor="@color/mainColor" />
     <!--현재 페이지 글자색 tabSelectedTextColor
         평소 탭 글자색 tabTextColor-->
 

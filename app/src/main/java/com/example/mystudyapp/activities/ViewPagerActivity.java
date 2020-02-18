@@ -84,7 +84,7 @@ public class ViewPagerActivity extends AppCompatActivity {
                 case 2:
                     return "양식";
                 case 3:
-                    return "푸드점(분식)";
+                    return "분식";
             }
             return null;
         }

@@ -1,5 +1,6 @@
 package com.example.mystudyapp.fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -163,9 +164,20 @@ public class Food_WeekFragment extends Fragment {
 
     private class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
 
+        //진행바표시
+        private ProgressDialog progressDialog;
+
+
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+
+            //진행다일로그 시작
+            progressDialog = new ProgressDialog(getContext());
+            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDialog.setTitle("광주대학교 학식");
+            progressDialog.setMessage("잠시 기다려 주세요.");
+            progressDialog.show();
         }
 
         @Override
@@ -321,6 +333,7 @@ public class Food_WeekFragment extends Fragment {
 
             refreshList();
 
+            progressDialog.dismiss();
             Log.d("TAG", "foodArray : " + foodArray.toString());
 
 
