@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activities.LifeCycleActivity">
 
     <!-- TODO: Update blank fragment layout -->
@@ -10,5 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="안녕하소" />
-
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        android:layout_margin="20dp"
+        app:spanCount="1"
+        android:orientation="vertical"
+        android:id="@+id/recycle_view"/>
 </FrameLayout>

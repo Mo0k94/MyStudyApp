@@ -13,6 +13,12 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.mystudyapp.R;
 import com.example.mystudyapp.fragments.ColorFragment;
+import com.example.mystudyapp.fragments.Food_MenuFragment;
+import com.example.mystudyapp.fragments.Food_WeekFragment;
+import com.example.mystudyapp.fragments.ListViewFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ViewPagerActivity extends AppCompatActivity {
 
@@ -36,7 +42,7 @@ public class ViewPagerActivity extends AppCompatActivity {
 
     }
 
-    private static class MyPagerAdapter extends FragmentPagerAdapter {
+    private class MyPagerAdapter extends FragmentPagerAdapter {
 
         public MyPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -47,15 +53,14 @@ public class ViewPagerActivity extends AppCompatActivity {
             switch (position){
                 case 0:
 
-                    return ColorFragment.newInstance(Color.RED);
+                    return Food_WeekFragment.newInstance();
+            //ListViewFragment.newInstance(createList('a','z'));
                 case 1:
-                    return ColorFragment.newInstance(Color.YELLOW);
+                    return Food_MenuFragment.newInstance("kor");
                 case 2:
-                    return ColorFragment.newInstance(Color.GREEN);
+                    return Food_MenuFragment.newInstance("west");
                 case 3:
-                    return ColorFragment.newInstance(Color.CYAN);
-                case 4:
-                    return ColorFragment.newInstance(Color.MAGENTA);
+                    return Food_MenuFragment.newInstance("snack");
             }
             return null;
         }
@@ -63,7 +68,7 @@ public class ViewPagerActivity extends AppCompatActivity {
         //페이지가 몇 장인지
         @Override
         public int getCount() {
-            return 5;
+            return 4;
         }
 
 
@@ -73,17 +78,25 @@ public class ViewPagerActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             switch (position){
                 case 0:
-                    return "Tab1";
+                    return "정식";
                 case 1:
-                    return "Tab2";
+                    return "한식";
                 case 2:
-                    return "Tab3";
+                    return "양식";
                 case 3:
-                    return "Tab4";
-                case 4:
-                    return "Tab5";
+                    return "푸드점(분식)";
             }
             return null;
         }
+    }
+
+    //메소드 정규화
+    private List<String> createList(char start, char end){
+        List<String> list = new ArrayList<>();
+        char ch = start;
+        for (char i= ch; i<=end; i++){
+            list.add(String.valueOf(i));//a부터 z까지 list에 넣음
+        }
+        return list;
     }
 }
