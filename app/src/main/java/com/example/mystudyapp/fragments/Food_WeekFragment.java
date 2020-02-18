@@ -21,6 +21,7 @@ import com.example.mystudyapp.R;
 import com.example.mystudyapp.activities.HTMLParserActivity;
 import com.example.mystudyapp.adapters.Food_Adapter;
 import com.example.mystudyapp.models.FoodMenu;
+import com.example.mystudyapp.utils.Common;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -37,11 +38,16 @@ import java.util.List;
 public class Food_WeekFragment extends Fragment {
 
     private List<String> mData;
+    public Boolean tag;
 
-    public static Food_WeekFragment newInstance() {
+    public static Food_WeekFragment newInstance(Boolean tag) {
+
         Food_WeekFragment fragment = new Food_WeekFragment();
 
         Bundle bundle = new Bundle();
+
+        Log.d("TAG","Food_WeekFragement =====> " + tag);
+        bundle.putSerializable("data",(Serializable) tag);
 
         fragment.setArguments(bundle);
         return fragment;
@@ -83,6 +89,7 @@ public class Food_WeekFragment extends Fragment {
     private ListView listView;
     private RecyclerView mRecycle_view;
     private Food_Adapter adapter;
+    private ProgressDialog progressDialog;
 
     @Nullable
     @Override
@@ -99,18 +106,27 @@ public class Food_WeekFragment extends Fragment {
         listView = view.findViewById(R.id.list_view);
 
         Bundle bundle = getArguments();
+
+        tag = (Boolean) bundle.getSerializable("data");
+
+        Log.d("TAG","Food_WeekFragement 2222=====> " + tag);
+
+        new JsoupAsyncTask().execute();
+
+
         //mData = (List<String>) bundle.getSerializable("data");
 
         //MyAdapter mAdapter = new MyAdapter(mData);
         //listView.setAdapter(mAdapter);
 
-        new JsoupAsyncTask().execute();
+
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
+
 
 
     private static class MyAdapter extends BaseAdapter {
@@ -165,19 +181,24 @@ public class Food_WeekFragment extends Fragment {
     private class JsoupAsyncTask extends AsyncTask<Void, Void, Void> {
 
         //진행바표시
-        private ProgressDialog progressDialog;
-
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
 
-            //진행다일로그 시작
-            progressDialog = new ProgressDialog(getContext());
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progressDialog.setTitle("광주대학교 학식");
-            progressDialog.setMessage("잠시 기다려 주세요.");
-            progressDialog.show();
+            Log.d("TAG","async ====> " + tag);
+            if(tag){
+                //진행다일로그 시작
+
+                progressDialog = new ProgressDialog(getContext());
+                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDialog.setTitle("광주대학교 학식");
+                progressDialog.setMessage("잠시 기다려 주세요.");
+                progressDialog.show();
+            }
+
+
+
         }
 
         @Override
@@ -333,11 +354,17 @@ public class Food_WeekFragment extends Fragment {
 
             refreshList();
 
-            progressDialog.dismiss();
+
+            if(tag){
+                progressDialog.dismiss();
+            }
+
+
             Log.d("TAG", "foodArray : " + foodArray.toString());
 
 
         }
+
     }
 
     private void refreshList() {

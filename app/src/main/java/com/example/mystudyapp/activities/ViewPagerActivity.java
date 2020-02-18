@@ -7,9 +7,12 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.example.mystudyapp.R;
 import com.example.mystudyapp.fragments.ColorFragment;
@@ -37,33 +40,59 @@ public class ViewPagerActivity extends AppCompatActivity {
         mAdapter = new MyPagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(mAdapter);
 
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
         // 뷰페이저와 연결
         mTabLayout.setupWithViewPager(mViewPager);
 
+
     }
 
-    private class MyPagerAdapter extends FragmentPagerAdapter {
+    private class MyPagerAdapter extends FragmentStatePagerAdapter {
 
+        public boolean tag = true;
         public MyPagerAdapter(FragmentManager fm) {
             super(fm);
         }
 
+
         @Override
         public Fragment getItem(int position) {
-            switch (position){
-                case 0:
 
-                    return Food_WeekFragment.newInstance();
+            switch (position){
             //ListViewFragment.newInstance(createList('a','z'));
+                case 0:
+                    return Food_WeekFragment.newInstance(tag);
                 case 1:
+                    tag = false;
                     return Food_MenuFragment.newInstance("kor");
+
                 case 2:
+                    tag = false;
                     return Food_MenuFragment.newInstance("west");
                 case 3:
+                    tag = false;
                     return Food_MenuFragment.newInstance("snack");
+
             }
+
             return null;
         }
+
 
         //페이지가 몇 장인지
         @Override
@@ -88,6 +117,8 @@ public class ViewPagerActivity extends AppCompatActivity {
             }
             return null;
         }
+
+
     }
 
     //메소드 정규화
