@@ -3,10 +3,13 @@ package com.example.mystudyapp.GwangjuUniv;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +29,7 @@ import com.example.mystudyapp.Retrofit2.ResultModel;
 import com.example.mystudyapp.Retrofit2.RetrofitUtil;
 import com.example.mystudyapp.Retrofit2.UserApi;
 import com.example.mystudyapp.activities.Memo2Activity;
+import com.example.mystudyapp.utils.Common;
 import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
@@ -64,6 +68,10 @@ public class LoginUiActivity extends AppCompatActivity {
 
     String NickID="";
     String userPassword ="";
+
+    public ProgressDialog mProgressDialog = null;
+    public Common.ProgressDialogHandler handler = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -169,6 +177,7 @@ public class LoginUiActivity extends AppCompatActivity {
             }
         }); // 아이디 저장 기능
 
+        handler = new Common.ProgressDialogHandler(this);
     }
 
     public void init() {
@@ -199,6 +208,8 @@ public class LoginUiActivity extends AppCompatActivity {
 
 
     public void Login() {
+
+        handler.handleMessage(100);
         NickID = mNickName.getText().toString();
         userPassword = mPassword.getText().toString();
 
@@ -228,6 +239,7 @@ public class LoginUiActivity extends AppCompatActivity {
 
                 Log.d("TAG", "Login result " + result.getResult());
                 if (response.body().getResult().equals("success")) {
+                    handler.handleMessage(101);
                     //로그인 성공
                     intent = new Intent(LoginUiActivity.this, GjMainActivity.class);
                     intent.putExtra("NickName",NickID);
@@ -324,6 +336,9 @@ public class LoginUiActivity extends AppCompatActivity {
         return deviceId;
 
     }
+
+
+
 
 
 }
