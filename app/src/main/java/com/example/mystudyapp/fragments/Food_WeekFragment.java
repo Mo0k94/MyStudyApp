@@ -324,7 +324,7 @@ public class Food_WeekFragment extends Fragment {
                             riceArray[count2] = "메뉴없음";
                         }
 
-                        foodMenu = new FoodMenu(dateArray[count2].substring(8, 10), "(" + dayArray[count2] + ")", riceArray[count2], soupArray[count2], ban1Array[count2], ban2Array[count2], ban3Array[count2], ban4Array[count2]);
+                        foodMenu = new FoodMenu(dateArray[count2].substring(8, 10)+"일", dayArray[count2], riceArray[count2], soupArray[count2], ban1Array[count2], ban2Array[count2], ban3Array[count2], ban4Array[count2]);
                         foodArray.add(foodMenu);
 
                     }
@@ -339,7 +339,7 @@ public class Food_WeekFragment extends Fragment {
                                     riceArray2[count] = "메뉴없음";
                                 }
 
-                                foodMenu = new FoodMenu(dateArray2[count].substring(8, 10), "(" + dayArray2[count] + ")", riceArray2[count], soupArray2[count], ban1Array2[count], ban2Array2[count], ban3Array2[count], ban4Array2[count]);
+                                foodMenu = new FoodMenu(dateArray2[count].substring(8, 10)+"일",  dayArray2[count], riceArray2[count], soupArray2[count], ban1Array2[count], ban2Array2[count], ban3Array2[count], ban4Array2[count]);
                                 foodArray.add(foodMenu);
                             }
 
