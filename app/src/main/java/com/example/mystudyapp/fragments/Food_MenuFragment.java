@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -49,23 +50,13 @@ import retrofit2.Callback;
 
 public class Food_MenuFragment extends Fragment {
 
-    private List<String> mData;
-    private Button mInsertBtn;
-    EditText editTextFilter;
-
     private RecyclerView mRecycle_view;
+    private TextView mMenu_div;
     List<ResultFood> boardList;
     private List<ResultFood> saveList;
 
     private Food_Menu_Adapter mAdapter;
     private ImageApi mImageApi;
-
-    private Intent intent;
-
-    private FloatingActionButton fab;
-
-    SharedPreferences setting;    //아이디 저장 기능
-    SharedPreferences.Editor editor;
 
 
     public static Food_MenuFragment newInstance(String data){
@@ -105,6 +96,9 @@ public class Food_MenuFragment extends Fragment {
 
         mRecycle_view = view.findViewById(R.id.recycle_view);
 
+        mMenu_div = view.findViewById(R.id.menu_div);
+
+
         boardList = new ArrayList<>();
         saveList = new ArrayList<ResultFood>();
         mImageApi = new RetrofitImage().getImageApi();
@@ -117,6 +111,8 @@ public class Food_MenuFragment extends Fragment {
     }
     private void getServerData(String str){
         Log.d("TAG", "getServerData Start!!! " );
+
+
 
 
         RequestBody divPart = RequestBody.create(MultipartBody.FORM, str);
@@ -139,11 +135,20 @@ public class Food_MenuFragment extends Fragment {
                     String name = result.get(i).getFood_name();
                     String price = result.get(i).getFood_price();
 
+
                     ResultFood getFoodList = new ResultFood(SEQ,div,name,price);
                     boardList.add(getFoodList);
                     Log.d("TAG", "getServerData ====>  " + boardList.toString());
                     mAdapter = new Food_Menu_Adapter(getActivity(),boardList);
 
+                }
+
+                if("kor".equals(boardList.get(0).getFood_div())){
+                    mMenu_div.setText("한식");
+                }else if("west".equals(boardList.get(0).getFood_div())){
+                    mMenu_div.setText("양식");
+                }else if("snack".equals(boardList.get(0).getFood_div())){
+                    mMenu_div.setText("분식");
                 }
                 mRecycle_view.setAdapter(mAdapter);
                 //Glide.with(getApplicationContext()).load(result.get(1).getPath()).into(imageView);

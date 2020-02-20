@@ -37,7 +37,7 @@ public class Food_Menu_Adapter extends RecyclerView.Adapter<Food_Menu_Adapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
-        viewHolder.food_div.setText(mData.get(i).getFood_div());
+
         viewHolder.food_name.setText(mData.get(i).getFood_name());
         viewHolder.food_price.setText(mData.get(i).getFood_price());
 
@@ -51,7 +51,6 @@ public class Food_Menu_Adapter extends RecyclerView.Adapter<Food_Menu_Adapter.Vi
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView food_div;
         TextView food_name;
         TextView food_price;
 
@@ -59,11 +58,9 @@ public class Food_Menu_Adapter extends RecyclerView.Adapter<Food_Menu_Adapter.Vi
             super(itemView);
 
             // 레이아웃 들고 오기
-            TextView div_txt = (TextView) itemView.findViewById(R.id.div_txt);
             TextView name_txt = (TextView) itemView.findViewById(R.id.name_txt);
             TextView price_txt = (TextView) itemView.findViewById(R.id.price_txt);
 
-            this.food_div = div_txt;
             this.food_name = name_txt;
             this.food_price = price_txt;
         }
