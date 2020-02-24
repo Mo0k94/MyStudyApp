@@ -16,6 +16,7 @@ import com.example.mystudyapp.Retrofit2.ResultModel;
 import com.example.mystudyapp.Retrofit2.RetrofitImage;
 import com.example.mystudyapp.Retrofit2.RetrofitUtil;
 import com.example.mystudyapp.Retrofit2.UserApi;
+import com.example.mystudyapp.activities.ViewPagerActivity;
 import com.example.mystudyapp.adapters.ImageRecyclerAdapter;
 import com.example.mystudyapp.models.getServerImage;
 
@@ -80,11 +81,16 @@ public class GjMainActivity extends AppCompatActivity {
             case R.id.board_txt:
 
                 startActivity(new Intent(GjMainActivity.this, GJBoardActivity.class));
-                finish();
                 Toast.makeText(this, "게시판", Toast.LENGTH_SHORT).show();
 
                 break;
-
+            case R.id.food_txt:
+                startActivity(new Intent(GjMainActivity.this, ViewPagerActivity.class));
+                Toast.makeText(this, "학식", Toast.LENGTH_SHORT).show();
+            case R.id.food_Img:
+                startActivity(new Intent(GjMainActivity.this, ViewPagerActivity.class));
+                Toast.makeText(this, "학식", Toast.LENGTH_SHORT).show();
+                break;
             default:
                 break;
         }
