@@ -6,6 +6,7 @@
     <color name="colorGreen">#CEFBC9</color>
     <color name="colorTransparent">#00000000</color> <!-- 투명하게 -->
     <color name="mainColor">#27B06E</color>
+    <color name="AccentColor">#F0825F</color>
 
     <color name="colorBackground">#fff</color> <!-- 투명하게 -->
 

@@ -13,9 +13,10 @@
         android:layout_height="wrap_content"
         app:tabGravity="fill"
         app:tabMode="fixed"
+        app:tabBackground="@drawable/food_tab_background"
         app:tabIndicator="@android:color/black"
         app:tabIndicatorHeight="0dp"
-        app:tabSelectedTextColor="@android:color/holo_red_light"
+        app:tabSelectedTextColor="#fff"
         app:tabTextColor="@color/mainColor" />
     <!--현재 페이지 글자색 tabSelectedTextColor
         평소 탭 글자색 tabTextColor-->
