@@ -35,6 +35,14 @@ dependencies {
     //  Google-map 라이브러리
     implementation 'com.google.android.gms:play-services-maps:10.2.0'
 
+    implementation 'com.github.chenupt.android:springindicator:1.0.2@aar'
+
+
+    // 둥근 이미지
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
+    implementation 'com.github.siyamed:android-shape-imageview:0.9.3@aar'
+
     //  Glide 라이브러리
     implementation 'com.github.bumptech.glide:glide:4.9.0'
 

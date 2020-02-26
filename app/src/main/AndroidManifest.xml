@@ -17,7 +17,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".GwangjuUniv.GJBoardActivity"></activity>
+        <activity android:name=".secretAcitivyty"></activity>
+        <activity android:name=".GwangjuUniv.GJBoardActivity" />
         <activity android:name=".GwangjuUniv.GjMainActivity" />
         <activity android:name=".GwangjuUniv.RegisterActivity" />
         <activity android:name=".GwangjuUniv.LoginUiActivity" />

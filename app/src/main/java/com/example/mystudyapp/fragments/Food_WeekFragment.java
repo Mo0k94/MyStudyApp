@@ -293,8 +293,6 @@ public class Food_WeekFragment extends Fragment {
                     ban2Array2 = menuArray.get(15).split(" ");           //반찬2
                     ban3Array2 = menuArray.get(16).split(" ");           //반찬3
                     ban4Array2 = menuArray.get(17).split(" ");           //반찬4
-
-
                 }
 
 

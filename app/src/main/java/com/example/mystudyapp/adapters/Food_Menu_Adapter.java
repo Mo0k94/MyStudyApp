@@ -6,8 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.mystudyapp.R;
 import com.example.mystudyapp.Retrofit2.ResultFood;
 
@@ -39,8 +41,13 @@ public class Food_Menu_Adapter extends RecyclerView.Adapter<Food_Menu_Adapter.Vi
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
 
         viewHolder.food_name.setText(mData.get(i).getFood_name());
-        viewHolder.food_price.setText(mData.get(i).getFood_price());
-
+        //viewHolder.food_price.setText(mData.get(i).getFood_price());
+        Glide.with(context)
+                .load(mData.get(i).getFood_path())
+                .centerCrop()
+                 //.override(200,200)
+                //.fitCenter()
+                .into(viewHolder.food_img);
 
 
     }
@@ -53,16 +60,17 @@ public class Food_Menu_Adapter extends RecyclerView.Adapter<Food_Menu_Adapter.Vi
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView food_name;
         TextView food_price;
-
+        ImageView food_img;
         public ViewHolder(View itemView) {
             super(itemView);
 
             // 레이아웃 들고 오기
             TextView name_txt = (TextView) itemView.findViewById(R.id.name_txt);
-            TextView price_txt = (TextView) itemView.findViewById(R.id.price_txt);
-
+            //TextView price_txt = (TextView) itemView.findViewById(R.id.price_txt);
+            ImageView food_img = itemView.findViewById(R.id.food_img);
             this.food_name = name_txt;
-            this.food_price = price_txt;
+            //this.food_price = price_txt;
+            this.food_img = food_img;
         }
     }
 

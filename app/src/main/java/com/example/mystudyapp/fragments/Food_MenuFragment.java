@@ -134,9 +134,9 @@ public class Food_MenuFragment extends Fragment {
                     String div = result.get(i).getFood_div();
                     String name = result.get(i).getFood_name();
                     String price = result.get(i).getFood_price();
+                    String img_path = result.get(i).getFood_path();
 
-
-                    ResultFood getFoodList = new ResultFood(SEQ,div,name,price);
+                    ResultFood getFoodList = new ResultFood(SEQ,div,name,price,img_path);
                     boardList.add(getFoodList);
                     Log.d("TAG", "getServerData ====>  " + boardList.toString());
                     mAdapter = new Food_Menu_Adapter(getActivity(),boardList);

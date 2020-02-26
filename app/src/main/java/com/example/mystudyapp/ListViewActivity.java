@@ -102,6 +102,7 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("28) Server 이미지 가져오기", "2019-11-20", getServerImageActivity.class);
         addItem("29) 이미지 리사이클러뷰", "2019-11-23", ImageListViewActivity.class);
         addItem("30) 로그인 UI", "2019-12-11", LoginUiActivity.class);
+        addItem("31) SecretText", "2020-02-26", secretAcitivyty.class);
 
 
         Collections.reverse(mDataList);

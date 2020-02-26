@@ -6,13 +6,15 @@ public class ResultFood {
     String food_div;
     String food_name;
     String food_price;
+    String food_path;
 
-    public ResultFood(int seq, String food_div, String food_name, String food_price) {
+    public ResultFood(int seq, String food_div, String food_name, String food_price, String food_path) {
         this.seq = seq;
         this.result = result;
         this.food_div = food_div;
         this.food_name = food_name;
         this.food_price = food_price;
+        this.food_path = food_path;
     }
 
     public int getSeq() {
@@ -55,6 +57,14 @@ public class ResultFood {
         this.food_price = food_price;
     }
 
+    public String getFood_path() {
+        return food_path;
+    }
+
+    public void setFood_path(String food_path) {
+        this.food_path = food_path;
+    }
+
 
     @Override
     public String toString() {
@@ -64,6 +74,7 @@ public class ResultFood {
                 ", food_div='" + food_div + '\'' +
                 ", food_name='" + food_name + '\'' +
                 ", food_price='" + food_price + '\'' +
+                ", food_path='" + food_path + '\'' +
                 '}';
     }
 }
