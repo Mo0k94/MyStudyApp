@@ -55,7 +55,7 @@ public class BoardInsertActivity extends AppCompatActivity {
     // 현재시간을 date 변수에 저장한다.
     Date nowdate = new Date(now);
     // 시간을 나타냇 포맷을 정한다 ( yyyy/MM/dd 같은 형태로 변형 가능 )
-    SimpleDateFormat sdfNow = new SimpleDateFormat("MM/dd hh:mm");  //06/19 13:50
+    SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
     // nowDate 변수에 값을 저장한다.
     String formatDate = sdfNow.format(nowdate);
 
@@ -112,7 +112,17 @@ public class BoardInsertActivity extends AppCompatActivity {
 
                 String image_path = intent.getStringExtra("PATH");
                 //Uri fileUri = Uri.parse(image_path);
-                updateuri = Uri.parse(image_path);
+                if(image_path != null){
+                    Glide.with(getApplicationContext())
+                            .load(image_path)
+                            .override(500,200)
+                            .fitCenter()
+                            .into(mImg);
+                    mImg.setVisibility(View.VISIBLE);
+                }else{
+                    mImg.setVisibility(View.GONE);
+                }
+                //updateuri = Uri.parse(image_path);
 //                String filePath = fileUri.getPath();
 //                Cursor c = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,null,"_data= '" + filePath + "'",null,null);
 //                c.moveToNext();
@@ -123,12 +133,7 @@ public class BoardInsertActivity extends AppCompatActivity {
                 contentTxt.setText(intent.getStringExtra("CONTENT"));
                 userTxt.setText(intent.getStringExtra("WRITER"));
                 dateTxt.setText(intent.getStringExtra("DATE"));
-                Glide.with(getApplicationContext())
-                        .load(intent.getStringExtra("PATH"))
-                        .override(500,200)
-                        .fitCenter()
-                        .into(mImg);
-                mImg.setVisibility(View.VISIBLE);
+
                 gbdata = 1;
             }
 

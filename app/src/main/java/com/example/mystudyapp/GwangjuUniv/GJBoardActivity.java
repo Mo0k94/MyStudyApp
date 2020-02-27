@@ -27,7 +27,10 @@ import com.example.mystudyapp.models.getServerImage;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -53,6 +56,16 @@ public class GJBoardActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
 
     String id="";
+
+    // 현재시간을 msec 으로 구한다.
+    long now = System.currentTimeMillis();
+    // 현재시간을 date 변수에 저장한다.
+    Date nowdate = new Date(now);
+    // 시간을 나타냇 포맷을 정한다 ( yyyy/MM/dd 같은 형태로 변형 가능 )
+    SimpleDateFormat sdfNow = new SimpleDateFormat("MM/dd hh:mm");  //06/19 13:50
+    // nowDate 변수에 값을 저장한다.
+    String formatDate = sdfNow.format(nowdate);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -181,7 +194,11 @@ public class GJBoardActivity extends AppCompatActivity {
                     String DATE = result.get(i).getDate();
                     String PATH = result.get(i).getPath();
 
-                    getServerImage getServerdata = new getServerImage(SEQ,USER,TITLE,CONTENT,DATE,PATH);
+                    String msg ="";
+
+                    msg = formatTimeString(DATE);
+
+                    getServerImage getServerdata = new getServerImage(SEQ,USER,TITLE,CONTENT,msg,PATH);
 
                     boardList.add(getServerdata);
                     saveList.add(getServerdata);
@@ -202,4 +219,51 @@ public class GJBoardActivity extends AppCompatActivity {
         });
 
     }
+
+    // 몇분 전, 방금 전
+    private static class TIME_MAXIMUM{
+        public static final int SEC = 60;       //초
+        public static final int MIN = 60;       //분
+        public static final int HOUR = 24;      //시
+        public static final int DAY = 30;       //일
+        public static final int MONTH = 12;     //월
+    }
+
+    public static String formatTimeString(String regTime){
+
+        SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        Date temdate = null;
+        long diffTime = 0;
+        long time = 0;
+        long curTime = 0;
+        String msg = null;
+        try {
+            temdate = tempDate.parse(regTime);
+            time = temdate.getTime();
+
+            curTime = System.currentTimeMillis();
+            diffTime = (curTime - time) / 1000;
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        if(diffTime <TIME_MAXIMUM.SEC){
+            msg = "방금 전";
+        }else if((diffTime /= TIME_MAXIMUM.SEC) < TIME_MAXIMUM.MIN){
+            msg = diffTime +"분 전";
+        }else if((diffTime /= TIME_MAXIMUM.MIN) < TIME_MAXIMUM.HOUR){
+            msg = diffTime +"시간 전";
+        }/*else if ((diffTime /= TIME_MAXIMUM.HOUR) < TIME_MAXIMUM.DAY) {
+            msg = (diffTime) + "일 전";
+        } else if ((diffTime /= TIME_MAXIMUM.DAY) < TIME_MAXIMUM.MONTH) {
+            msg = (diffTime) + "달 전";
+        }*/
+        else {
+            msg = regTime.substring(0,16) +"";
+            Log.d("board","날짜 ===> " + msg);
+        }
+        return msg;
+    }
+
 }
+
