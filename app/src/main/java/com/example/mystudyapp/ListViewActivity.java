@@ -1,5 +1,6 @@
 package com.example.mystudyapp;
 
+import android.Manifest;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,6 +30,7 @@ import com.example.mystudyapp.activities.MemoActivity;
 import com.example.mystudyapp.activities.RecyclerViewActivity;
 import com.example.mystudyapp.activities.Retrofit2Activity;
 import com.example.mystudyapp.activities.Selector_ImageActivity;
+import com.example.mystudyapp.activities.TedPermissionActivity;
 import com.example.mystudyapp.activities.ThreadActivity;
 import com.example.mystudyapp.activities.ViewPagerActivity;
 import com.example.mystudyapp.activities.ViewPagerExamActivity;
@@ -38,6 +40,8 @@ import com.example.mystudyapp.activities.addViewActivity;
 import com.example.mystudyapp.activities.getServerImageActivity;
 import com.example.mystudyapp.adapters.MyAdapter;
 import com.example.mystudyapp.models.ListItem;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -52,6 +56,14 @@ public class ListViewActivity extends AppCompatActivity {
 
 
     private EditText mSearch_edit;
+
+    String[] REQUIRED_PERMISSIONS  = {
+                                      Manifest.permission.BODY_SENSORS,
+                                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                                        Manifest.permission.READ_PHONE_STATE,
+                                        Manifest.permission.ACCESS_FINE_LOCATION};
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +114,8 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("28) Server 이미지 가져오기", "2019-11-20", getServerImageActivity.class);
         addItem("29) 이미지 리사이클러뷰", "2019-11-23", ImageListViewActivity.class);
         addItem("30) 로그인 UI", "2019-12-11", LoginUiActivity.class);
-        addItem("31) SecretText", "2020-02-26", secretAcitivyty.class);
+        addItem("31) 현재 기기 연락처Get", "2020-02-26", secretAcitivyty.class);
+        addItem("32) TedPermision권한", "2020-03-3", TedPermissionActivity.class);
 
 
         Collections.reverse(mDataList);
@@ -149,7 +162,30 @@ public class ListViewActivity extends AppCompatActivity {
         });
 
 
+
+
+        PermissionListener permissionListener = new PermissionListener() {
+            @Override
+            public void onPermissionGranted() {
+                Toast.makeText(ListViewActivity.this, "권한 허가", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPermissionDenied(ArrayList<String> deniedPermissions) {
+                Toast.makeText(ListViewActivity.this, "권한 거부", Toast.LENGTH_SHORT).show();
+            }
+        };
+        TedPermission.with(this)
+                .setPermissionListener(permissionListener)
+                //.setRationaleMessage("주소록 권한이 필요해요")
+                .setDeniedMessage("권한이 거부되었습니다. \n [설정] > [권한] 에서 권한을 허용할 수 있습니다")
+                .setPermissions(REQUIRED_PERMISSIONS)
+                .check();
+
+
     }
+
+
 
     private void addItem(String title, String title2, Class cls) {
         ListItem item = new ListItem(title, title2, cls);

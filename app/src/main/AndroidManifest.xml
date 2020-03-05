@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.mystudyapp">
 
+    <uses-permission android:name="android.permission.BODY_SENSORS"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -17,7 +18,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".secretAcitivyty"></activity>
+        <activity android:name=".activities.TedPermissionActivity"></activity>
+        <activity android:name=".secretAcitivyty" />
         <activity android:name=".GwangjuUniv.GJBoardActivity" />
         <activity android:name=".GwangjuUniv.GjMainActivity" />
         <activity android:name=".GwangjuUniv.RegisterActivity" />
