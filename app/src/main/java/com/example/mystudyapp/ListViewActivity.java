@@ -115,7 +115,8 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("29) 이미지 리사이클러뷰", "2019-11-23", ImageListViewActivity.class);
         addItem("30) 로그인 UI", "2019-12-11", LoginUiActivity.class);
         addItem("31) 현재 기기 연락처Get", "2020-02-26", secretAcitivyty.class);
-        addItem("32) TedPermision권한", "2020-03-3", TedPermissionActivity.class);
+        addItem("32) TedPermision권한", "2020-03-03", TedPermissionActivity.class);
+        addItem("33) RecyclerView Animation", "2020-03-05",RoomTestActivitiy.class);
 
 
         Collections.reverse(mDataList);

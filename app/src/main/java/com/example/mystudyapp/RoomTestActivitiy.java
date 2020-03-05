@@ -4,14 +4,18 @@ import android.annotation.SuppressLint;
 import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.migration.Migration;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,6 +30,7 @@ import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class RoomTestActivitiy extends AppCompatActivity {
 
@@ -55,19 +60,14 @@ public class RoomTestActivitiy extends AppCompatActivity {
 
         mRecycler_view = findViewById(R.id.check_recycler);
 
-
-        GridLayoutManager gridLayoutManager
-                = new GridLayoutManager(this, 2);
-
-        mRecycler_view.setLayoutManager(gridLayoutManager);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        mRecycler_view.setLayoutManager(linearLayoutManager);
         checkList = new ArrayList<Check>();
-
 
         db = Room.databaseBuilder(this, AppDataBase.class, "plan_db")
                 .allowMainThreadQueries()
                 .addMigrations(MIGRATION_2_3)
                 .build();
-
 
         getList();
 
@@ -160,12 +160,26 @@ public class RoomTestActivitiy extends AppCompatActivity {
 //
 //                }
                 Toast.makeText(RoomTestActivitiy.this, "저장되었습니다.", Toast.LENGTH_SHORT).show();
+
                 //db.todoDao().insertTodo(new Todo2(material, checkGb));
             }
         });
 
+        runAnimation();
 
     }
+
+    public void runAnimation() {
+        final LayoutAnimationController controller =
+                AnimationUtils.loadLayoutAnimation(RoomTestActivitiy.this, R.anim.layout_animation_fall_down);
+
+        mRecycler_view.setLayoutAnimation(controller);
+        mRecycler_view.getAdapter().notifyDataSetChanged();
+        mRecycler_view.scheduleLayoutAnimation();
+
+
+    }
+
 
     int getNumFiles() {
         return db.todoDao().getCount();
@@ -201,7 +215,7 @@ public class RoomTestActivitiy extends AppCompatActivity {
 
                         mAdapter = new RoomRecyclerAdapter(RoomTestActivitiy.this, checkList);
                         //mAdapter.update(checkList, event.position);
-
+                        runAnimation();
                         db.todoDao().deletePlan(db.todoDao().getAll().get(event.position).getId());
                         Toast.makeText(RoomTestActivitiy.this, "삭제하였습니다", Toast.LENGTH_SHORT).show();
                     }
@@ -228,12 +242,12 @@ public class RoomTestActivitiy extends AppCompatActivity {
                 Toast.LENGTH_SHORT).show();
         if (checkList.get(event.position).getCheck() == 1) {
             checkGb = 0;
-            chk_update(checkGb,event.position, event.id);
+            chk_update(checkGb, event.position, event.id);
 
         } else {
             Log.d("TAG", "checkList checkGb = 0일때 !!");
             checkGb = 1;
-            chk_update(checkGb,event.position, event.id);
+            chk_update(checkGb, event.position, event.id);
 
             Log.d("TAG", "onItemClick : update!!!!!!" + db.todoDao().getAll().get(event.position).getCheckGb());
         }
@@ -255,11 +269,11 @@ public class RoomTestActivitiy extends AppCompatActivity {
             Log.d("TAG", "todoDao checkGb : " + i + " 번째" + db.todoDao().getAll().get(i).getCheckGb());
             Log.d("TAG", "todoDao Id : " + i + " 번째" + db.todoDao().getAll().get(i).getId());
             Check check = new Check(db.todoDao().getAll().get(i).getTitle(),
-                                     db.todoDao().getAll().get(i).getCheckGb());
+                    db.todoDao().getAll().get(i).getCheckGb());
             checkList.add(check);
             checkList.get(i).setId(db.todoDao().getAll().get(i).getId());
 
-            Log.d("TAG","checkList ====> " + checkList.toString());
+            Log.d("TAG", "checkList ====> " + checkList.toString());
             mAdapter = new RoomRecyclerAdapter(RoomTestActivitiy.this, checkList);
             mRecycler_view.setAdapter(mAdapter);
 
@@ -267,7 +281,7 @@ public class RoomTestActivitiy extends AppCompatActivity {
     }
 
 
-    public void chk_update(int chkgb,int position, long id) {
+    public void chk_update(int chkgb, int position, long id) {
         checkGb = chkgb;
         Check check = new Check(checkList.get(position).getCheckText(), checkGb);
         checkList.set(position, check);
