@@ -63,7 +63,6 @@ public class RoomTestActivitiy extends AppCompatActivity {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mRecycler_view.setLayoutManager(new VegaLayoutManager());
-
         //mRecycler_view.setLayoutManager(linearLayoutManager);
         checkList = new ArrayList<Check>();
 
