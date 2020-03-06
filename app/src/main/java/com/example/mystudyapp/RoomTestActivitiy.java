@@ -24,6 +24,7 @@ import com.example.mystudyapp.Room.AppDataBase;
 import com.example.mystudyapp.Room.Plan;
 import com.example.mystudyapp.adapters.RoomRecyclerAdapter;
 import com.example.mystudyapp.models.Check;
+import com.stone.vega.library.VegaLayoutManager;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -61,7 +62,9 @@ public class RoomTestActivitiy extends AppCompatActivity {
         mRecycler_view = findViewById(R.id.check_recycler);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        mRecycler_view.setLayoutManager(linearLayoutManager);
+        mRecycler_view.setLayoutManager(new VegaLayoutManager());
+
+        //mRecycler_view.setLayoutManager(linearLayoutManager);
         checkList = new ArrayList<Check>();
 
         db = Room.databaseBuilder(this, AppDataBase.class, "plan_db")
