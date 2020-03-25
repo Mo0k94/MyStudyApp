@@ -18,6 +18,10 @@ android {
     }
 }
 
+repositories {
+    maven { url "https://jitpack.io" }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //noinspection GradleCompatible
@@ -60,5 +64,7 @@ dependencies {
     // TedPermission 권한라이브러리
     implementation 'gun0912.ted:tedpermission:2.0.0'
 
+    // Chart 라이브러리
+    implementation 'com.github.PhilJay:MPAndroidChart:v2.2.4'
 
 }
