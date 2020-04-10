@@ -19,7 +19,6 @@ android {
 }
 
 repositories {
-    maven { url "https://jitpack.io" }
     maven { url 'https://www.myget.org/F/abtsoftware/maven' }
 }
 
@@ -70,5 +69,6 @@ dependencies {
 
     implementation 'com.github.AnyChart:AnyChart-Android:0.0.3'
 
-
+    // Stepper 라이브러리
+    implementation 'com.github.baoyachi:StepView:1.9'
 }

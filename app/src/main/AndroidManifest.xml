@@ -18,7 +18,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".GetVersionActivity"></activity>
+        <activity android:name=".StepperActivity"></activity>
+        <activity android:name=".GetVersionActivity" />
         <activity android:name=".HorizontalChartActivity" />
         <activity android:name=".ChartActivity" />
         <activity android:name=".activities.TedPermissionActivity" />

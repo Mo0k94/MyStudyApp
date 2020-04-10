@@ -117,9 +117,10 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("31) 현재 기기 연락처Get", "2020-02-26", secretAcitivyty.class);
         addItem("32) TedPermision권한", "2020-03-03", TedPermissionActivity.class);
         addItem("33) RecyclerView Animation", "2020-03-05",RoomTestActivitiy.class);
-        addItem("33) Chart", "2020-03-25",ChartActivity.class);
-        addItem("33) HorizontalChart", "2020-03-25",HorizontalChartActivity.class);
-        addItem("33) 현재 버전과 마켓 버전 비교 ", "2020-04-10",GetVersionActivity.class);
+        addItem("34) Chart", "2020-03-25",ChartActivity.class);
+        addItem("35) HorizontalChart", "2020-03-25",HorizontalChartActivity.class);
+        addItem("36) 현재 버전과 마켓 버전 비교 ", "2020-04-10",GetVersionActivity.class);
+        addItem("37) Stepper 라이브러리 ", "2020-04-10",StepperActivity.class);
 
 
         Collections.reverse(mDataList);
