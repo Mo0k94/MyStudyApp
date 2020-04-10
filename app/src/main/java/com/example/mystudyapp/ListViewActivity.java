@@ -119,6 +119,7 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("33) RecyclerView Animation", "2020-03-05",RoomTestActivitiy.class);
         addItem("33) Chart", "2020-03-25",ChartActivity.class);
         addItem("33) HorizontalChart", "2020-03-25",HorizontalChartActivity.class);
+        addItem("33) 현재 버전과 마켓 버전 비교 ", "2020-04-10",GetVersionActivity.class);
 
 
         Collections.reverse(mDataList);

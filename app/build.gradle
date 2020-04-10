@@ -20,6 +20,7 @@ android {
 
 repositories {
     maven { url "https://jitpack.io" }
+    maven { url 'https://www.myget.org/F/abtsoftware/maven' }
 }
 
 dependencies {
@@ -66,5 +67,8 @@ dependencies {
 
     // Chart 라이브러리
     implementation 'com.github.PhilJay:MPAndroidChart:v2.2.4'
+
+    implementation 'com.github.AnyChart:AnyChart-Android:0.0.3'
+
 
 }
