@@ -19,11 +19,11 @@ public class StepperActivity extends AppCompatActivity {
 
         HorizontalStepView stepView = findViewById(R.id.step_view);
         List<StepBean> stepsBeanList = new ArrayList<>();
-        StepBean stepBean0 = new StepBean("Step-1",1);
+        StepBean stepBean0 = new StepBean("Step-1",1);  //진행완료
         StepBean stepBean1 = new StepBean("Step-2",1);
         StepBean stepBean2 = new StepBean("Step-3",1);
-        StepBean stepBean3 = new StepBean("Step-4",0);
-        StepBean stepBean4 = new StepBean("Step-5",-1);
+        StepBean stepBean3 = new StepBean("Step-4",0);  //진행중
+        StepBean stepBean4 = new StepBean("Step-5",-1); // 미완료
 
         stepsBeanList.add(stepBean0);
         stepsBeanList.add(stepBean1);
