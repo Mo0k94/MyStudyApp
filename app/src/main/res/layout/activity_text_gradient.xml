@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".textWriterActivity">
-
-    <com.sarnava.textwriter.TextWriter
-        android:id="@+id/textWriter"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    tools:context=".textGradientActivity">
 
 
-
+    <TextView
+        android:id="@+id/gradient_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:text="간다ㅏ라"/>
 </LinearLayout>

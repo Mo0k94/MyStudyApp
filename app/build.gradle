@@ -78,4 +78,8 @@ dependencies {
     // TextWriter 라이브러리
     implementation 'com.github.sarnavakonar:TextWriter:v1.0'
 
+    // text그라데이션 라이브러리
+    implementation 'com.github.tushar09:Gradient-Textview:1.1'
+
+
 }

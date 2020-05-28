@@ -123,7 +123,8 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("36) 현재 버전과 마켓 버전 비교 ", "2020-04-10",GetVersionActivity.class);
         addItem("37) Stepper 라이브러리 ", "2020-04-10",StepperActivity.class);
         addItem("38) 코틀린 시작 ", "2020-05-25", KotlinActivity.class);
-        addItem("39) textWriter 라이브러ㅣ ", "2020-05-28", textWriterActivity.class);
+        addItem("39) textWriter 라이브러리 ", "2020-05-28", textWriterActivity.class);
+        addItem("39) Gradient Text 라이브러리 ", "2020-05-28", textGradientActivity.class);
 
 
         Collections.reverse(mDataList);
