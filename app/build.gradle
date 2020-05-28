@@ -6,7 +6,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.mystudyapp"
-        minSdkVersion 21
+        minSdkVersion 22
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -81,5 +81,10 @@ dependencies {
     // text그라데이션 라이브러리
     implementation 'com.github.tushar09:Gradient-Textview:1.1'
 
+    // 로딩뷰 라이브러리
+    implementation 'com.github.ibrahimsn98:CirclesLoadingView:1.0'
+
+    //FullScreen Image
+    implementation 'com.github.tntkhang:full-screen-image-view-library:1.1.0'
 
 }

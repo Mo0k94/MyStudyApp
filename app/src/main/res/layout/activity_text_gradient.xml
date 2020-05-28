@@ -16,4 +16,17 @@
         android:gravity="center"
         android:textSize="30sp"
         android:text="간다ㅏ라"/>
+
+    <me.ibrahimsn.lib.CirclesLoadingView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:circleRadius="8dp"
+        app:circleMargin="8dp"
+        app:animDistance="10dp"
+        app:animDuration="500"
+        app:animDelay="150"
+        app:animInterpolator="accelerateDecelerate"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 </LinearLayout>

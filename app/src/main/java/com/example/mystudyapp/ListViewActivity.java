@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.FullScreenImageActivity;
 import com.example.mystudyapp.GwangjuUniv.LoginUiActivity;
 import com.example.mystudyapp.activities.AsyncTaskActivity;
 import com.example.mystudyapp.activities.CardViewActivity;
@@ -124,7 +125,8 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("37) Stepper 라이브러리 ", "2020-04-10",StepperActivity.class);
         addItem("38) 코틀린 시작 ", "2020-05-25", KotlinActivity.class);
         addItem("39) textWriter 라이브러리 ", "2020-05-28", textWriterActivity.class);
-        addItem("39) Gradient Text 라이브러리 ", "2020-05-28", textGradientActivity.class);
+        addItem("40) Gradient Text 라이브러리 ", "2020-05-28", textGradientActivity.class);
+        addItem("41) RupiahEditText 라이브러리 ", "2020-05-28", FullScreenImageActivity.class);
 
 
         Collections.reverse(mDataList);
