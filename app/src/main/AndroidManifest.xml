@@ -18,7 +18,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.example.FullScreenImageActivity"></activity>
+        <activity android:name=".SimpleDialogActivity"></activity>
+        <activity android:name="com.example.FullScreenImageActivity" />
         <activity android:name=".RupiahEditActivity" />
         <activity android:name=".textGradientActivity" />
         <activity android:name=".textWriterActivity" />

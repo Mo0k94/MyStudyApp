@@ -127,6 +127,7 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("39) textWriter 라이브러리 ", "2020-05-28", textWriterActivity.class);
         addItem("40) Gradient Text 라이브러리 ", "2020-05-28", textGradientActivity.class);
         addItem("41) RupiahEditText 라이브러리 ", "2020-05-28", FullScreenImageActivity.class);
+        addItem("42) SimpleDialog 라이브러리 ", "2020-05-28", SimpleDialogActivity.class);
 
 
         Collections.reverse(mDataList);

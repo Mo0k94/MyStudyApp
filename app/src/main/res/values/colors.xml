@@ -15,6 +15,7 @@
 
     <!--  Login Btn  -->
     <color name="colorControlHighlight">#27B06E</color>
+    <color name="colorText">#4D4D4D</color>
     <color name="colorControlHighlight2">#27B08D</color>
 
 

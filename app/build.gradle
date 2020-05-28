@@ -87,4 +87,8 @@ dependencies {
     //FullScreen Image
     implementation 'com.github.tntkhang:full-screen-image-view-library:1.1.0'
 
+    //SimpleDialog 라이브러리
+    implementation 'com.github.barisatalay:Simple-Dialog:1.0'
+
+
 }
