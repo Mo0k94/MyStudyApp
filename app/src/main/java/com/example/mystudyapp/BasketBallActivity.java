@@ -2,8 +2,8 @@ package com.example.mystudyapp;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.support.v4.content.SharedPreferencesCompat;
-import android.support.v7.app.AppCompatActivity;
+import androidx.core.content.SharedPreferencesCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;

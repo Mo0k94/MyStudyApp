@@ -1,12 +1,10 @@
 package com.example.mystudyapp.activities;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -15,7 +13,6 @@ import com.example.mystudyapp.R;
 import com.example.mystudyapp.adapters.Food_Adapter;
 import com.example.mystudyapp.models.FoodMenu;
 
-import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

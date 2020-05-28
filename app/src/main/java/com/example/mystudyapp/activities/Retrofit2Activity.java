@@ -1,7 +1,7 @@
 package com.example.mystudyapp.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,7 +15,6 @@ import com.example.mystudyapp.Retrofit2.ApiClient;
 import com.example.mystudyapp.Retrofit2.ResultModel;
 import com.example.mystudyapp.Retrofit2.RetrofitUtil;
 import com.example.mystudyapp.Retrofit2.UserApi;
-import com.example.mystudyapp.models.Login;
 import com.google.gson.Gson;
 
 import retrofit2.Call;

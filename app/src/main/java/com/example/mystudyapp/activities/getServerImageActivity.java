@@ -1,8 +1,7 @@
 package com.example.mystudyapp.activities;
 
 
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;

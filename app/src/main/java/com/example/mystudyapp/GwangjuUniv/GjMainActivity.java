@@ -3,7 +3,7 @@ package com.example.mystudyapp.GwangjuUniv;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,14 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mystudyapp.R;
-import com.example.mystudyapp.Retrofit2.ImageApi;
 import com.example.mystudyapp.Retrofit2.ResultModel;
-import com.example.mystudyapp.Retrofit2.RetrofitImage;
 import com.example.mystudyapp.Retrofit2.RetrofitUtil;
 import com.example.mystudyapp.Retrofit2.UserApi;
 import com.example.mystudyapp.activities.ViewPagerActivity;
-import com.example.mystudyapp.adapters.ImageRecyclerAdapter;
-import com.example.mystudyapp.models.getServerImage;
 
 import java.util.List;
 

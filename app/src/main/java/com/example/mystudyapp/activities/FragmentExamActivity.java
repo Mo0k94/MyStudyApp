@@ -2,13 +2,11 @@ package com.example.mystudyapp.activities;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 
 import com.example.mystudyapp.R;
-import com.example.mystudyapp.fragments.ExamFragment1;
 import com.example.mystudyapp.fragments.TextFragment;
 
 import java.util.Random;

@@ -16,7 +16,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="90dp"
         android:orientation="vertical">
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/card_view1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -147,7 +147,7 @@
 
 
         </LinearLayout>
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
         <RelativeLayout
             android:id="@+id/rl"
@@ -160,7 +160,7 @@
             android:layout_marginLeft="35dp"
             android:layout_marginRight="35dp"
             android:layout_marginTop="-30dp">
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:id="@+id/card_view"
             android:layout_width="300dp"
             android:layout_height="50dp"
@@ -184,7 +184,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
         </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"

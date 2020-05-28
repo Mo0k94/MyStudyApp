@@ -2,7 +2,7 @@ package com.example.mystudyapp;
 
 import android.Manifest;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -39,6 +39,7 @@ import com.example.mystudyapp.activities.WebBrowserActivity;
 import com.example.mystudyapp.activities.addViewActivity;
 import com.example.mystudyapp.activities.getServerImageActivity;
 import com.example.mystudyapp.adapters.MyAdapter;
+import com.example.mystudyapp.kotlin.KotlinActivity;
 import com.example.mystudyapp.models.ListItem;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
@@ -121,6 +122,8 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("35) HorizontalChart", "2020-03-25",HorizontalChartActivity.class);
         addItem("36) 현재 버전과 마켓 버전 비교 ", "2020-04-10",GetVersionActivity.class);
         addItem("37) Stepper 라이브러리 ", "2020-04-10",StepperActivity.class);
+        addItem("38) 코틀린 시작 ", "2020-05-25", KotlinActivity.class);
+        addItem("39) textWriter 라이브러ㅣ ", "2020-05-28", textWriterActivity.class);
 
 
         Collections.reverse(mDataList);

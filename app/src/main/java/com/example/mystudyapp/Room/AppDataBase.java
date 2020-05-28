@@ -1,7 +1,7 @@
 package com.example.mystudyapp.Room;
 
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.RoomDatabase;
+import androidx.room.Database;
+import androidx.room.RoomDatabase;
 
 
 @Database(entities = {Plan.class}, version = 1, exportSchema = false)
