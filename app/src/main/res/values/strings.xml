@@ -6,4 +6,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
 
+
+    <!--Gliger 라이브러리 -->
+    <string name="over_limit_msg">이미지는 최대 3장까지 선택가능합니다.</string>
+    <string name="capture_new_image">카메라</string>
+    <string name="change_album_text">앨범 변경</string>
+    <string name="all_images">모든 앨범</string>
 </resources>

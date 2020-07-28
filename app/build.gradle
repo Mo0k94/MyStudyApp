@@ -3,12 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
 
         applicationId "com.example.mystudyapp"
         minSdkVersion 22
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -91,6 +91,14 @@ dependencies {
     //SimpleDialog 라이브러리
     implementation 'com.github.barisatalay:Simple-Dialog:1.0'
 
+    // TedBottomPicker 라이브러리
+
+    implementation 'com.opensooq.supernova:gligar:1.0.0'
+    implementation 'com.github.dhaval2404:imagepicker:1.7.3'
+
+    // 다중 이미지 라이브러리
+    implementation 'com.github.tizisdeepan:gallerypicker:1.0.1'
+    implementation 'com.opensooq.supernova:gligar:1.1.0'
 
 
 }

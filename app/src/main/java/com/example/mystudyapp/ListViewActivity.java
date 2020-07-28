@@ -46,6 +46,7 @@ import com.gun0912.tedpermission.TedPermission;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class ListViewActivity extends AppCompatActivity {
 
@@ -128,6 +129,11 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("41) FullScreenImage 라이브러리 ", "2020-05-28", FullScreenImageActivity.class);
         addItem("42) SimpleDialog 라이브러리 ", "2020-05-28", SimpleDialogActivity.class);
         addItem("43) ClearEditText  ", "2020-07-23",ClearEditTextActivity.class);
+        addItem("44) TedBottomPicker 라이브러리", "2020-07-24", ImagePickerLibraryActivity.class);
+        addItem("45) 다중 이미지 라이브러리", "2020-07-27", MatisseActivity.class);
+        addItem("46) TedBottomPicker 라이브러리2", "2020-07-27", TedBottomPicker.class);
+        addItem("47) Gliger 라이브러리", "2020-07-28", GligerActivity.class);
+
 
 
         Collections.reverse(mDataList);
@@ -186,6 +192,7 @@ public class ListViewActivity extends AppCompatActivity {
             public void onPermissionDenied(ArrayList<String> deniedPermissions) {
                 Toast.makeText(ListViewActivity.this, "권한 거부", Toast.LENGTH_SHORT).show();
             }
+
         };
         TedPermission.with(this)
                 .setPermissionListener(permissionListener)
