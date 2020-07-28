@@ -3,9 +3,30 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/addImage"
+
+    <RelativeLayout
         android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:scaleType="centerCrop"/>
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/addImage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop" />
+
+        <RelativeLayout
+            android:id="@+id/rl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:elevation="10dp">
+
+            <ImageView
+                android:id="@+id/delImage"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_arrow_back_24dp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
 </LinearLayout>

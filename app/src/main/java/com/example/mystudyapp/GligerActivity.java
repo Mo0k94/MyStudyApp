@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -126,9 +127,17 @@ public class GligerActivity extends AppCompatActivity {
 
             LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 
-            LinearLayout statLayoutItem = (LinearLayout) inflater.inflate(R.layout.addimage, null);
-            ImageView addImg = statLayoutItem.findViewById(R.id.addImage);
-
+            final LinearLayout statLayoutItem = (LinearLayout) inflater.inflate(R.layout.addimage, null);
+            final ImageView addImg = statLayoutItem.findViewById(R.id.addImage);
+            final ImageView delImg = statLayoutItem.findViewById(R.id.delImage);
+            delImg.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(GligerActivity.this, "ImageView "+ addImg.getId(), Toast.LENGTH_SHORT).show();
+                    mImageLinear.removeView(statLayoutItem);
+                    count--;
+                }
+            });
             Glide.with(getApplicationContext())
                     .load(myBitmap)
                     .override(300,300)
@@ -137,6 +146,7 @@ public class GligerActivity extends AppCompatActivity {
 
             //addImg.setImageBitmap(myBitmap);
             mImageLinear.addView(statLayoutItem);
+
 
             //ImageView myImage = (ImageView) findViewById(R.id.Images1);
 
