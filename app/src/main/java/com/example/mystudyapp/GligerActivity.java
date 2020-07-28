@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -17,6 +18,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.mystudyapp.utils.FileUtils;
@@ -34,6 +36,7 @@ public class GligerActivity extends AppCompatActivity {
     ImageView imageView1, imageView2, imageView3;
     LinearLayout mImageLinear;
     String[] pathsList;
+    int count=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,15 +57,34 @@ public class GligerActivity extends AppCompatActivity {
        imgBtn.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               new GligarPicker()
-                       .requestCode(PICKER_REQUEST_CODE)
-                       .limit(3)// 최대 이미지 수
-                       .withActivity(GligerActivity.this)   //Activity
-                       //.withFragment -> Fragment
-                       // .disableCamera(false) -> 카메라 캡처를 사용할지
-                       // .cameraDirect(true) -> 바로 카메라를 실행할지
-                       .show();
-           }
+
+               if(pathsList != null){
+                   Toast.makeText(GligerActivity.this, "현재 이미지 개수 "+count, Toast.LENGTH_SHORT).show();
+                   if(count ==3){
+                       Toast.makeText(GligerActivity.this, "이미지는 최대 3장까지 선택가능합니다.", Toast.LENGTH_SHORT).show();
+                   }else{
+
+                       new GligarPicker()
+                               .requestCode(PICKER_REQUEST_CODE)
+                               .limit(3-count)// 최대 이미지 수
+                               .withActivity(GligerActivity.this)   //Activity
+                               //.withFragment -> Fragment
+                               // .disableCamera(false) -> 카메라 캡처를 사용할지
+                               // .cameraDirect(true) -> 바로 카메라를 실행할지
+                               .show();
+                   }
+               }else{
+                   new GligarPicker()
+                           .requestCode(PICKER_REQUEST_CODE)
+                           .limit(3)// 최대 이미지 수
+                           .withActivity(GligerActivity.this)   //Activity
+                           //.withFragment -> Fragment
+                           // .disableCamera(false) -> 카메라 캡처를 사용할지
+                           // .cameraDirect(true) -> 바로 카메라를 실행할지
+                           .show();
+               }
+
+       }
        });
 
     }
@@ -77,9 +99,10 @@ public class GligerActivity extends AppCompatActivity {
         switch (requestCode){
             case PICKER_REQUEST_CODE : {
                 pathsList= data.getExtras().getStringArray(GligarPicker.IMAGES_RESULT); // return list of selected images paths.
-                imgText.setText("Number of selected Images: " + pathsList.length);
+                imgText.setText("Number of selected Images: " + count);
                 Log.d("TAG", "pathList : " + Arrays.toString(pathsList));
                 for(int i=0;i<pathsList.length;i++){
+                    count++;
                     Log.d("TAG", "pathList "+i + "번째 : " + pathsList[i]);
                     setImage(pathsList[i]);
                 }
