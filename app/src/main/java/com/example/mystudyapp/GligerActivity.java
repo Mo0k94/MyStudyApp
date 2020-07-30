@@ -5,28 +5,29 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.mystudyapp.utils.FileUtils;
+import com.github.tntkhang.fullscreenimageview.library.FullScreenImageViewActivity;
 import com.opensooq.supernova.gligar.GligarPicker;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class GligerActivity extends AppCompatActivity {
 
@@ -38,12 +39,18 @@ public class GligerActivity extends AppCompatActivity {
     LinearLayout mImageLinear;
     String[] pathsList;
     int count=0;
+    private ArrayList<String> uriList;
+
+    HashMap<Integer, String> imagePathMap = new HashMap<Integer, String>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gliger);
 
 
+
+        uriList = new ArrayList<>();
 
        mImageLinear = findViewById(R.id.imageLinear);
 
@@ -75,6 +82,7 @@ public class GligerActivity extends AppCompatActivity {
                                .show();
                    }
                }else{
+                   imagePathMap.clear();
                    new GligarPicker()
                            .requestCode(PICKER_REQUEST_CODE)
                            .limit(3)// 최대 이미지 수
@@ -100,13 +108,25 @@ public class GligerActivity extends AppCompatActivity {
         switch (requestCode){
             case PICKER_REQUEST_CODE : {
                 pathsList= data.getExtras().getStringArray(GligarPicker.IMAGES_RESULT); // return list of selected images paths.
-                imgText.setText("Number of selected Images: " + count);
+
+
                 Log.d("TAG", "pathList : " + Arrays.toString(pathsList));
+
+
+
+
                 for(int i=0;i<pathsList.length;i++){
+
+                    uriList.add(pathsList[i]);
+                    //imagePathMap.put(i, pathsList[i]);
                     count++;
-                    Log.d("TAG", "pathList "+i + "번째 : " + pathsList[i]);
                     setImage(pathsList[i]);
                 }
+
+
+                //Log.d("TAG","imagePathMap : " + imagePathMap.toString());
+                Log.d("TAG","ArrayList  : " + uriList.toString());
+                imgText.setText("Number of selected Images: " + count);
 
                 Uri uri = Uri.parse(pathsList[0]);
                 File originalFile = FileUtils.getFile(GligerActivity.this, uri);
@@ -118,9 +138,9 @@ public class GligerActivity extends AppCompatActivity {
     }
 
     // 파일 경로를 받아와 Bitmap 으로 변환후 ImageView 적용
-    public void setImage(String imagePath){
-        File imgFile = new  File(imagePath);
+    public void setImage(final String imagePath){
 
+        File imgFile = new  File(imagePath);
         if(imgFile.exists()){
 
             Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
@@ -130,12 +150,32 @@ public class GligerActivity extends AppCompatActivity {
             final LinearLayout statLayoutItem = (LinearLayout) inflater.inflate(R.layout.addimage, null);
             final ImageView addImg = statLayoutItem.findViewById(R.id.addImage);
             final ImageView delImg = statLayoutItem.findViewById(R.id.delImage);
+
+
+
             delImg.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(GligerActivity.this, "ImageView "+ addImg.getId(), Toast.LENGTH_SHORT).show();
-                    mImageLinear.removeView(statLayoutItem);
-                    count--;
+                    Log.d("TAG","동일한 이미지가 있는지 확인 : " + imagePathMap.containsValue(imagePath));
+                    Log.d("TAG","동일한 이미지가 있는지 확인 : " + getKey(imagePathMap,imagePath));
+                    if(uriList.contains(imagePath)){
+                        uriList.remove(imagePath);
+                        count--;
+                        mImageLinear.removeView(statLayoutItem);
+                        Log.d("TAG","동일한 이미지가 있는지 확인 ArrayList : " + uriList.toString());
+                    }
+                    /*if(imagePathMap.containsValue(imagePath)){  //동일한 이미지가 있는 경우
+                        uriList.remove(imagePath);
+                        imagePathMap.remove(getKey(imagePathMap,imagePath));
+                        mImageLinear.removeView(statLayoutItem);
+                        count--;
+                        delyn = true;
+                        Log.d("TAG","동일한 이미지가 있는지 확인 Map : " + imagePathMap.toString());
+                        Log.d("TAG","동일한 이미지가 있는지 확인 ArrayList : " + uriList.toString());
+
+                    }*/
+                    Toast.makeText(GligerActivity.this, "ImageView "+ imagePath, Toast.LENGTH_SHORT).show();
+
                 }
             });
             Glide.with(getApplicationContext())
@@ -153,6 +193,24 @@ public class GligerActivity extends AppCompatActivity {
 
 
         }
+    }
+
+    public Object getKey(HashMap<Integer, String> m, Object value) {
+        for(Object o: m.keySet()) {
+            if(m.get(o).equals(value)) {
+                return o;
+            }
+        }
+        return null;
+    }
+
+
+
+    private void onImageClickAction(ArrayList<String> uriString, int pos) {
+        Intent fullImageIntent = new Intent(GligerActivity.this, FullScreenImageViewActivity.class);
+        fullImageIntent.putExtra(FullScreenImageViewActivity.URI_LIST_DATA, uriString);
+        fullImageIntent.putExtra(FullScreenImageViewActivity.IMAGE_FULL_SCREEN_CURRENT_POS, pos);
+        startActivity(fullImageIntent);
     }
 
 
