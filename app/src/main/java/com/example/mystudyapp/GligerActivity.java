@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.mystudyapp.utils.FileUtils;
+import com.github.siyamed.shapeimageview.RoundedImageView;
 import com.github.tntkhang.fullscreenimageview.library.FullScreenImageViewActivity;
 import com.opensooq.supernova.gligar.GligarPicker;
 
@@ -33,9 +34,9 @@ public class GligerActivity extends AppCompatActivity {
 
     final int PICKER_REQUEST_CODE = 101;
 
-    TextView imgText;
-    Button imgBtn;
     ImageView imageView1, imageView2, imageView3;
+    ImageView mCameraIcon;
+    TextView mImageCount;
     LinearLayout mImageLinear;
     String[] pathsList;
     int count=0;
@@ -48,33 +49,31 @@ public class GligerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gliger);
 
-
-
         uriList = new ArrayList<>();
 
        mImageLinear = findViewById(R.id.imageLinear);
 
-       imgText = findViewById(R.id.imageTxt);
-       imgBtn = findViewById(R.id.imgBtn);
 
        imageView1 = findViewById(R.id.image1);
        imageView2 = findViewById(R.id.image2);
        imageView3 = findViewById(R.id.image3);
 
+        mCameraIcon = findViewById(R.id.cameraIcon);
+        mImageCount = findViewById(R.id.imageTxtCount);
 
-       imgBtn.setOnClickListener(new View.OnClickListener() {
+        mCameraIcon.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
 
                if(pathsList != null){
                    Toast.makeText(GligerActivity.this, "현재 이미지 개수 "+count, Toast.LENGTH_SHORT).show();
-                   if(count ==3){
-                       Toast.makeText(GligerActivity.this, "이미지는 최대 3장까지 선택가능합니다.", Toast.LENGTH_SHORT).show();
+                   if(count ==4){
+                       Toast.makeText(GligerActivity.this, "이미지는 최대 4장까지 선택가능합니다.", Toast.LENGTH_SHORT).show();
                    }else{
 
                        new GligarPicker()
                                .requestCode(PICKER_REQUEST_CODE)
-                               .limit(3-count)// 최대 이미지 수
+                               .limit(4-count)// 최대 이미지 수
                                .withActivity(GligerActivity.this)   //Activity
                                //.withFragment -> Fragment
                                // .disableCamera(false) -> 카메라 캡처를 사용할지
@@ -85,7 +84,7 @@ public class GligerActivity extends AppCompatActivity {
                    imagePathMap.clear();
                    new GligarPicker()
                            .requestCode(PICKER_REQUEST_CODE)
-                           .limit(3)// 최대 이미지 수
+                           .limit(4)// 최대 이미지 수
                            .withActivity(GligerActivity.this)   //Activity
                            //.withFragment -> Fragment
                            // .disableCamera(false) -> 카메라 캡처를 사용할지
@@ -126,7 +125,7 @@ public class GligerActivity extends AppCompatActivity {
 
                 //Log.d("TAG","imagePathMap : " + imagePathMap.toString());
                 Log.d("TAG","ArrayList  : " + uriList.toString());
-                imgText.setText("Number of selected Images: " + count);
+
 
                 Uri uri = Uri.parse(pathsList[0]);
                 File originalFile = FileUtils.getFile(GligerActivity.this, uri);
@@ -148,7 +147,7 @@ public class GligerActivity extends AppCompatActivity {
             LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 
             final LinearLayout statLayoutItem = (LinearLayout) inflater.inflate(R.layout.addimage, null);
-            final ImageView addImg = statLayoutItem.findViewById(R.id.addImage);
+            final RoundedImageView addImg = statLayoutItem.findViewById(R.id.addImage);
             final ImageView delImg = statLayoutItem.findViewById(R.id.delImage);
 
 
@@ -162,18 +161,10 @@ public class GligerActivity extends AppCompatActivity {
                         uriList.remove(imagePath);
                         count--;
                         mImageLinear.removeView(statLayoutItem);
+                        mImageCount.setText(count+"/4");
                         Log.d("TAG","동일한 이미지가 있는지 확인 ArrayList : " + uriList.toString());
                     }
-                    /*if(imagePathMap.containsValue(imagePath)){  //동일한 이미지가 있는 경우
-                        uriList.remove(imagePath);
-                        imagePathMap.remove(getKey(imagePathMap,imagePath));
-                        mImageLinear.removeView(statLayoutItem);
-                        count--;
-                        delyn = true;
-                        Log.d("TAG","동일한 이미지가 있는지 확인 Map : " + imagePathMap.toString());
-                        Log.d("TAG","동일한 이미지가 있는지 확인 ArrayList : " + uriList.toString());
 
-                    }*/
                     Toast.makeText(GligerActivity.this, "ImageView "+ imagePath, Toast.LENGTH_SHORT).show();
 
                 }
@@ -184,14 +175,8 @@ public class GligerActivity extends AppCompatActivity {
                     .fitCenter()
                     .into(addImg);
 
-            //addImg.setImageBitmap(myBitmap);
             mImageLinear.addView(statLayoutItem);
-
-
-            //ImageView myImage = (ImageView) findViewById(R.id.Images1);
-
-
-
+            mImageCount.setText(count+"/4");
         }
     }
 

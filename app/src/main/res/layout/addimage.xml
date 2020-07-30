@@ -1,31 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootLinaer"
+    android:layout_width="70dp"
+    android:layout_height="75dp"
+    android:orientation="vertical">
 
 
     <RelativeLayout
-        android:layout_width="100dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/addImage"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:scaleType="centerCrop" />
 
         <RelativeLayout
             android:id="@+id/rl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
+            android:layout_marginStart="55dp"
             android:elevation="10dp">
 
             <ImageView
                 android:id="@+id/delImage"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/ic_arrow_back_24dp" />
+                android:src="@drawable/deleteiconblack2" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="10dp">
+
+            <com.github.siyamed.shapeimageview.RoundedImageView
+                android:id="@+id/addImage"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bus"
+                app:siRadius="5dp" />
+
+<!--            <ImageView
+
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bus" />-->
         </RelativeLayout>
 
     </RelativeLayout>

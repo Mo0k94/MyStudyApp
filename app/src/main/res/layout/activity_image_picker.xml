@@ -17,7 +17,7 @@
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
         android:visibility="visible"
-        app:siRadius="6dp" />
+        app:siRadius="10dp" />
 
     <Button
         android:id="@+id/chooseBtn"

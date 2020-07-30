@@ -7,24 +7,39 @@
     android:orientation="vertical"
     tools:context=".GligerActivity">
 
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imgBtn"
-        android:text="ImagesPick"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:id="@+id/imageTxt"/>
-
     <LinearLayout
         android:id="@+id/imageLinear"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:paddingStart="15dp"
         android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/main_border"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/cameraIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_baseline_camera_alt_24" />
+
+            <TextView
+                android:id="@+id/imageTxtCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cameraIcon"
+                android:layout_centerHorizontal="true"
+                android:text="3/3" />
+
+        </RelativeLayout>
+
 
         <!--<ImageView
             android:layout_width="100dp"
