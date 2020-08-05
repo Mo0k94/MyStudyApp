@@ -22,9 +22,9 @@ class ImageSlideActivity : AppCompatActivity() {
 
 
 
-        slideModels.add(SlideModel("http://tkdanr2427.cafe24.com/Study/uploads/%ED%98%B8%EC%87%BC_2020-08-03_2.jpg","Image1"))
-        slideModels.add(SlideModel("http://tkdanr2427.cafe24.com/Study/uploads/%ED%98%B8%EC%87%BC_2020-08-03_1.jpg","Image2"))
-        slideModels.add(SlideModel("http://tkdanr2427.cafe24.com/Study/uploads/%ED%98%B8%EC%87%BC_2020-08-03_0.jpg","Image3"))
+        slideModels.add(SlideModel("http://tkdanr2427.cafe24.com/Study/uploads/%ED%98%B8%EC%87%BC_2020-08-03_2.jpg","제목입니다."))
+        slideModels.add(SlideModel("http://tkdanr2427.cafe24.com/Study/uploads/%ED%98%B8%EC%87%BC_2020-08-03_1.jpg","제목입니다."))
+        slideModels.add(SlideModel("http://tkdanr2427.cafe24.com/Study/uploads/%ED%98%B8%EC%87%BC_2020-08-03_0.jpg","제목입니다."))
 
         img_slider.setImageList(slideModels, true)
 
