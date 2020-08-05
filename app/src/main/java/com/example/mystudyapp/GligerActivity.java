@@ -81,7 +81,6 @@ public class GligerActivity extends AppCompatActivity {
                                .show();
                    }
                }else{
-                   imagePathMap.clear();
                    new GligarPicker()
                            .requestCode(PICKER_REQUEST_CODE)
                            .limit(4)// 최대 이미지 수

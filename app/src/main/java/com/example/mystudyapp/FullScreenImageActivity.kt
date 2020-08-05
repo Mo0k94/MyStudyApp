@@ -14,14 +14,15 @@ class FullScreenImageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_full_screen_image)
 
-        val uri = Uri.parse("android.resource://$packageName/drawable/bus");
-        val uri2 = Uri.parse("android.resource://$packageName/drawable/icon");
-        val uri3 = Uri.parse("android.resource://$packageName/drawable/board");
+        val uri = Uri.parse("http://tkdanr2427.cafe24.com/Study/uploads/호쇼_2020-08-03_1.jpg");
+        val uri2 = Uri.parse("http://tkdanr2427.cafe24.com/Study/uploads/유소_2020-08-03_2.jpg");
+        //val uri3 = Uri.parse("android.resource://$packageName/drawable/board");
+        val uri3 = Uri.parse("http://tkdanr2427.cafe24.com/Study/uploads/%EC%95%84%EB%82%98_2020-08-03_1.png");
 
 
 
         val uriString: ArrayList<String> = ArrayList()
-        uriString.add(uri.toString())
+        uriString.add("http://tkdanr2427.cafe24.com/Study/uploads/호쇼_2020-08-03_1.jpg")
         uriString.add(uri2.toString())
         uriString.add(uri3.toString())
 

@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.denzcoskun.imageslider.ImageSlider;
 import com.example.mystudyapp.GwangjuUniv.LoginUiActivity;
 import com.example.mystudyapp.activities.AsyncTaskActivity;
 import com.example.mystudyapp.activities.CardViewActivity;
@@ -133,6 +134,7 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("45) 다중 이미지 라이브러리", "2020-07-27", MatisseActivity.class);
         addItem("46) TedBottomPicker 라이브러리2", "2020-07-27", TedBottomPicker.class);
         addItem("47) Gliger 라이브러리", "2020-07-28", GligerActivity.class);
+        addItem("48) ImageSlide 라이브러리(denzcoskun:ImageSlideshow)", "2020-07-28", ImageSlideActivity.class);
 
 
 
