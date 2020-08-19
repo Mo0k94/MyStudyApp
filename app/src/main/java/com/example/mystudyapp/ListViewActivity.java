@@ -135,6 +135,8 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("46) TedBottomPicker 라이브러리2", "2020-07-27", TedBottomPicker.class);
         addItem("47) Gliger 라이브러리", "2020-07-28", GligerActivity.class);
         addItem("48) ImageSlide 라이브러리(denzcoskun:ImageSlideshow)", "2020-07-28", ImageSlideActivity.class);
+        addItem("49) IonAlert 라이브러리", "2020-08-11", IonAlertActivity.class);
+        addItem("50) AndExAlert 라이브러리", "2020-08-19", AndExAlertActivity.class);
 
 
 

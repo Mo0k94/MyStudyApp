@@ -125,7 +125,7 @@ public class BoardInsertActivity extends AppCompatActivity {
                 //updateuri = Uri.parse(image_path);
 //                String filePath = fileUri.getPath();
 //                Cursor c = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,null,"_data= '" + filePath + "'",null,null);
-//                c.moveToNext();
+//                1
 //                int img_id = c.getInt(c.getColumnIndex("_id"));
 //                updateuri = ContentUris.withAppendedId(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,img_id);
 

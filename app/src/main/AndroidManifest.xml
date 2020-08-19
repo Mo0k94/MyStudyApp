@@ -20,8 +20,11 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="q">
-        <activity android:name=".ImageSlideActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".AndExAlertActivity"></activity>
+        <activity android:name=".IonAlertActivity" />
+        <activity
+            android:name=".ImageSlideActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".GligerActivity" />
         <activity android:name=".TedBottomPicker" />
         <activity android:name=".MatisseActivity" />
