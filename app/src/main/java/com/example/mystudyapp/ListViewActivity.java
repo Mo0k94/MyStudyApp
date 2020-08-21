@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.denzcoskun.imageslider.ImageSlider;
 import com.example.mystudyapp.GwangjuUniv.LoginUiActivity;
 import com.example.mystudyapp.activities.AsyncTaskActivity;
 import com.example.mystudyapp.activities.CardViewActivity;
@@ -47,7 +46,6 @@ import com.gun0912.tedpermission.TedPermission;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class ListViewActivity extends AppCompatActivity {
 
@@ -137,6 +135,7 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("48) ImageSlide 라이브러리(denzcoskun:ImageSlideshow)", "2020-07-28", ImageSlideActivity.class);
         addItem("49) IonAlert 라이브러리", "2020-08-11", IonAlertActivity.class);
         addItem("50) AndExAlert 라이브러리", "2020-08-19", AndExAlertActivity.class);
+        addItem("51) Horizontal Calendar 라이브러리", "2020-08-21", HorizontalCalendarActivity.class);
 
 
 

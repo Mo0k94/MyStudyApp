@@ -7,7 +7,7 @@ android {
     defaultConfig {
 
         applicationId "com.example.mystudyapp"
-        minSdkVersion 22
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -117,5 +117,8 @@ dependencies {
      implementation 'com.github.oktavianto:ionalert:1.0.4'
     // alert 라이브러리
     implementation 'com.github.salehyarahmadi:AndExAlertDialog:v1.0.1'
+
+    // Horizontal Calendar 라이브러리
+    implementation 'com.github.akshittyagi205:HorizontalCalendarView:v1.0.0'
 
 }
