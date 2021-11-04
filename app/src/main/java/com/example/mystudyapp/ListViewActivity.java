@@ -79,11 +79,6 @@ public class ListViewActivity extends AppCompatActivity {
         //데이터터
         mDataList = new ArrayList<>();
 
-
-
-
-
-
         addItem("1) 사운드 & 스탑워치", "05-18", MainActivity.class);
         addItem("2) WebView", "05-18", WebBrowserActivity.class);
         addItem("3) 날씨앱(05-19)", "모델클래스를 활용하여 BaseAdapter 연습", WeatherActivity.class);
@@ -136,6 +131,8 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("49) IonAlert 라이브러리", "2020-08-11", IonAlertActivity.class);
         addItem("50) AndExAlert 라이브러리", "2020-08-19", AndExAlertActivity.class);
         addItem("51) Horizontal Calendar 라이브러리", "2020-08-21", HorizontalCalendarActivity.class);
+        addItem("51) zxing 라이브러리", "2020-09-04", BarcodeActivity.class);
+        addItem("52) imageSlide ViewPagjer 사용", "2021-11-04", ImageSlideViewPageActivity.class);
 
 
 

@@ -5,6 +5,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitImage {
 
+    private static final String BaseUrl = "http://tkdanr2427.cafe24.com/imageblob/";
+
+
     private Retrofit mRetrofit;
 
     private ImageApi mImageApi;
@@ -12,7 +15,7 @@ public class RetrofitImage {
     public RetrofitImage(){
 
         mRetrofit = new Retrofit.Builder()
-                .baseUrl(ImageApi.BaseUrl)
+                .baseUrl(BaseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         mImageApi = mRetrofit.create(ImageApi.class);

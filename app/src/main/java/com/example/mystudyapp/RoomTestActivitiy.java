@@ -65,7 +65,7 @@ public class RoomTestActivitiy extends AppCompatActivity {
         //mRecycler_view.setLayoutManager(linearLayoutManager);
         checkList = new ArrayList<Check>();
 
-        db = Room.databaseBuilder(this, AppDataBase.class, "plan_db")
+        db = Room.databaseBuilder(this, AppDataBase.class, "planTable")
                 .allowMainThreadQueries()
                 .addMigrations(MIGRATION_2_3)
                 .build();
@@ -175,7 +175,7 @@ public class RoomTestActivitiy extends AppCompatActivity {
                 AnimationUtils.loadLayoutAnimation(RoomTestActivitiy.this, R.anim.layout_animation_fall_down);
 
         mRecycler_view.setLayoutAnimation(controller);
-        mRecycler_view.getAdapter().notifyDataSetChanged();
+        //mRecycler_view.getAdapter().notifyDataSetChanged();
         mRecycler_view.scheduleLayoutAnimation();
 
 

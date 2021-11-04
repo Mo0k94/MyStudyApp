@@ -20,7 +20,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="q">
-        <activity android:name=".HorizontalCalendarActivity"></activity>
+        <activity android:name=".ImageSlideViewPageActivity"></activity>
+        <activity android:name=".BarcodeActivity" />
+        <activity android:name=".HorizontalCalendarActivity" />
         <activity android:name=".AndExAlertActivity" />
         <activity android:name=".IonAlertActivity" />
         <activity
