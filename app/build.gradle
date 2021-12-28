@@ -127,4 +127,9 @@ dependencies {
     // Horizontal Calendar 라이브러리
     implementation 'com.github.akshittyagi205:HorizontalCalendarView:v1.0.0'
 
+    // ViewPager2
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+
+    implementation 'com.github.chrisbanes:PhotoView:2.1.3'
+
 }
