@@ -20,6 +20,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="q">
+        <activity android:name=".MultipleImageActivity"></activity>
+        <activity android:name=".ImageSlideViewPageActivity" />
         <activity
             android:name=".PhotoViewActivity"
             android:exported="false" />
