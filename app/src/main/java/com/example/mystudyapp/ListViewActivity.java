@@ -73,9 +73,6 @@ public class ListViewActivity extends AppCompatActivity {
 
         mListView = findViewById(R.id.list_view);
 
-
-
-
         //데이터터
         mDataList = new ArrayList<>();
 
