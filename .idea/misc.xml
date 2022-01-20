@@ -13,16 +13,18 @@
         <entry key="..\:/dev/Android/MyStudyApp/app/src/main/res/drawable/bg_indicator_active.xml" value="0.5815384615384616" />
         <entry key="..\:/dev/Android/MyStudyApp/app/src/main/res/drawable/ic_create_24dp.xml" value="0.25925925925925924" />
         <entry key="..\:/dev/Android/MyStudyApp/app/src/main/res/layout/activity_add_view.xml" value="0.24728260869565216" />
+        <entry key="..\:/dev/Android/MyStudyApp/app/src/main/res/layout/activity_draw_box.xml" value="0.25364583333333335" />
         <entry key="..\:/dev/Android/MyStudyApp/app/src/main/res/layout/activity_gjboard.xml" value="0.2427536231884058" />
         <entry key="..\:/dev/Android/MyStudyApp/app/src/main/res/layout/activity_image_slide_view_page.xml" value="0.1" />
         <entry key="..\:/dev/Android/MyStudyApp/app/src/main/res/layout/activity_list_view.xml" value="0.12335359675785208" />
         <entry key="..\:/dev/Android/MyStudyApp/app/src/main/res/layout/activity_memo.xml" value="0.12335359675785208" />
-        <entry key="..\:/dev/Android/MyStudyApp/app/src/main/res/layout/activity_photo_view.xml" value="0.5744791666666667" />
+        <entry key="..\:/dev/Android/MyStudyApp/app/src/main/res/layout/activity_photo_view.xml" value="0.4419237749546279" />
         <entry key="..\:/dev/Android/MyStudyApp/app/src/main/res/layout/activity_striked_image_view.xml" value="0.1" />
         <entry key="..\:/dev/Android/MyStudyApp/app/src/main/res/layout/content_memo.xml" value="0.12335359675785208" />
         <entry key="..\:/dev/Android/MyStudyApp/app/src/main/res/layout/fragment_list_view.xml" value="0.12335359675785208" />
         <entry key="..\:/dev/Android/MyStudyApp/app/src/main/res/layout/item_image_slide.xml" value="0.5744791666666667" />
         <entry key="..\:/dev/Android/MyStudyApp/app/src/main/res/layout/item_image_slider.xml" value="0.5744791666666667" />
+        <entry key="..\:/dev/Android/MyStudyApp/app/src/main/res/menu/menu_split.xml" value="0.25364583333333335" />
       </map>
     </option>
   </component>
