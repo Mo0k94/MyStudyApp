@@ -3,12 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     defaultConfig {
 
         applicationId "com.example.mystudyapp"
         minSdkVersion 23
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -23,6 +23,10 @@ android {
     compileOptions {
         targetCompatibility = "8"
         sourceCompatibility = "8"
+    }
+
+    buildFeatures{
+        viewBinding true
     }
 }
 
@@ -117,7 +121,7 @@ dependencies {
     implementation 'com.github.nikhil-sachdeva:SliderViewLibrary:1.0'
 
     //이미지 슬라이드 라이브러리
-    implementation 'com.github.denzcoskun:ImageSlideshow:0.0.6'
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
 
     // alert 라이브러리
      implementation 'com.github.oktavianto:ionalert:1.0.4'

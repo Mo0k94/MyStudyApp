@@ -3,6 +3,7 @@ package com.example.mystudyapp
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
@@ -26,7 +27,7 @@ class ImageSlideActivity : AppCompatActivity() {
         slideModels.add(SlideModel("http://tkdanr2427.cafe24.com/Study/uploads/%ED%98%B8%EC%87%BC_2020-08-03_1.jpg","제목입니다."))
         slideModels.add(SlideModel("http://tkdanr2427.cafe24.com/Study/uploads/%ED%98%B8%EC%87%BC_2020-08-03_0.jpg","제목입니다."))
 
-        img_slider.setImageList(slideModels, true)
+        img_slider.setImageList(slideModels, ScaleTypes.FIT)
 
         setSupportActionBar(toolbar)
         supportActionBar?.title = ""
