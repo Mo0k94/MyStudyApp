@@ -9,7 +9,7 @@
     <color name="AccentColor">#F0825F</color>
 
     <color name="colorBackground">#fff</color> <!-- 투명하게 -->
-
+    <color name="ColorBlack">#000000</color> <!-- 투명하게 -->
 
 
 

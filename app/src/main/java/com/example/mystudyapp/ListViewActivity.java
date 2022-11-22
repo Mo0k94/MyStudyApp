@@ -131,7 +131,8 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("51) zxing 라이브러리", "2020-09-04", BarcodeActivity.class);
         addItem("52) imageSlide ViewPagjer 사용", "2021-11-04", ImageSlideViewPageActivity.class);
         addItem("53) ImageMultiple ", "2021-12-20", MultipleImageActivity.class);
-        addItem("53) ImageSlider PhotoView 사용", "2021-12-28", PhotoViewActivity.class);
+        addItem("54) ImageSlider PhotoView 사용", "2021-12-28", PhotoViewActivity.class);
+        addItem("55) Permission ", "2022-11-16", PermissionActivity.class);
 
 
 
@@ -193,12 +194,12 @@ public class ListViewActivity extends AppCompatActivity {
             }
 
         };
-        TedPermission.with(this)
+        /*TedPermission.with(this)
                 .setPermissionListener(permissionListener)
                 //.setRationaleMessage("주소록 권한이 필요해요")
                 .setDeniedMessage("권한이 거부되었습니다. \n [설정] > [권한] 에서 권한을 허용할 수 있습니다")
                 .setPermissions(REQUIRED_PERMISSIONS)
-                .check();
+                .check();*/
 
 
     }

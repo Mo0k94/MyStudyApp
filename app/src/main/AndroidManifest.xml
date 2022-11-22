@@ -20,13 +20,19 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="q">
-
+        <activity
+            android:name=".PhotoFrameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PermissionActivity"
+            android:exported="false" />
         <activity android:name=".MultipleImageActivity" />
         <activity android:name=".ImageSlideViewPageActivity" />
         <activity
             android:name=".PhotoViewActivity"
             android:exported="false" />
-        <activity android:name=".ImageSlideViewPageActivity"
+        <activity
+            android:name=".ImageSlideViewPageActivity"
             tools:ignore="DuplicateActivity" />
         <activity android:name=".BarcodeActivity" />
         <activity android:name=".HorizontalCalendarActivity" />
