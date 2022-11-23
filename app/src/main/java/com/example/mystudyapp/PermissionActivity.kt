@@ -17,7 +17,7 @@ class PermissionActivity : AppCompatActivity() {
 
     /*
     *
-    * FastCampus Chaptor05. 전자액자
+    * FastCampus Chapter05. 전자액자
     * Layout 을 그리는 법
     *   - 가로 화면으로 그리기
     * Android Permission 사용하기

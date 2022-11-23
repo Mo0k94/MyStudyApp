@@ -133,6 +133,7 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("53) ImageMultiple ", "2021-12-20", MultipleImageActivity.class);
         addItem("54) ImageSlider PhotoView 사용", "2021-12-28", PhotoViewActivity.class);
         addItem("55) Permission ", "2022-11-16", PermissionActivity.class);
+        addItem("56) 뽀모도로 Timer ", "2022-11-23", TimerActivity.class);
 
 
 

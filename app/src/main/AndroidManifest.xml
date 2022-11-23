@@ -21,6 +21,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="q">
         <activity
+            android:name=".TimerActivity"
+            android:exported="false" />
+        <activity
             android:name=".PhotoFrameActivity"
             android:exported="false" />
         <activity
