@@ -136,4 +136,10 @@ dependencies {
 
     implementation 'com.github.chrisbanes:PhotoView:2.1.3'
 
+    // vertical 캘린더 라이브러리
+    implementation 'com.emc.thye:VerticalCalendar:1.0.4'
+
+    implementation 'com.github.applikeysolutions:cosmocalendar:1.0.4'
+
+
 }

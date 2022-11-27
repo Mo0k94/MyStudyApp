@@ -124,7 +124,7 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("45) 다중 이미지 라이브러리", "2020-07-27", MatisseActivity.class);
         addItem("46) TedBottomPicker 라이브러리2", "2020-07-27", TedBottomPicker.class);
         addItem("47) Gliger 라이브러리", "2020-07-28", GligerActivity.class);
-        addItem("48) ImageSlide 라이브러리(denzcoskun:ImageSlideshow)", "2020-07-28", ImageSlideActivity.class);
+        //addItem("48) ImageSlide 라이브러리(denzcoskun:ImageSlideshow)", "2020-07-28", ImageSlideActivity.class);
         addItem("49) IonAlert 라이브러리", "2020-08-11", IonAlertActivity.class);
         addItem("50) AndExAlert 라이브러리", "2020-08-19", AndExAlertActivity.class);
         addItem("51) Horizontal Calendar 라이브러리", "2020-08-21", HorizontalCalendarActivity.class);
@@ -134,6 +134,7 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("54) ImageSlider PhotoView 사용", "2021-12-28", PhotoViewActivity.class);
         addItem("55) Permission ", "2022-11-16", PermissionActivity.class);
         addItem("56) 뽀모도로 Timer ", "2022-11-23", TimerActivity.class);
+        addItem("57) VerticalCalendar 라이브러", "2022-11-27", verticalCalendarActivity.class);
 
 
 

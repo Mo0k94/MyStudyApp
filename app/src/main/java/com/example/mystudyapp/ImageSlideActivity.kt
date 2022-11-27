@@ -1,10 +1,10 @@
+/*
 package com.example.mystudyapp
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.denzcoskun.imageslider.constants.ScaleTypes
-import com.denzcoskun.imageslider.models.SlideModel
+import com.anychart.anychart.ScaleTypes
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import kotlinx.android.synthetic.main.activity_image_slide.*
@@ -56,4 +56,4 @@ class ImageSlideActivity : AppCompatActivity() {
 
 
     }
-}
+}*/

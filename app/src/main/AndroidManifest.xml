@@ -41,9 +41,10 @@
         <activity android:name=".HorizontalCalendarActivity" />
         <activity android:name=".AndExAlertActivity" />
         <activity android:name=".IonAlertActivity" />
-        <activity
+        <!--<activity
             android:name=".ImageSlideActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />-->
+        <activity android:name=".verticalCalendarActivity"></activity>
         <activity android:name=".GligerActivity" />
         <activity android:name=".TedBottomPicker" />
         <activity android:name=".MatisseActivity" />
