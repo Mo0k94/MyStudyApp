@@ -134,7 +134,7 @@ public class ListViewActivity extends AppCompatActivity {
         addItem("54) ImageSlider PhotoView 사용", "2021-12-28", PhotoViewActivity.class);
         addItem("55) Permission ", "2022-11-16", PermissionActivity.class);
         addItem("56) 뽀모도로 Timer ", "2022-11-23", TimerActivity.class);
-        addItem("57) VerticalCalendar 라이브러", "2022-11-27", verticalCalendarActivity.class);
+        addItem("57) 녹음기 ", "2022-12-21", RecordActivity.class);
 
 
 
