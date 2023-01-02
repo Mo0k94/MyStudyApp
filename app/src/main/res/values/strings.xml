@@ -12,4 +12,6 @@
     <string name="capture_new_image">카메라</string>
     <string name="change_album_text">앨범 변경</string>
     <string name="all_images">모든 앨범</string>
+
+    <string name="test">Branch Test</string>
 </resources>
